@@ -23,13 +23,13 @@
                     <a class="nav-link js-scroll-trigger" href="#mainNav">조원소개</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#mainNav">현지학기제</a>
+                    <a class="nav-link js-scroll-trigger" href="{{route('articles.index')}}">현지학기제</a>
                 </li>                
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#mainNav">게시판</a>
+                    <a class="nav-link js-scroll-trigger" href="#mainNav">QnA</a>
                 </li>  
                 <li class="nav-item auth">
-                    <a class="nav-link js-scroll-trigger" href="#mainNav">로그인/로그아웃</a>
+                    <a class="nav-link js-scroll-trigger" href="{{route('login')}}">로그인/로그아웃</a>
                 </li>                
             </ul>
         </div>
