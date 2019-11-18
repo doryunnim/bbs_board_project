@@ -1,0 +1,152 @@
+.page-section{
+    padding: 100px 0;
+}
+
+section{
+    display: block;
+}
+
+.container{
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.row{
+    display: block;
+/*
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+*/
+}
+.text-center{
+    text-align: center!important;
+}
+.text-primary{
+    color:dimgray;
+}
+.text-muted{
+    color: darkorange;
+}
+.fas{
+    font-weight:900;
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    display:inline-block;
+    font-size: normal;
+    font-variant:normal;
+    text-rendering:auto;
+    line-height:1;
+}
+.fa-stack-2x{
+    font-size:2em;
+}
+.fa-stack-1x{
+    line-height: inherit;
+}
+.fa-stack-1x, .fa-stack-2x{
+    left:0;
+    position:absolute;
+    text-align: center;
+    width: 100%;
+}
+.fa-inverse{
+    color:aliceblue;
+}
+.service-heading{
+    margin: 15px;
+    margin-left:;
+    width:50%;
+    text-transform: none;
+    
+}
+div{
+    display:blcok;
+}
+
+.col-lg-12{
+    position: relative;
+    width:100%;
+    padding-right:15px;
+    padding-left:15px;
+}
+.page-section h2.section-heading{
+    font-size:40px;
+    margin-top:0;
+    margin-bottom:15px;
+}
+.text-uppercase{
+    text-transform:uppercase!important;
+}
+.page-section h3.section-subheading{
+    font-size:16px;
+    font-weight:400;
+    font-style:italic;
+    margin-bottom: 75px;
+    text-transform: none;
+}
+.col-md-4{
+    position: static;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.fa-stack{
+    display:inline-block;
+    height:2em;
+    line-height:2em;
+    position:relative;
+    vertical-align: middle;
+    width:2.5em;
+}
+.fa-4x{
+    font-size:4em;
+}
+
+@media(min-width:768px){
+    .col-md-4{
+        flex:0 0 90%;
+        max-width: 90%;
+        margin:5%;
+    }
+}
+
+
+@media(min-width:992px){
+    .col-lg-12{
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+h2{
+    font-weight: 700;
+    line-height:1.2;
+    display:block;
+    text-align: center;
+}
+h3{
+    line-height:1.2;
+    margin-top: 0;
+    display:block;
+}
+h4{
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height:1.2;
+    display:block;
+}
+p{
+    line-height: 1.75;
+    margin-top: 0;
+    margin-bottom:1rem;
+    display:block;
+}
+
+*,
+::after,
+::before{
+    box-sizing: border-box;
+}
