@@ -19,3 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('articles','NabeJapanController');
+
+Route::get('/main', function(){
+    return view('main');
+});
