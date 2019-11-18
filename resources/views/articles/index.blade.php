@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container">
     <div class="page-header">
         <h3>글 목록</h3>
     </div>
@@ -38,4 +39,5 @@
         {!! $articles->appends((Request::except('page')))->render() !!}
     </div>
     @endif
+</div>
 @stop
