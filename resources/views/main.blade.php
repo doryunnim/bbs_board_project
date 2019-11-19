@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -75,8 +75,7 @@
                <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a>
            </div>
        </div>
-   </header>
-   
+   </header>   
 <!--services-->
    <section class="page-section" id="services">
        <div class="container">
@@ -116,7 +115,7 @@
                        </i>
                    </span>
                    <hr>
-                   <h4 class="service-heading">현지학기제</h4>
+                   <h4 class="service-heading"><a href="{{route('articles.index')}}">현지학기제</a></h4>
                    <p class="text-muted">
                        현지학기제 소제목을 p태그로 받으면 됩니다.
                    </p>
