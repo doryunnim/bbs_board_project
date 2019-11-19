@@ -52,7 +52,6 @@ html {
 }
 
 article,
-aside,
 figcaption,
 figure,
 footer,
@@ -62,6 +61,16 @@ main,
 nav,
 section {
   display: block;
+}
+
+aside {
+  display: inline-block;
+  padding: 10px;
+  background-color: #e7e7e7;
+}
+
+.m-b {
+  margin-bottom: 10px;
 }
 
 body {

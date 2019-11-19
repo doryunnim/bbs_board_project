@@ -68,7 +68,8 @@ class NabeJapanController extends Controller
     public function show(NabeJapan $article)
     {
         //
-        return view('articles.show', compact('article'));
+        $articles = \App\NabeJapan::get();
+        return view('articles.show', compact('article', 'articles'));
     }
 
     /**

@@ -3,15 +3,13 @@
 @section('content')
 <div class="container">
     <div class="page-header">
-        <h3>글 목록</h3>
+        <h3>현지학기제</h3>
     </div>
 
+<!--  aside로 옮김
     <div class="text-right">
-        <a href="{{route('articles.create')}}" class="btn btn-primary">
-            <i class="fa fa-plus-circle"></i> 글 쓰기
-        </a>
+        <a href="{{route('articles.create')}}" class="btn btn-primary">글 쓰기</a>
     </div>
-
     <article>
         @forelse($articles as $article)
             @include('articles.partial.article', compact('article'))
@@ -19,20 +17,7 @@
             <p class="text-center text-danger">글이 없습니다.</p>
         @endforelse
     </article>
-
-    <!-- <div class="container">
-        <h1>게시판 글 목록</h1>
-        <hr>
-        <ul>
-            @forelse($articles as $article)
-                <li>
-                    <a href="{{ route('articles.create') }}">{{$article->title}}</a>
-                </li>
-            @empty
-                <p>글이 없습니다</p>
-            @endforelse
-        </ul>
-    </div> -->
+ -->
 
     @if($articles->count())
     <div class="text-center">
@@ -40,4 +25,17 @@
     </div>
     @endif
 </div>
+
+<aside class="side-bar">
+    <div class="row">
+        <div class="col">
+            <a href="{{route('articles.create')}}" class="btn btn-primary m-b">글 쓰기</a>
+            @forelse($articles as $article)
+                @include('articles.partial.article', compact('article'))
+            @empty
+                <p class="text-center text-danger">글이 없습니다.</p>
+            @endforelse
+        </div>
+    </div>
+</aside>
 @stop

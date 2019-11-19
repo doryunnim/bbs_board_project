@@ -6,7 +6,7 @@
     </div>
 
     <article>
-        @include('articles.partial.article', compact('article'))
+        <!-- @include('articles.partial.article', compact('article')) -->
         <p>{!! markdown($article->content) !!}</p>
     </article>
 
@@ -22,6 +22,18 @@
         </a>
     </div>
 </div>
+
+<aside class="side-bar">
+    <div class="row">
+        <div class="col">
+            <a href="{{route('articles.create')}}" class="btn btn-primary m-b">글 쓰기</a>
+            @forelse($articles as $article)
+                @include('articles.partial.article', compact('article'))
+            @empty
+            @endforelse
+        </div>
+    </div>
+</aside>
 @stop
 
 @section('script')
