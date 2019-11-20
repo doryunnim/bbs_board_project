@@ -105,6 +105,7 @@
                        이름을 하나씩 제목으로 지금의 p태그에 받으면 됩니다
                    </p>
                </div>
+
                <div class="col-md-4">
                    <span class="fa-stack fa-4x">
                        <i class="fas fa-circle fa-stack-2x text-primary">
@@ -117,9 +118,10 @@
                    <hr>
                    <h4 class="service-heading"><a href="{{route('japan.index')}}">현지학기제</a></h4>
                    <p class="text-muted">
-                       현지학기제 소제목을 p태그로 받으면 됩니다.
+                       <a href="{{route('japan.index')}}">Title</a>
                    </p>
                </div>
+
                <div class="col-md-4">
                    <span class="fa-stack fa-4x">
                        <i class="fas fa-lock fa-stack-2x text-primary">

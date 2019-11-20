@@ -15,7 +15,7 @@ class NabeJapanController extends Controller
      */
     public function index()
     {
-        $articles = \App\NabeJapan::latest()->paginate(5);
+        $articles = \App\NabeJapan::latest()->paginate(100);
         return view('japan.index', compact('articles'));
     }
 
@@ -50,9 +50,9 @@ class NabeJapanController extends Controller
         }
 
         // $article = \App\NabeJapan::find(1)->create($request->all());
-        $article = \App\NabeJapan::create($request->all());
+        $japan = \App\NabeJapan::create($request->all());
 
-        if(!$article){
+        if(!$japan){
             return back();
         }
 
@@ -81,6 +81,7 @@ class NabeJapanController extends Controller
     public function edit(NabeJapan $japan)
     {
         //
+        $this->middleware('auth');
         return view('japan.edit', compact('japan'));
     }
 
@@ -104,10 +105,10 @@ class NabeJapanController extends Controller
      * @param  \App\NabeJapan  $NabeJapan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(NabeJapan $article)
+    public function destroy(NabeJapan $japan)
     {
         //
-        $article->delete();
+        $japan->delete();
         return response()->json([],204);
     }
 }

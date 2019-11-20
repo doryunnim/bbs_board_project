@@ -15,7 +15,3 @@
     <input type="password" name="password" id="password" value="{{old('password', $japan->password)}}" class="form-control" />
         {!! $errors->first('password', '<span class="form-error">:message</span>') !!}
 </div>
-
-<div class="form-group">
-    <button type="submit" class="btn btn-primary">수정</button>
-</div>

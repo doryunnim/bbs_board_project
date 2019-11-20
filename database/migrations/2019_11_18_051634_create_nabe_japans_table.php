@@ -17,7 +17,7 @@ class CreateNabeJapansTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->text('content');
-            $table->integer('password');
+            $table->string('password', 15);
             $table->timestamps();
         });
     }

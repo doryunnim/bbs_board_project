@@ -2,10 +2,11 @@
 
 @section('content')
 <div class="container">
-    <h1>새 글 쓰기</h1>
-    <hr>
+    <div class="page-header">
+        <h3>새 글 쓰기</h3>
+    </div>
     
-    <form action="{{ route('japan.store') }}" method="post">
+    <form action="{{ route('japan.store') }}" method="post" enctype="multipart/form-data">
 
         <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
             <label for="title">제목</label>
