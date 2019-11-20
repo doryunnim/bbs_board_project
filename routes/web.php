@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+<<<<<<< HEAD
 
 Route::get('/resources/views/join.blade.php', function(){
     return view('join');
@@ -49,3 +50,8 @@ Route::get('auth/logout', function(){
     return '또 봐요~!';
 });
 
+=======
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+>>>>>>> 0f7b57a4981f59b7a788c5d986e2a12f3508d02c
