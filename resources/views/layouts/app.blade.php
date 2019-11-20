@@ -38,6 +38,18 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+<<<<<<< HEAD
+=======
+                       <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Member') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('articles.index') }}">{{ __('Board') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('QnA') }}</a>
+                        </li>
+>>>>>>> 5e84c602b91eef59df37bda2a935108b4d583f55
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">

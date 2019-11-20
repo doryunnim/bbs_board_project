@@ -52,7 +52,10 @@ html {
 }
 
 article,
+<<<<<<< HEAD
 aside,
+=======
+>>>>>>> 5e84c602b91eef59df37bda2a935108b4d583f55
 figcaption,
 figure,
 footer,
@@ -64,6 +67,19 @@ section {
   display: block;
 }
 
+<<<<<<< HEAD
+=======
+aside {
+  display: inline-block;
+  padding: 10px;
+  background-color: #e7e7e7;
+}
+
+.m-b {
+  margin-bottom: 10px;
+}
+
+>>>>>>> 5e84c602b91eef59df37bda2a935108b4d583f55
 body {
   margin: 0;
   font-family: "Nunito", sans-serif;
