@@ -42,7 +42,7 @@
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Member') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('articles.index') }}">{{ __('Board') }}</a>
+                            <a class="nav-link" href="{{ route('japan.index') }}">{{ __('Japan') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('QnA') }}</a>

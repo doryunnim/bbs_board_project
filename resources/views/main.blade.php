@@ -23,7 +23,7 @@
                     <a class="nav-link js-scroll-trigger" href="#mainNav">조원소개</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="{{route('articles.index')}}">현지학기제</a>
+                    <a class="nav-link js-scroll-trigger" href="{{route('japan.index')}}">현지학기제</a>
                 </li>                
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="#mainNav">Q&amp;A</a>
@@ -115,7 +115,7 @@
                        </i>
                    </span>
                    <hr>
-                   <h4 class="service-heading"><a href="{{route('articles.index')}}">현지학기제</a></h4>
+                   <h4 class="service-heading"><a href="{{route('japan.index')}}">현지학기제</a></h4>
                    <p class="text-muted">
                        현지학기제 소제목을 p태그로 받으면 됩니다.
                    </p>

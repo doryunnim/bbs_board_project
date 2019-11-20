@@ -5,7 +5,7 @@
     <h1>새 글 쓰기</h1>
     <hr>
     
-    <form action="{{ route('articles.store') }}" method="post">
+    <form action="{{ route('japan.store') }}" method="post">
 
         <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
             <label for="title">제목</label>

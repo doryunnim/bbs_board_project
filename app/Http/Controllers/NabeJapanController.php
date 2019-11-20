@@ -16,7 +16,7 @@ class NabeJapanController extends Controller
     public function index()
     {
         $articles = \App\NabeJapan::latest()->paginate(5);
-        return view('articles.index', compact('articles'));
+        return view('japan.index', compact('articles'));
     }
 
     /**
@@ -26,7 +26,7 @@ class NabeJapanController extends Controller
      */
     public function create()
     {
-        return view("articles.create");
+        return view("japan.create");
     }
 
     /**
@@ -39,7 +39,7 @@ class NabeJapanController extends Controller
     {
         $rules = [
             'title'=>['required'],
-            'content'=>['required', 'min:10'],
+            'content'=>['required'],
             'password'=>['required', 'max:4']
         ];
 
@@ -56,7 +56,7 @@ class NabeJapanController extends Controller
             return back();
         }
 
-        return redirect(route('articles.index'));
+        return redirect(route('japan.index'));
     }
 
     /**
@@ -65,11 +65,11 @@ class NabeJapanController extends Controller
      * @param  \App\NabeJapan  $article
      * @return \Illuminate\Http\Response
      */
-    public function show(NabeJapan $article)
+    public function show(NabeJapan $japan)
     {
         //
         $articles = \App\NabeJapan::get();
-        return view('articles.show', compact('article', 'articles'));
+        return view('japan.show', compact('japan', 'articles'));
     }
 
     /**
@@ -78,10 +78,10 @@ class NabeJapanController extends Controller
      * @param  \App\NabeJapan  $article
      * @return \Illuminate\Http\Response
      */
-    public function edit(NabeJapan $article)
+    public function edit(NabeJapan $japan)
     {
         //
-        return view('articles.edit', compact('article'));
+        return view('japan.edit', compact('japan'));
     }
 
     /**
@@ -95,7 +95,7 @@ class NabeJapanController extends Controller
     {
         //
         $article->update($request->all());
-        return redirect(route('articles.show', $article->id));
+        return redirect(route('japan.show', $article->id));
     }
 
     /**

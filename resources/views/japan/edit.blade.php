@@ -5,10 +5,10 @@
         <h3>글 수정</h3>
     </div>
 
-    <form action="{{route('articles.update', $article->id)}}" method="POST">
+    <form action="{{route('japan.update', $japan->id)}}" method="POST">
         {!! csrf_field() !!}
         {!! method_field('PUT') !!}
-        @include('articles.partial.form')
+        @include('japan.partial.form')
     </form>
 </div>
 @stop
