@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="container">
+<div class="container2">
     <div class="page-header">
         <h3>글 수정</h3>
     </div>

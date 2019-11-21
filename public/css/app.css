@@ -51,7 +51,8 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-article,
+/* article,
+aside, */
 figcaption,
 figure,
 footer,
@@ -61,6 +62,16 @@ main,
 nav,
 section {
   display: block;
+}
+
+main {
+  width: 79.6666666666%;
+}
+
+article {
+  height: 680px;
+  padding: 10px;
+  border: 1px solid rgb(155, 155, 155);
 }
 
 aside {
@@ -160,6 +171,7 @@ strong {
 
 small {
   font-size: 80%;
+  display: block;
 }
 
 sub,
@@ -589,7 +601,16 @@ pre code {
 }
 
 .container {
+  float: right;
   width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.container2 {
+  width: 70%;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
@@ -922,6 +943,10 @@ pre code {
 
 .offset-9 {
   margin-left: 75%;
+}
+
+.offset-9-5 {
+  margin-left: 80.9999999999%;
 }
 
 .offset-10 {
@@ -2713,6 +2738,10 @@ textarea.form-control.is-invalid {
   border-radius: 0.25rem;
   -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.del-btn {
+  display: inline-block;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -5305,6 +5334,10 @@ input[type=button].btn-block {
   padding-left: 0;
   list-style: none;
   border-radius: 0.25rem;
+}
+
+.page-header {
+  background-color: #ddd;
 }
 
 .page-link {

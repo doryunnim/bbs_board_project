@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\NabeJapan;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use App\NabeJapan;
 
 class NabeJapanController extends Controller
 {
@@ -15,7 +16,7 @@ class NabeJapanController extends Controller
      */
     public function index()
     {
-        $articles = \App\NabeJapan::latest()->paginate(100);
+        $articles = \App\NabeJapan::oldest()->paginate(100);
         return view('japan.index', compact('articles'));
     }
 
@@ -40,7 +41,7 @@ class NabeJapanController extends Controller
         $rules = [
             'title'=>['required'],
             'content'=>['required'],
-            'password'=>['required', 'max:4']
+            'password'=>['required', 'min:4']
         ];
 
         $validator = \Validator::make($request->all(), $rules);
@@ -49,7 +50,6 @@ class NabeJapanController extends Controller
             return back()->withErrors($validator)->withInput();
         }
 
-        // $article = \App\NabeJapan::find(1)->create($request->all());
         $japan = \App\NabeJapan::create($request->all());
 
         if(!$japan){
@@ -81,7 +81,7 @@ class NabeJapanController extends Controller
     public function edit(NabeJapan $japan)
     {
         //
-        $this->middleware('auth');
+        // $this->authorize('update', $japan);
         return view('japan.edit', compact('japan'));
     }
 
@@ -92,11 +92,12 @@ class NabeJapanController extends Controller
      * @param  \App\NabeJapan  $article
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, NabeJapan $article)
+    public function update(Request $request, NabeJapan $japan)
     {
         //
-        $article->update($request->all());
-        return redirect(route('japan.show', $article->id));
+        // $this->authorize('update', $japan);
+        $japan->update($request->all());
+        return redirect(route('japan.show', $japan->id));
     }
 
     /**
@@ -105,10 +106,10 @@ class NabeJapanController extends Controller
      * @param  \App\NabeJapan  $NabeJapan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(NabeJapan $japan)
+    public function destroy($japan)
     {
-        //
         $japan->delete();
-        return response()->json([],204);
+
+        return redirect(route('japan.index'));
     }
 }

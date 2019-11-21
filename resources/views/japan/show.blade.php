@@ -2,23 +2,27 @@
 @section('content')
 <div class="container">
     <div class="page-header">
-        <h3>{{$japan->title}}</h3>
+        <h3 class="title">{{$japan->title}}</h3>
     </div>
 
-    <article>
-        <p>{!! markdown($japan->content) !!}</p>
+    <small class="text-right">{{$japan->created_at}}</small>
+    
+    <article class="m-b">
+        <h5>{!! markdown($japan->content) !!}</h5>
     </article>
 
-    <div class="text-center action__article">
-        <a href="{{route('japan.edit', $japan->id)}}" class="btn btn-info">
-            글 수정
-        </a>
-        <button class="btn btn-dander btn-info button__delete">
-            글 삭제
-        </button>
-        <a href="{{route('japan.index')}}" class="btn btn-info">
-            글 목록
-        </a>
+    <div class="action__article">
+        <a href="{{route('japan.index')}}" class="btn btn-info">목록</a>
+
+        <a  href="{{route('japan.edit', $japan->id)}}" class="btn btn-info offset-9-5">수정</a>
+        <!-- <button class="btn btn-info button__edit" @click="onEdit()">글 수정</button> -->
+
+        <form action="{{route('japan.destroy', $japan->id)}}" method="post" class="del-btn">
+            @csrf
+            @method('DELETE')
+            <button class="button__delete btn btn-danger">삭제</a>
+        </form>
+        <!-- <button class="button__delete btn btn-danger" @click="onDelete()">글 삭제</button> -->
     </div>
 </div>
 
@@ -29,31 +33,33 @@
             @forelse($articles as $japan)
                 @include('japan.partial.article', compact('japan'))
             @empty
+                <p class="text-center text-danger">글이 없습니다.</p>
             @endforelse
         </div>
     </div>
 </aside>
-@stop
 
-@section('script')
-<script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+<!-- <script>
+    var edit = new Vue({
+        el: '.button__edit',
+        methods: {
+            onEdit: function() {
+                if(confirm("작성 글 비밀번호 확인")) {
+                    location.replace('{{route('japan.index')}}');
+                }
+            }
         }
     });
 
-    $('.button__delete').on('click',function(e){
-        var articleId = '{{ $japan->id }}';
-
-        if(confirm('글 삭제')){
-            $.ajax({
-                type: 'DELETE',
-                url: '/japan/'+articleId
-            }).then(function(){
-                window.location.href='/japan';
-            });
+    var del = new Vue({
+        el: '.button__delete',
+        methods: {
+            onDelete: function() {
+                if(confirm("작성 글 비밀번호 확인")) {
+                    location.replace('{{route('japan.index')}}');
+                }
+            }
         }
     });
-</script>
+</script> -->
 @stop
