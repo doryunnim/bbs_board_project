@@ -16,8 +16,8 @@ class NabeJapanController extends Controller
      */
     public function index()
     {
-        $articles = \App\NabeJapan::oldest()->paginate(100);
-        return view('japan.index', compact('articles'));
+        $japans = \App\NabeJapan::oldest()->paginate(100);
+        return view('japan.index', compact('japans'));
     }
 
     /**
@@ -27,7 +27,8 @@ class NabeJapanController extends Controller
      */
     public function create()
     {
-        return view("japan.create");
+        $japans = \App\NabeJapan::get();
+        return view("japan.create", compact('japans'));
     }
 
     /**
@@ -50,6 +51,15 @@ class NabeJapanController extends Controller
             return back()->withErrors($validator)->withInput();
         }
 
+        if($request->hasFile('files')){
+            $files = $request->file('files');
+
+            foreach($files as $file){
+                $filename = str_random().filter_var($file->getClientOriginalName(), FILTER_SANITIZE_URL);
+                $file->move(attachments_path(), $filename);
+            }
+        }
+
         $japan = \App\NabeJapan::create($request->all());
 
         if(!$japan){
@@ -68,8 +78,8 @@ class NabeJapanController extends Controller
     public function show(NabeJapan $japan)
     {
         //
-        $articles = \App\NabeJapan::get();
-        return view('japan.show', compact('japan', 'articles'));
+        $japans = \App\NabeJapan::get();
+        return view('japan.show', compact('japan', 'japans'));
     }
 
     /**
@@ -82,7 +92,8 @@ class NabeJapanController extends Controller
     {
         //
         // $this->authorize('update', $japan);
-        return view('japan.edit', compact('japan'));
+        $japans = \App\NabeJapan::get();
+        return view('japan.edit', compact('japan', 'japans'));
     }
 
     /**

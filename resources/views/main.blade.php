@@ -118,7 +118,11 @@
                    <hr>
                    <h4 class="service-heading"><a href="{{route('japan.index')}}">현지학기제</a></h4>
                    <p class="text-muted">
-                       <a href="{{route('japan.index')}}">Title</a>
+                        @forelse($japans as $japan)
+                            @include('japan.partial.article', compact('japan'))
+                        @empty
+                            <p class="text-center text-danger">글이 없습니다.</p>
+                        @endforelse
                    </p>
                </div>
 

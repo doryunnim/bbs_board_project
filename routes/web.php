@@ -1,4 +1,5 @@
 <?php
+use App\NabeJapan;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +13,8 @@
 */
 
 Route::get('/', function () {
-    return view('main');
+    $japans = \App\NabeJapan::get();
+    return view('main', compact('japans'));
 });
 
 Auth::routes();

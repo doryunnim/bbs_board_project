@@ -6,9 +6,9 @@
         <h3>현지학기제</h3>
     </div>
 
-    @if($articles->count())
+    @if($japans->count())
     <div class="text-center">
-        {!! $articles->appends((Request::except('page')))->render() !!}
+        {!! $japans->appends((Request::except('page')))->render() !!}
     </div>
     @endif
 </div>
@@ -17,7 +17,7 @@
     <div class="row">
         <div class="col">
             <a href="{{route('japan.create')}}" class="btn btn-primary m-b">글 쓰기</a>
-            @forelse($articles as $japan)
+            @forelse($japans as $japan)
                 @include('japan.partial.article', compact('japan'))
             @empty
                 <p class="text-center text-danger">글이 없습니다.</p>

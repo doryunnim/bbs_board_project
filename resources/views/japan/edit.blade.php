@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="container2">
+<div class="container">
     <div class="page-header">
         <h3>글 수정</h3>
     </div>
@@ -14,4 +14,17 @@
         </div>
     </form>
 </div>
+
+<aside class="side-bar">
+    <div class="row">
+        <div class="col">
+            <a href="{{route('japan.create')}}" class="btn btn-primary m-b">글 쓰기</a>
+            @forelse($japans as $japan)
+                @include('japan.partial.article', compact('japan'))
+            @empty
+                <p class="text-center text-danger">글이 없습니다.</p>
+            @endforelse
+        </div>
+    </div>
+</aside>
 @stop
