@@ -26,7 +26,7 @@
                     <a class="nav-link js-scroll-trigger" href="{{route('articles.index')}}">현지학기제</a>
                 </li>                
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#mainNav">Q&amp;A</a>
+                    <a class="nav-link js-scroll-trigger" href="{{route('qnaArticles.index')}}">Q&amp;A</a>
                 </li>
                 @guest
                     <li class="nav-item">
@@ -130,9 +130,7 @@
                        </i>
                    </span>
                    <hr>
-                   <h4 class="service-heading">
-                       Q&amp;A게시판
-                   </h4>
+                   <h4 class="service-heading"><a href="{{route('qnaArticles.index')}}">Q&A게시판</a></h4>
                    <p class="text-muted">
                        게시판 제목을 p태그로 받습니다.
                    </p>
