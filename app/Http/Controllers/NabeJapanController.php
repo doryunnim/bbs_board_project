@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\NabeJapan;
+use File;
 
 class NabeJapanController extends Controller
 {
@@ -25,10 +26,10 @@ class NabeJapanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(NabeJapan $japan)
     {
         $japans = \App\NabeJapan::get();
-        return view("japan.create", compact('japans'));
+        return view("japan.create", compact('japan','japans'));
     }
 
     /**
@@ -39,28 +40,35 @@ class NabeJapanController extends Controller
      */
     public function store(Request $request)
     {
+        $japan = \App\NabeJapan::create($request->all());  
+
         $rules = [
             'title'=>['required'],
             'content'=>['required'],
             'password'=>['required', 'min:4']
         ];
 
+        if($request->hasFile('files')){
+            $files = $request->file('files');
+
+            foreach($files as $file){
+                $filename = filter_var($file->getClientOriginalName(), FILTER_SANITIZE_URL);
+
+                $japan->attachments()->create([
+                    'filename'=>$filename,
+                    'bytes'=>$file->getSize(),
+                    'mime'=>$file->getClientMimeType()
+                ]);
+
+                $file->move(attachments_path(), $filename);
+            }
+        }
+
         $validator = \Validator::make($request->all(), $rules);
 
         if($validator->fails()){
             return back()->withErrors($validator)->withInput();
         }
-
-        if($request->hasFile('files')){
-            $files = $request->file('files');
-
-            foreach($files as $file){
-                $filename = str_random().filter_var($file->getClientOriginalName(), FILTER_SANITIZE_URL);
-                $file->move(attachments_path(), $filename);
-            }
-        }
-
-        $japan = \App\NabeJapan::create($request->all());
 
         if(!$japan){
             return back();
@@ -107,6 +115,21 @@ class NabeJapanController extends Controller
     {
         //
         // $this->authorize('update', $japan);
+        if($request->hasFile('files')){
+            $files = $request->file('files');
+
+            foreach($files as $file){
+                $filename = filter_var($file->getClientOriginalName(), FILTER_SANITIZE_URL);
+
+                $japan->attachments()->create([
+                    'filename'=>$filename,
+                    'bytes'=>$file->getSize(),
+                    'mime'=>$file->getClientMimeType()
+                ]);
+
+                $file->move(attachments_path(), $filename);
+            }
+        }
         $japan->update($request->all());
         return redirect(route('japan.show', $japan->id));
     }
