@@ -20,4 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('japan','NabeJapanController');
+
+Route::resource('japan','NabeJapanController'); #현지학기제 컨트롤러
+
+Route::resource('introduce','NabeIntroduceController'); #조원소개 컨트롤러
