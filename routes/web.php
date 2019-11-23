@@ -1,4 +1,5 @@
 <?php
+use App\NabeJapan;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,9 +13,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $japans = \App\NabeJapan::get();
+    return view('main', compact('japans'));
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('japan','NabeJapanController'); #현지학기제 컨트롤러
+
+Route::resource('introduce','NabeIntroduceController'); #조원소개 컨트롤러

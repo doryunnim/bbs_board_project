@@ -26,6 +26,8 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot();
+        
+        Route::model('japan', \App\NabeJapan::class);   //컨트롤러에서 뷰로 파라미터를 연결하는 구문
     }
 
     /**
