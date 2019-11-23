@@ -17,7 +17,6 @@ class NabeIntroduceController extends Controller
     {
         return view('introduce.main');
     }
-
     /**
      * Show the form for creating a new resource.
      *
