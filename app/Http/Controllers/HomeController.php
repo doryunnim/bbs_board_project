@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+<<<<<<< HEAD
+=======
+use App\NabeJapan;
+>>>>>>> a050798779547a9bce634ea8a0265748dd6a100d
 
 class HomeController extends Controller
 {

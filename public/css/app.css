@@ -52,7 +52,14 @@ html {
 }
 
 article,
+<<<<<<< HEAD
 aside,
+=======
+<<<<<<< HEAD
+aside,
+=======
+>>>>>>> 5e84c602b91eef59df37bda2a935108b4d583f55
+>>>>>>> a050798779547a9bce634ea8a0265748dd6a100d
 figcaption,
 figure,
 footer,
@@ -64,6 +71,22 @@ section {
   display: block;
 }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+aside {
+  display: inline-block;
+  padding: 10px;
+  background-color: #e7e7e7;
+}
+
+.m-b {
+  margin-bottom: 10px;
+}
+
+>>>>>>> 5e84c602b91eef59df37bda2a935108b4d583f55
+>>>>>>> a050798779547a9bce634ea8a0265748dd6a100d
 body {
   margin: 0;
   font-family: "Nunito", sans-serif;
