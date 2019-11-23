@@ -438,6 +438,7 @@ class ComposerStaticInit5f685ca829e9ce45ab5383c52c781464
         'App\\Http\\Requests\\JapanRequest' => __DIR__ . '/../..' . '/app/Http/Requests/JapanRequest.php',
         'App\\Http\\Requests\\StoreBlogPost' => __DIR__ . '/../..' . '/app/Http/Requests/StoreBlogPost.php',
         'App\\JapanAttachments' => __DIR__ . '/../..' . '/app/JapanAttachments.php',
+        'App\\NabeIntroduce' => __DIR__ . '/../..' . '/app/NabeIntroduce.php',
         'App\\NabeJapan' => __DIR__ . '/../..' . '/app/NabeJapan.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',

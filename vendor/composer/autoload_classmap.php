@@ -29,6 +29,7 @@ return array(
     'App\\Http\\Requests\\JapanRequest' => $baseDir . '/app/Http/Requests/JapanRequest.php',
     'App\\Http\\Requests\\StoreBlogPost' => $baseDir . '/app/Http/Requests/StoreBlogPost.php',
     'App\\JapanAttachments' => $baseDir . '/app/JapanAttachments.php',
+    'App\\NabeIntroduce' => $baseDir . '/app/NabeIntroduce.php',
     'App\\NabeJapan' => $baseDir . '/app/NabeJapan.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
