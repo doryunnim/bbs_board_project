@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')
@@ -25,17 +26,35 @@
     </div>
     @endif
 </div>
-
-<aside class="side-bar">
-    <div class="row">
-        <div class="col">
-            <a href="{{route('articles.create')}}" class="btn btn-primary m-b">글 쓰기</a>
-            @forelse($articles as $article)
-                @include('articles.partial.article', compact('article'))
-            @empty
-                <p class="text-center text-danger">글이 없습니다.</p>
-            @endforelse
+<div class="contain">
+    <aside class="side-bar">
+        <div class="row">
+            <div class="col">
+                <a href="{{route('articles.create')}}" class="btn btn-primary m-b">글 쓰기</a>
+                @forelse($articles as $article)
+                    @include('articles.partial.article', compact('article'))
+                @empty
+                    <p class="text-center text-danger">글이 없습니다.</p>
+                @endforelse
+            </div>
         </div>
-    </div>
-</aside>
+    </aside>
+    <div class="main-chart">
+        <p>
+            여기가 게시물드링 카드뷰처럼 나오는 곳입니다.
+
+
+
+
+
+            ㅁㅁㅁ
+
+            ㅁㅁㅁㅁㅁ
+
+            ㅁㅁㅁ
+            ㅁㅁㅁㅁㅁㅁ
+            ㅁ
+        </p>
+    <div>
+</div>
 @stop

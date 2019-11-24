@@ -64,11 +64,52 @@ section {
 }
 
 aside {
-  display: inline-block;
+  display: block;
   padding: 10px;
   background-color: #e7e7e7;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: auto;
+  height: 100%;
 }
-
+/*  */
+/* .contain{
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+.contain{
+  max-width: 950px;
+} 
+.side-bar .main-cahrt{
+  display: inline-flex;
+}
+.side-bar{
+  width: 18%;
+  background-color: #1d643b;
+  float:left;
+}
+.main-chart{
+  width: 79%;
+  float:right;
+  background-color: #227dc7;
+  margin-right: 10px;
+} */
+/*  */
+.contain{
+  display:flex;
+  width:98%;
+  margin: 0 auto;
+  height: 100%;
+}
+.main-chart{
+  width: 98%;
+  background-color: #284257;
+}
 .m-b {
   margin-bottom: 10px;
 }
@@ -81,7 +122,12 @@ body {
   line-height: 1.6;
   color: #212529;
   text-align: left;
-  background-color: #f8fafc;
+  /* background-color: #6c87a1; */
+  height: 100%;
+}
+html, body{
+  height: 100%;
+  overflow:hidden;
 }
 
 [tabindex="-1"]:focus {
@@ -600,11 +646,17 @@ pre code {
   .container {
     max-width: 540px;
   }
+  .contain{
+    width:87%;
+  }
 }
 
 @media (min-width: 768px) {
   .container {
     max-width: 720px;
+  }
+  .contain{
+    width:84%;
   }
 }
 
@@ -612,11 +664,17 @@ pre code {
   .container {
     max-width: 960px;
   }
+  .contain{
+    width:80%;
+  }
 }
 
 @media (min-width: 1200px) {
   .container {
     max-width: 1140px;
+  }
+  .contain{
+    max-width:1200px;
   }
 }
 
@@ -8859,7 +8917,9 @@ button.bg-dark:focus {
 .px-4 {
   padding-left: 1.5rem !important;
 }
-
+/* .py-4{
+  height: 100%;
+} */
 .p-5 {
   padding: 3rem !important;
 }
