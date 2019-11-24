@@ -22,3 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('articles','NabeJapanController');
 
 Route::resource('qnaArticles','QnaArticlesController');
+
+DB::listen(function ($query){
+    var_dump($query->sql);
+});

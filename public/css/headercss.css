@@ -37,7 +37,7 @@ header{
     box-sizing: border-box;
 }
 
-@media (min-width: 768px){
+/* @media (min-width: 768px){
     header.masthead .intro-text{
         padding-top: 300px;
         padding-bottom: 200px;     
@@ -54,7 +54,7 @@ header{
         line-height: 75px;
         margin-bottom: 50px;
     }
-}
+} */
 
 @media(min-width:1200px){
     .container{

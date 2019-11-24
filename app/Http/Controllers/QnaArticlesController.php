@@ -9,8 +9,15 @@ class QnaArticlesController extends Controller
 {
     public function index()
     {
-        $qnaArticles = \App\Qna_article::latest()->paginate(5);
+        // 즉시 로드
+        // $qnaArticles = \App\Qna_article::with('user')->get();
+        // 지연 로드
+        // $qnaArticles = \App\Qna_article::get();
+        // $qnaArticles->load('user');
+        // 페이징
+        $qnaArticles = \App\Qna_article::latest()->paginate(3);
         return view('qnaArticles.index', compact('qnaArticles'));
+    
     }
 
     public function create()
