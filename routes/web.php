@@ -10,6 +10,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('home/show', 'HomeController@show');
 
+Route::get('/introduce', 'NabeIntroduceController@index');
 Route::get('/introduce/create', 'NabeIntroduceController@create');
-
 Route::post('/introduce/create', 'NabeIntroduceController@store');

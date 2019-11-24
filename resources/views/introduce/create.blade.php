@@ -14,7 +14,7 @@
     </div>
     @endforeach
 
-    <div class="row">
+    <div class="row mb-4">
         <div class="col-md-4 offset-md-4">
             <form action="/introduce/create" method="POST" enctype="multipart/form-data">
                 @csrf

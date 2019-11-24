@@ -11,7 +11,7 @@ class NabeIntroduceController extends Controller
 {
     public function index()
     {
-        //
+        return view('introduce.index');
     }
 
     public function create()
