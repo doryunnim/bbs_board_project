@@ -15,6 +15,8 @@ class CreateNabeIntroducesTable extends Migration
     {
         Schema::create('nabe_introduces', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name');
+            $table->string('photo');
             $table->timestamps();
         });
     }

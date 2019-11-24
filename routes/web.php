@@ -14,8 +14,13 @@ use App\NabeJapan;
 
 Route::get('/', function () {
     $japans = \App\NabeJapan::get();
-    return view('main', compact('japans'));
+    return view('main_content', compact('japans'));
 });
+
+// Route::get('/join', function () {
+//     return view('join');
+// });
+
 
 Auth::routes();
 

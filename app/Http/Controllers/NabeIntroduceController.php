@@ -15,7 +15,7 @@ class NabeIntroduceController extends Controller
      */
     public function index()
     {
-        return view('introduce.main');
+        return view('');
     }
     /**
      * Show the form for creating a new resource.
