@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNabeJapansTable extends Migration
+class CreateQnaCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateNabeJapansTable extends Migration
      */
     public function up()
     {
-        Schema::create('nabe_japans', function (Blueprint $table) {
+        Schema::create('qna_comments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title');
-            $table->text('content');
-            $table->string('password', 15);
+            $table->string('name');
+            $table->string('slug')->index();
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateNabeJapansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nabe_japans');
+        Schema::dropIfExists('qna_comments');
     }
 }

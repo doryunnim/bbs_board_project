@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNabeJapansTable extends Migration
+class CreateJapanAttachmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateNabeJapansTable extends Migration
      */
     public function up()
     {
-        Schema::create('nabe_japans', function (Blueprint $table) {
+        Schema::create('japan_attachments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title');
-            $table->text('content');
-            $table->string('password', 15);
+            $table->unsignedBigInteger('nabe_japan_id')->nullable()->index();
+            $table->string('filename');
+            $table->unsignedBigInteger('bytes')->nullable();
+            $table->string('mime')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateNabeJapansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nabe_japans');
+        Schema::dropIfExists('japan_attachments');
     }
 }

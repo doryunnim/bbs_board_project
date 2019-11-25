@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\NabeJapan;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use App\NabeJapan;
+use File;
 
 class NabeJapanController extends Controller
 {
@@ -15,8 +17,8 @@ class NabeJapanController extends Controller
      */
     public function index()
     {
-        $articles = \App\NabeJapan::latest()->paginate(5);
-        return view('articles.index', compact('articles'));
+        $japans = \App\NabeJapan::oldest()->paginate(100);
+        return view('japan.index', compact('japans'));
     }
 
     /**
@@ -24,9 +26,10 @@ class NabeJapanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(NabeJapan $japan)
     {
-        return view("articles.create");
+        $japans = \App\NabeJapan::get();
+        return view("japan.create", compact('japan','japans'));
     }
 
     /**
@@ -37,11 +40,29 @@ class NabeJapanController extends Controller
      */
     public function store(Request $request)
     {
+        $japan = \App\NabeJapan::create($request->all());  
+
         $rules = [
             'title'=>['required'],
-            'content'=>['required', 'min:10'],
-            'password'=>['required', 'max:4']
+            'content'=>['required'],
+            'password'=>['required', 'min:4']
         ];
+
+        if($request->hasFile('files')){
+            $files = $request->file('files');
+
+            foreach($files as $file){
+                $filename = filter_var($file->getClientOriginalName(), FILTER_SANITIZE_URL);
+
+                $japan->attachments()->create([
+                    'filename'=>$filename,
+                    'bytes'=>$file->getSize(),
+                    'mime'=>$file->getClientMimeType()
+                ]);
+
+                $file->move(attachments_path(), $filename);
+            }
+        }
 
         $validator = \Validator::make($request->all(), $rules);
 
@@ -49,14 +70,11 @@ class NabeJapanController extends Controller
             return back()->withErrors($validator)->withInput();
         }
 
-        // $article = \App\NabeJapan::find(1)->create($request->all());
-        $article = \App\NabeJapan::create($request->all());
-
-        if(!$article){
+        if(!$japan){
             return back();
         }
 
-        return redirect(route('articles.index'));
+        return redirect(route('japan.index'));
     }
 
     /**
@@ -65,11 +83,11 @@ class NabeJapanController extends Controller
      * @param  \App\NabeJapan  $article
      * @return \Illuminate\Http\Response
      */
-    public function show(NabeJapan $article)
+    public function show(NabeJapan $japan)
     {
         //
-        $articles = \App\NabeJapan::get();
-        return view('articles.show', compact('article', 'articles'));
+        $japans = \App\NabeJapan::get();
+        return view('japan.show', compact('japan', 'japans'));
     }
 
     /**
@@ -78,10 +96,12 @@ class NabeJapanController extends Controller
      * @param  \App\NabeJapan  $article
      * @return \Illuminate\Http\Response
      */
-    public function edit(NabeJapan $article)
+    public function edit(NabeJapan $japan)
     {
         //
-        return view('articles.edit', compact('article'));
+        // $this->authorize('update', $japan);
+        $japans = \App\NabeJapan::get();
+        return view('japan.edit', compact('japan', 'japans'));
     }
 
     /**
@@ -91,11 +111,27 @@ class NabeJapanController extends Controller
      * @param  \App\NabeJapan  $article
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, NabeJapan $article)
+    public function update(Request $request, NabeJapan $japan)
     {
         //
-        $article->update($request->all());
-        return redirect(route('articles.show', $article->id));
+        // $this->authorize('update', $japan);
+        if($request->hasFile('files')){
+            $files = $request->file('files');
+
+            foreach($files as $file){
+                $filename = filter_var($file->getClientOriginalName(), FILTER_SANITIZE_URL);
+
+                $japan->attachments()->create([
+                    'filename'=>$filename,
+                    'bytes'=>$file->getSize(),
+                    'mime'=>$file->getClientMimeType()
+                ]);
+
+                $file->move(attachments_path(), $filename);
+            }
+        }
+        $japan->update($request->all());
+        return redirect(route('japan.show', $japan->id));
     }
 
     /**
@@ -104,10 +140,10 @@ class NabeJapanController extends Controller
      * @param  \App\NabeJapan  $NabeJapan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(NabeJapan $article)
+    public function destroy($japan)
     {
-        //
-        $article->delete();
-        return response()->json([],204);
+        $japan->delete();
+
+        return redirect(route('japan.index'));
     }
 }

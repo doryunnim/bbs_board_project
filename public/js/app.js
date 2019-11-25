@@ -49507,6 +49507,10 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 <<<<<<< HEAD
+__webpack_require__(/*! D:\Code\Teamproject\bbs_board_project\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Code\Teamproject\bbs_board_project\resources\sass\app.scss */"./resources/sass/app.scss");
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
 __webpack_require__(/*! D:\Code\Teamproject\bbs_board_project\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! D:\Code\Teamproject\bbs_board_project\resources\sass\app.scss */"./resources/sass/app.scss");
@@ -49518,6 +49522,7 @@ module.exports = __webpack_require__(/*! D:\LaravelProject\bbs_board_project\res
 __webpack_require__(/*! D:\LaravelProject\bbs_board_project\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! D:\LaravelProject\bbs_board_project\resources\sass\app.scss */"./resources/sass/app.scss");
 >>>>>>> 925c38927da3e006ff45d0556589de549cb5c917
+>>>>>>> 5e84c602b91eef59df37bda2a935108b4d583f55
 
 
 /***/ })

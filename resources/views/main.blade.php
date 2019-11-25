@@ -23,7 +23,7 @@
                     <a class="nav-link js-scroll-trigger" href="#mainNav">조원소개</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="{{route('articles.index')}}">현지학기제</a>
+                    <a class="nav-link js-scroll-trigger" href="{{route('japan.index')}}">현지학기제</a>
                 </li>                
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="#mainNav">Q&amp;A</a>
@@ -38,22 +38,23 @@
                         </li>
                     @endif
                 @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <li class="nav-item">
+                        <a id="nav-link" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- <div class="nav-item" aria-labelledby="navbarDropdown"> -->
+                        <a class="nav-link" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
 
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                       document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </div>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                        <!-- </div> -->
                     </li>
                 @endguest
 <!--
@@ -105,6 +106,7 @@
                        이름을 하나씩 제목으로 지금의 p태그에 받으면 됩니다
                    </p>
                </div>
+
                <div class="col-md-4">
                    <span class="fa-stack fa-4x">
                        <i class="fas fa-circle fa-stack-2x text-primary">
@@ -115,11 +117,16 @@
                        </i>
                    </span>
                    <hr>
-                   <h4 class="service-heading"><a href="{{route('articles.index')}}">현지학기제</a></h4>
+                   <h4 class="service-heading"><a href="{{route('japan.index')}}">현지학기제</a></h4>
                    <p class="text-muted">
-                       현지학기제 소제목을 p태그로 받으면 됩니다.
+                        @forelse($japans as $japan)
+                            @include('japan.partial.article', compact('japan'))
+                        @empty
+                            <p class="text-center text-danger">글이 없습니다.</p>
+                        @endforelse
                    </p>
                </div>
+
                <div class="col-md-4">
                    <span class="fa-stack fa-4x">
                        <i class="fas fa-lock fa-stack-2x text-primary">
