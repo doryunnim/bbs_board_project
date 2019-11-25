@@ -5,15 +5,12 @@ Auth::routes();
 Route::get('/', function () {
     return view('auth.login');
 });
-
-// Route::get('/home', [
-//     'as' => 'home',
-//     'uses' => 'HomeController@index',
-// ]);
+#resource는 ㅇ
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('articles','NabeJapanController');
 Route::resource('qnaArticles','QnaArticlesController');
 Route::resource('introduce', 'NabeIntroduceController');
+
 DB::listen(function ($query){
 });
