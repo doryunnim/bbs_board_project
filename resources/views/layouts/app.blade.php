@@ -88,7 +88,6 @@
         </div>
     </nav>
     <!-- ->네비게이션바에 가려져서 일단 공백처리했음 -->
-    <br><br><br><br>
     <main class="py-4">
         @yield('content')
     </main>

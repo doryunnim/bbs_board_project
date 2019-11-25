@@ -1,11 +1,12 @@
-@extends('layouts.main')
+@extends('layouts.app')
 
 @section('content')
+<br><br><br>
 <div class="container">
     <!-- 조원사진, 이름 part -->
     <div class="row">
         @php
-            $photos = App\NabeIntroduce::all();
+        $photos = App\NabeIntroduce::all();
         @endphp
         @foreach($photos as $photo)
         <div class="col-md-4">
@@ -13,15 +14,23 @@
             <h4>{{ $photo->name }}</h4>
         </div>
         @endforeach
-        <a href="/introduce/create">ADD</a>
-        <a href="/introduce/create">UPDATE</a>
-        <a href="/introduce/create">DELETE</a>
     </div>
-    <br><hr>
+    <div>
+        <ul class="bt-evnet">
+            <a href="{{ route('introduce.create') }}">ADD</a>
+        </ul>
+    </div>
+    <hr>
     <!-- 조원 소개 detail part -->
-    <div class="row">
+    <div class="#">
         
-    </div>
 
+    <div class="event_button" id="eventResponsive">
+        <ul class="bt-event">
+            <a href="{{ route('introduce.create') }}">수정</a>
+            <a href="{{ route('introduce.create') }}">삭제</a>
+        </ul>
+    </div>
+    </div>
 </div>
 @endsection
