@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
 <div class="container">
@@ -16,7 +16,7 @@
 
     <div class="row mb-4">
         <div class="col-md-4 offset-md-4">
-            <form action="/introduce/create" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('introduce.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <input type="file" name="photo" class="form-control-file"><br><br>

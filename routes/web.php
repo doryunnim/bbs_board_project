@@ -1,15 +1,11 @@
 <?php
 
+# 127.0.0.1:8000 들어가면 나오는 메인페이지
 Route::get('/', function () {
-    return view('test');
+    return view('auth.login');
 });
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('home/show', 'HomeController@show');
-
-Route::get('/introduce', 'NabeIntroduceController@index');
-Route::get('/introduce/create', 'NabeIntroduceController@create');
-Route::post('/introduce/create', 'NabeIntroduceController@store');
+Route::resource('introduce','NabeIntroduceController');

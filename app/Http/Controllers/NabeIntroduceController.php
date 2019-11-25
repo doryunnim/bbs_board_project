@@ -41,10 +41,7 @@ class NabeIntroduceController extends Controller
         ]);
 
         #사진 처리 완료되면 실행됨
-        return redirect()->back()->with([
-            'id' => $photo->id,
-            'status' => "photo has been uploaded",
-        ]);
+        return redirect('/introduce');
     }
 
     public function show(NabeIntroduce $nabeIntroduce)
