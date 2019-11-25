@@ -16,7 +16,7 @@
 <aside class="side-bar">
     <div class="row">
         <div class="col">
-            <a href="{{route('japan.create')}}" class="btn btn-primary m-b">글 쓰기</a>
+            <a href="{{route('japan.create')}}" class="btn btn-info m-b"><img src="img/add.png" alt=""></a>
             @forelse($japans as $japan)
                 @include('japan.partial.article', compact('japan'))
             @empty

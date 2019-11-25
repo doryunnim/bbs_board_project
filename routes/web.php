@@ -21,3 +21,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('japan','NabeJapanController');
+
+Route::resource('attachments', 'JapanAttachmentsController', ['only'=>['store','update','destroy']]);

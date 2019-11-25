@@ -1,6 +1,13 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
+    @if($japan->attachments->count())
+        <ul class="attachment__article">
+            @foreach($japan->attachments as $attachment)
+                <img src="{{$attachment->url}}" class="row">
+            @endforeach
+        </ul>
+    @endif
     <div class="page-header">
         <h3 class="title">{{$japan->title}}</h3>
     </div>
@@ -9,16 +16,6 @@
     
     <article class="m-b">
         <h5>{!! markdown($japan->content) !!}</h5>
-        <hr>
-        @if($japan->attachments->count())
-            <ul class="attachment__article">
-                @foreach($japan->attachments as $attachment)
-                    <li>
-                        <a href="{{$attachment->url}}">{{$attachment->filename}}</a>
-                    </li>
-                @endforeach
-            </ul>
-        @endif
     </article>
 
     <div class="action__article">
@@ -39,7 +36,7 @@
 <aside class="side-bar">
     <div class="row">
         <div class="col">
-            <a href="{{route('japan.create')}}" class="btn btn-primary m-b">글 쓰기</a>
+            <a href="{{route('japan.create')}}" class="btn btn-info m-b">+</a>
             @forelse($japans as $japan)
                 @include('japan.partial.article', compact('japan'))
             @empty

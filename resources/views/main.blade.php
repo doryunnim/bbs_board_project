@@ -44,7 +44,6 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <!-- <div class="nav-item" aria-labelledby="navbarDropdown"> -->
                         <a class="nav-link" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
@@ -54,14 +53,8 @@
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
-                        <!-- </div> -->
                     </li>
                 @endguest
-<!--
-                <li class="nav-item auth">
-                    <a class="nav-link js-scroll-trigger" href="{{route('login')}}">로그인/로그아웃</a>
-                </li>                
--->
             </ul>
         </div>
       </div>

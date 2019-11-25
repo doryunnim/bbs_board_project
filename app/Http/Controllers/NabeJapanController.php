@@ -74,7 +74,7 @@ class NabeJapanController extends Controller
             return back();
         }
 
-        return redirect(route('japan.index'));
+        return redirect(route('japan.show', $japan->id));
     }
 
     /**
@@ -121,7 +121,7 @@ class NabeJapanController extends Controller
             foreach($files as $file){
                 $filename = filter_var($file->getClientOriginalName(), FILTER_SANITIZE_URL);
 
-                $japan->attachments()->create([
+                $japan->attachments()->update([
                     'filename'=>$filename,
                     'bytes'=>$file->getSize(),
                     'mime'=>$file->getClientMimeType()
