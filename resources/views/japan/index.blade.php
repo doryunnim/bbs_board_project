@@ -6,11 +6,11 @@
         <h3>현지학기제</h3>
     </div>
 
-    <!-- @if($japans->count())
+    @if($japans->count())
     <div class="text-center">
         {!! $japans->appends((Request::except('page')))->render() !!}
     </div>
-    @endif -->
+    @endif
 </div>
 
 <aside class="side-bar">

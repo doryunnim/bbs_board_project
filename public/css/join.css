@@ -1,0 +1,51 @@
+.main_box{
+    color: #262626;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    -webkit-box-pack: center;
+    justify-content: center;
+    margin-top: 12px;
+    max-width: 350px;
+    width: 100%;
+}
+
+.join_box{
+    background-color: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 1px;
+    margin: 0 0 10px;
+    padding: 10px 0;
+}
+
+join_title{
+    background-repeat: no-repeat;
+    background-position: -98px 0;
+    height: 51px;
+    width: 175px;
+}
+
+join_input{
+    margin-bottom: 20px;
+}
+
+join_form{
+    display: flex;
+    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+}
+
+join_input{
+    margin: 0 40px 6px;
+}
+div{
+    -webkit-box-align:strectch;
+    align-items: stretch;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;    
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
