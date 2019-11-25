@@ -37,7 +37,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function qna_articles()
+    public function qna_article()
     {
         return $this->hasMany(Qna_article::class);
     }

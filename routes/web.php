@@ -8,4 +8,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('introduce','NabeIntroduceController');
+Route::resource('articles','NabeJapanController');
+
+Route::resource('qnaArticles','QnaArticlesController');
+
+
+Route::resource('introduce', 'NabeIntroduceController');
+DB::listen(function ($query){
+});
