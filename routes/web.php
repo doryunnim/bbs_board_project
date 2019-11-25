@@ -6,6 +6,14 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/home', 'HomeController@index');
+// Route::get('/home', [
+//     'as' => 'home',
+//     'uses' => 'HomeController@index',
+// ]);
+Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('introduce','NabeIntroduceController');
+Route::resource('articles','NabeJapanController');
+Route::resource('qnaArticles','QnaArticlesController');
+Route::resource('introduce', 'NabeIntroduceController');
+DB::listen(function ($query){
+});

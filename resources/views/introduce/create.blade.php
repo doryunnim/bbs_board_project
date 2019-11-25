@@ -19,6 +19,7 @@
             <form action="{{ route('introduce.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
+                <br><br><br><br>
                     <input type="file" name="photo" class="form-control-file"><br><br>
                     <input type="text" name="name" placeholder="name"><br><br>
                     <input type="text" name="comment" placeholder="comment"><br><br>

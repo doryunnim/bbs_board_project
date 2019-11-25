@@ -13,6 +13,8 @@ class Qna_article extends Model
         return $this->belongsTo(User::class);
     }
 
+    
+
     public function qna_comment()
     {
         return $this->belongsToMany(Qna_comment::class);
