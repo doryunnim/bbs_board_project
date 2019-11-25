@@ -14,6 +14,8 @@
         </div>
         @endforeach
         <a href="/introduce/create">ADD</a>
+        <a href="/introduce/create">UPDATE</a>
+        <a href="/introduce/create">DELETE</a>
     </div>
     <br><hr>
     <!-- 조원 소개 detail part -->
