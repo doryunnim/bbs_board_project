@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Database\Eloquent\Collection;
+
 use App\NabeJapan;
 use File;
 
@@ -142,8 +144,21 @@ class NabeJapanController extends Controller
      */
     public function destroy($japan)
     {
+        $this->deleteAttachments($japan->attachments);
         $japan->delete();
-
         return redirect(route('japan.index'));
+    }
+
+    public function deleteAttachments(Collection $attachmetns)
+    {
+        $attachmetns->each(function ($attachment) {
+            $filePath = $attachment->filename;
+
+            if (File::exists($filePath)) {
+                File::delete($filePath);
+            }
+
+            return $attachment->delete();
+        });
     }
 }
