@@ -5,7 +5,7 @@ Auth::routes();
 Route::get('/', function () {
     return view('auth.login');
 });
-#resource는 ㅇ
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('articles','NabeJapanController');
@@ -14,3 +14,4 @@ Route::resource('introduce', 'NabeIntroduceController');
 
 DB::listen(function ($query){
 });
+
