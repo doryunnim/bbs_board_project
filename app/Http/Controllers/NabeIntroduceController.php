@@ -41,26 +41,43 @@ class NabeIntroduceController extends Controller
         ]);
 
         #사진 처리 완료되면 실행됨
-        return redirect('/introduce');
+        return redirect('/introduces');
     }
 
-    public function show(NabeIntroduce $nabeIntroduce)
+    public function show(NabeIntroduce $introduce)
     {
-        
+        $introduces = \APP\NabeIntroduce::get();
+        return view('introduce.show', compact('introduce', 'introduces'));   
     }
 
-    public function edit(NabeIntroduce $nabeIntroduce)
+    public function edit(NabeIntroduce $introduce)
     {
-        //
+        $introduces = \APP\NabeIntroduce::get();
+        return view('introduce.edit', compact('introduce', 'introduces')); 
     }
 
-    public function update(Request $request, NabeIntroduce $nabeIntroduce)
+    public function update(Request $request, NabeIntroduce $introduce)
     {
-        //
+
+        $request->validate([
+            'name' => 'required',
+            'comment' => 'required',
+            'url' => 'required',
+            'hashname' => 'required',
+            'originalname' => 'required',
+        ]);
+
+        $introduce->update($request->all());
+
+        return redirect()->route('introduce.index')
+                        ->with('success', 'introduce update successfully');
     }
 
-    public function destroy(NabeIntroduce $nabeIntroduce)
+    public function destroy(NabeIntroduce $introduce)
     {
-        //
+        $introduce->delete();
+
+        return redirect()->route('introduce.index')
+                        ->with('success', 'introduce delete successfully');
     }
 }

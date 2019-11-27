@@ -17,18 +17,16 @@
     </div>
     <div>
         <ul class="bt-evnet">
-            <a href="{{ route('introduce.create') }}">ADD</a>
+            <a href="{{ route('introduces.create') }}">ADD</a>
         </ul>
     </div>
     <hr>
     <!-- 조원 소개 detail part -->
     <div class="#">
-        
-
     <div class="event_button" id="eventResponsive">
         <ul class="bt-event">
-            <a href="{{ route('introduce.create') }}">수정</a>
-            <a href="{{ route('introduce.create') }}">삭제</a>
+            <a href="{{ route('introduces.create') }}">수정</a>
+            <a href="{{ route('introduces.destroy') }}">삭제</a>
         </ul>
     </div>
     </div>

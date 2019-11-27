@@ -1,0 +1,2 @@
+<?php
+use App\NabeIntroduce;

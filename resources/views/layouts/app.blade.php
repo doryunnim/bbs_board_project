@@ -42,7 +42,7 @@
             <div class="navbar-collapse collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{{route('introduce.index')}}">조원소개</a>
+                        <a class="nav-link js-scroll-trigger" href="{{route('introduces.index')}}">조원소개</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="#">현지학기제</a>
