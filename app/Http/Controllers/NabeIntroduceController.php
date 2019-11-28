@@ -37,8 +37,7 @@ class NabeIntroduceController extends Controller
             'name' => $request->name,
             'comment' => $request->comment,
             'url' => Storage::url($path),
-            'hashname' => $request->file('photo')->hashName(),
-            'originalname' => $request->file('photo')->getClientOriginalName()
+
         ]);
 
         #사진 처리 완료되면 실행됨
@@ -58,22 +57,25 @@ class NabeIntroduceController extends Controller
 
     public function update(Request $request, NabeIntroduce $introduce)
     {
+        #file에 사진이 있는지 확인하고 없으면 에러
+        if(!$request->file('url')) {
+            return back()->with('flash_message', '사진 안넣으면 수정안해줌');
+        }
         #edit에서 수정파일의 경로를 다시 지정
         $path = $request->file('url')->store('public');
+        
         $data = [
             'name' => $request->name,
             'comment' => $request->comment,
             'url' => Storage::url($path),
         ];
         $introduce->update($data);
-    
         return redirect()->route('introduces.index');
     }
 
     public function destroy(NabeIntroduce $introduce)
     {
-        print($introduce);
         $introduce->delete();
-        return redirect()->route('introduces.index')->with('succcess');
+        return redirect()->route('introduces.index')->with('flash_message', '삭제 성공');
     }
 }

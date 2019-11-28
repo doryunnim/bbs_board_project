@@ -27,8 +27,8 @@ class QnaArticlesController extends Controller
 
     public function create()
     {
-        $qnaARticle = new \App\Qna_article;
-        return view("qnaArticles.create", compact('article'));
+        $qnaArticle = new \App\Qna_article;
+        return view("qnaArticles.create", compact('qnaArticle'));
     }
 
     public function store(\App\Http\Requests\QnaArticlesRequest $request)
@@ -77,14 +77,12 @@ class QnaArticlesController extends Controller
         $this->authorize('update', $qnaArticle);
         // return view('qnaArticles.edit', compact('qnaArticle'));
     }
-
-
+ 
     public function update(Request $request, Qna_article $qnaArticle)
     {
         $qnaArticle->update($request->all());
         return redirect(route('qnaArticles.show', $qnaArticle->id))->with('flash_message', '글이 수정되었습니다.');
     }
-
 
     public function destroy(Qna_article $qnaArticle)
     {

@@ -18,9 +18,6 @@ class CreateNabeIntroducesTable extends Migration
             $table->string('name');
             $table->string('comment');
             $table->string('url');
-            $table->string('hashname');
-            $table->string('originalname');
-            #$table->string('photo');
             $table->timestamps();
         });
     }
