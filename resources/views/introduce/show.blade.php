@@ -22,3 +22,26 @@
     </div>
 </div>
 @stop
+
+@section('script')
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $('.button__delete').on('click', function(e){
+            var articleId = $('introduce').data('id');
+
+            if(confirm('글을 삭제합니다.')){
+                $.ajax({
+                    type: 'DELETE',
+                    url: '/introduces/' + articleId
+                }).then(function(){
+                    window.location.href = '/introduces';
+                });
+            }
+        }); 
+    </script>
+@stop

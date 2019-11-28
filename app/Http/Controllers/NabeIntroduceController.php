@@ -11,7 +11,7 @@ class NabeIntroduceController extends Controller
 {
     public function index()
     {
-        $introduces = \App\NabeIntroduce::all();
+        $introduces = NabeIntroduce::all();
         return view('introduce.index', compact('introduces'));
     }
 
@@ -70,12 +70,15 @@ class NabeIntroduceController extends Controller
             'url' => Storage::url($path),
         ];
         $introduce->update($data);
-        return redirect()->route('introduces.index');
+
+        flash()->success('수정 성공');
+        return redirect()->route('introduces.show', $introduce->id);
     }
 
     public function destroy(NabeIntroduce $introduce)
     {
         $introduce->delete();
-        return redirect()->route('introduces.index')->with('flash_message', '삭제 성공');
+        return response()->json([], 204);
+        #return redirect()->route('introduces.index')->with('flash_message', '삭제 성공');
     }
 }
