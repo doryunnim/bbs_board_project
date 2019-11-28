@@ -4,16 +4,16 @@
     <div class="page-header">
         <h3>{{$introduce->title}}</h3>
     </div>
-    <div class="#">
+    <article data-id="{{ $introduce->id }}">
         <img src="{{ $introduce->url }}" class="img-fluid">
         <h4>{{ $introduce->name }}</h4>
         <p>{{ $introduce->comment }}</p>
-    </div>
-    <div class="text-center">
+    </article>
+    <div class="text-center action__article">
         <a href="{{route('introduces.edit', $introduce->id)}}" class="btn btn-info">
             글 수정
         </a>
-        <a herf="{{route('introduces.destroy', $introduce->id)}}" class="btn btn-danger button__delete">
+        <a href="{{route('introduces.destroy', $introduce->id)}}" class="btn btn-danger">
             글 삭제
         </a>
         <a href="{{route('introduces.index')}}" class="btn btn-info">

@@ -67,12 +67,13 @@ class NabeIntroduceController extends Controller
         ];
         $introduce->update($data);
     
-        return redirect(route('introduces.index', $introduce->id));
+        return redirect()->route('introduces.index');
     }
 
     public function destroy(NabeIntroduce $introduce)
     {
+        print($introduce);
         $introduce->delete();
-        return response()->json([],204);
+        return redirect()->route('introduces.index')->with('succcess');
     }
 }

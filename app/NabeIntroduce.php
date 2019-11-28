@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class NabeIntroduce extends Model
 {
-    protected $guarded = [];
+    protected $filable = ['name', 'comment', 'url', ];
 }
