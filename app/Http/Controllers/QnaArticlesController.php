@@ -57,7 +57,7 @@ class QnaArticlesController extends Controller
         // $qnaArticles = \App\User::find(1)->qna_article()->create($request->all());
         $qnaArticle = $request->user()->qna_article()->create($request->all());
         // 성공적으로 저장되면 변수에 새로운 인스턴스 추가
-        if(!$qnaArticles){
+        if(!$qnaArticle){
             return back()->with('flash_message', '글이 저장되지 않았데스케레도모...')->withInput();
         }
         return redirect(route('qnaArticles.index'))->with('flash_message', '글이 저장되었습니다.');
@@ -74,7 +74,7 @@ class QnaArticlesController extends Controller
 
     public function edit(Qna_article $qnaArticle)
     {
-        $this->authorize('update', $article);
+        $this->authorize('update', $qnaArticle);
         // return view('qnaArticles.edit', compact('qnaArticle'));
     }
 
@@ -88,7 +88,7 @@ class QnaArticlesController extends Controller
 
     public function destroy(Qna_article $qnaArticle)
     {
-        $this->authorize('update', $article);
+        $this->authorize('update', $qnaArticle);
         // $qnaArticle->delete();
         // return response()->json([],204);
     }

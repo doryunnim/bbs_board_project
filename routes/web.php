@@ -14,11 +14,6 @@ Route::resource('articles','NabeJapanController');
 Route::resource('qnaArticles','QnaArticlesController');
 Route::resource('introduces', 'NabeIntroduceController');
 
-<<<<<<< HEAD
-=======
-Route::resource('introduce', 'NabeIntroduceController');
-
->>>>>>> d615f5891abcbfd3ac6f4ab932dc671bce64c8ae
 DB::listen(function ($query){
 });
 

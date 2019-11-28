@@ -33,7 +33,7 @@ class NabeIntroduceController extends Controller
         $path = $request->file('photo')->store('public');
 
         #사진넣기
-        $photo = NabeIntroduce::create([
+        NabeIntroduce::create([
             'name' => $request->name,
             'comment' => $request->comment,
             'url' => Storage::url($path),
@@ -58,9 +58,16 @@ class NabeIntroduceController extends Controller
 
     public function update(Request $request, NabeIntroduce $introduce)
     {
-
-        $introduce->update($request->all());
-        return redirect(route('introduce.index', $introduce->id));
+        #edit에서 수정파일의 경로를 다시 지정
+        $path = $request->file('url')->store('public');
+        $data = [
+            'name' => $request->name,
+            'comment' => $request->comment,
+            'url' => Storage::url($path),
+        ];
+        $introduce->update($data);
+    
+        return redirect(route('introduces.index', $introduce->id));
     }
 
     public function destroy(NabeIntroduce $introduce)

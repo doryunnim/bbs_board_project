@@ -24,13 +24,8 @@
     <hr>
     <div class="row">
         @foreach($introduces as $introduce)
-        <div class="col-md-6">
-            <img src="{{ $introduce->url }}" class="img-fluid">
-            <h4>{{ $introduce->name }}</h4>
-            <h3>{{ $introduce->comment }}</h3>
-        </div>
+            @include('introduce.partial.introduce')
         @endforeach
     </div>
-
 </div>
 @endsection

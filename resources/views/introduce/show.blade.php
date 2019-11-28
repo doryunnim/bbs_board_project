@@ -4,13 +4,18 @@
     <div class="page-header">
         <h3>{{$introduce->title}}</h3>
     </div>
-    <div class="text-center action__qnaArticle">
-        <a href="{{route('introduces.edit', $qnaArticle->id)}}" class="btn btn-info">
+    <div class="#">
+        <img src="{{ $introduce->url }}" class="img-fluid">
+        <h4>{{ $introduce->name }}</h4>
+        <p>{{ $introduce->comment }}</p>
+    </div>
+    <div class="text-center">
+        <a href="{{route('introduces.edit', $introduce->id)}}" class="btn btn-info">
             글 수정
         </a>
-        <button class="btn btn-danger button__delete">
+        <a herf="{{route('introduces.destroy', $introduce->id)}}" class="btn btn-danger button__delete">
             글 삭제
-        </button>
+        </a>
         <a href="{{route('introduces.index')}}" class="btn btn-info">
             뒤로가기
         </a>
