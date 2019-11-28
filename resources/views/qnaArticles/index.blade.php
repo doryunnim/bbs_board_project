@@ -8,24 +8,26 @@
     <hr/>
     <ul>
         @forelse($qnaArticles as $article)
-        <li>
+            @include('qnaArticles.partial.qnaArticle')
+        <!-- <li>
             {{$article->title}}
             <small>
                 by {{$article->user->name}}
             </small>
-        </li>
+        </li> -->
     @empty
         <p>글이 없습니다.</p>
-    @endforelse
+        @endforelse
     </ul>
 
     @if($qnaArticles->count())
     <!--원소가 있을 때만 페이지 이동 링크를 표시 -->
         <div class="text-center">
-            {!! $qnaArticles->render() !!}
+            <!-- {!! $qnaArticles->render() !!} -->
+            {!! $qnaArticles->appends(Request::except('page'))->render() !!}
         </div>
     @endif
-    <a href="/qnaArticles/create">ADD</a>
+    <button type="button" class="btn btn-primary" onclick="location.href='{{ route('qnaArticles.create')}}'">ADD</button>
 </div>
 
 
