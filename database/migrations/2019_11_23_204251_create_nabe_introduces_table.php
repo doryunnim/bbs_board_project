@@ -15,10 +15,13 @@ class CreateNabeIntroducesTable extends Migration
     {
         Schema::create('nabe_introduces', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->string('comment');
             $table->string('url');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

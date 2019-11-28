@@ -17,37 +17,58 @@ class NabeIntroduceController extends Controller
 
     public function create()
     {
-        return view('introduce.create');
+        $introduce = new NabeIntroduce;
+        return view('introduce.create', compact('introduce'));
     }
 
     public function store(Request $request)
     {
+        // #file에 사진이 있는지 확인하고 없으면 에러
+        // if(!$request->file('photo')) {
+        //     return redirect()->back()->withErrors([
+        //         'error' => "사진을 업로드 하세요"
+        //     ]);
+        // }
+        
+        // #Store
+        // $path = $request->file('photo')->store('public');
+
+        // #사진넣기
+        // NabeIntroduce::create([
+        //     'name' => $request->name,
+        //     'comment' => $request->comment,
+        //     'url' => Storage::url($path),
+
+        // ]);
+
+        #사진 처리 완료되면 실행됨
+        #return redirect(route('introduces.index'));
+        #========================================================
+
         #file에 사진이 있는지 확인하고 없으면 에러
         if(!$request->file('photo')) {
             return redirect()->back()->withErrors([
                 'error' => "사진을 업로드 하세요"
             ]);
         }
-        
-        #Store
+        #Store 사진 저장경로
         $path = $request->file('photo')->store('public');
-
-        #사진넣기
-        NabeIntroduce::create([
+        $data = [
             'name' => $request->name,
             'comment' => $request->comment,
             'url' => Storage::url($path),
-
-        ]);
-
+        ];
+        $introduce = $request->user()->nabe_introduce()->create($data);
+        if(!$introduce){
+            return back()->with('flash_message', '인적사항이 저장되지 않았데스..')->withInput();
+        }
         #사진 처리 완료되면 실행됨
-        return redirect(route('introduces.index'));
+        return redirect(route('introduces.index'))->with('flash_message', '정보가 저장되었습니다.');
     }
 
     public function show(NabeIntroduce $introduce)
     {
-        $introduces = \APP\NabeIntroduce::get();
-        return view('introduce.show', compact('introduce', 'introduces'));   
+        return view('introduce.show', compact('introduce'));   
     }
 
     public function edit(NabeIntroduce $introduce)
@@ -71,10 +92,10 @@ class NabeIntroduceController extends Controller
         ];
         $introduce->update($data);
 
-        flash()->success('수정 성공');
-        return redirect()->route('introduces.show', $introduce->id);
+        return redirect()->route('introduces.index');
     }
 
+    #아 디스트로이가 안되는데 
     public function destroy(NabeIntroduce $introduce)
     {
         $introduce->delete();
