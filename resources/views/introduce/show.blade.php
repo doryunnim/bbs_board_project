@@ -10,15 +10,11 @@
         <p>{{ $introduce->comment }}</p>
     </article>
     <div class="text-center action__article">
-        <a href="{{route('introduces.edit', $introduce->id)}}" class="btn btn-info">
-            글 수정
-        </a>
-        <a href="{{route('introduces.destroy', $introduce->id)}}" class="btn btn-danger">
-            글 삭제
-        </a>
-        <a href="{{route('introduces.index')}}" class="btn btn-info">
-            뒤로가기
-        </a>
+        <a href="{{route('introduces.edit', $introduce->id)}}" class="btn btn-info">글 수정</a>
+        <button class="btn btn-danger button__delete">
+            <i class="fa fa-trash-o"></i> 삭제
+        </button>
+        <a href="{{route('introduces.index')}}" class="btn btn-info">뒤로가기</a>
     </div>
 </div>
 @stop
@@ -32,7 +28,7 @@
         });
 
         $('.button__delete').on('click', function(e){
-            var articleId = $('introduce').data('id');
+            var articleId = $('article').data('id');
 
             if(confirm('글을 삭제합니다.')){
                 $.ajax({

@@ -74,8 +74,8 @@ class QnaArticlesController extends Controller
 
     public function edit(Qna_article $qnaArticle)
     {
-        $this->authorize('update', $qnaArticle);
-        // return view('qnaArticles.edit', compact('qnaArticle'));
+        #$this->authorize('update', $qnaArticle);
+        return view('qnaArticles.edit', compact('qnaArticle'));
     }
  
     public function update(Request $request, Qna_article $qnaArticle)
@@ -86,8 +86,8 @@ class QnaArticlesController extends Controller
 
     public function destroy(Qna_article $qnaArticle)
     {
-        $this->authorize('update', $qnaArticle);
-        // $qnaArticle->delete();
-        // return response()->json([],204);
+        #$this->authorize('update', $qnaArticle);
+        $qnaArticle->delete();
+        return response()->json([],204);
     }
 }
