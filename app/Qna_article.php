@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Qna_article extends Model
 {
     protected $fillable = ['title', 'content'];
+    protected $with = ['user'];
 
     public function user()
     {
