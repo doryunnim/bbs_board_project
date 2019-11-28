@@ -60,7 +60,7 @@ class NabeIntroduceController extends Controller
     {
 
         $introduce->update($request->all());
-        return redirect(route('introduce.index'));
+        return redirect(route('introduce.index', $introduce->id));
     }
 
     public function destroy(NabeIntroduce $introduce)

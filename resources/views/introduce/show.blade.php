@@ -12,7 +12,7 @@
             글 삭제
         </button>
         <a href="{{route('introduces.index')}}" class="btn btn-info">
-            글 목록
+            뒤로가기
         </a>
     </div>
 </div>

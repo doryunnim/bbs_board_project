@@ -59,7 +59,6 @@ class QnaArticlesController extends Controller
 
     public function edit(Qna_article $qnaArticle)
     {
-        //
         return view('qnaArticles.edit', compact('qnaArticle'));
     }
 
