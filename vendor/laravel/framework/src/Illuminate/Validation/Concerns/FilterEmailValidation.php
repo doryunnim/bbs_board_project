@@ -3,6 +3,8 @@
 namespace Illuminate\Validation\Concerns;
 
 use Egulias\EmailValidator\EmailLexer;
+use Egulias\EmailValidator\Warning\Warning;
+use Egulias\EmailValidator\Exception\InvalidEmail;
 use Egulias\EmailValidator\Validation\EmailValidation;
 
 class FilterEmailValidation implements EmailValidation
@@ -11,7 +13,7 @@ class FilterEmailValidation implements EmailValidation
      * Returns true if the given email is valid.
      *
      * @param  string  $email
-     * @param  \Egulias\EmailValidator\EmailLexer  $emailLexer
+     * @param  EmailLexer
      * @return bool
      */
     public function isValid($email, EmailLexer $emailLexer)
@@ -22,7 +24,7 @@ class FilterEmailValidation implements EmailValidation
     /**
      * Returns the validation error.
      *
-     * @return \Egulias\EmailValidator\Exception\InvalidEmail|null
+     * @return InvalidEmail|null
      */
     public function getError()
     {
@@ -32,7 +34,7 @@ class FilterEmailValidation implements EmailValidation
     /**
      * Returns the validation warnings.
      *
-     * @return \Egulias\EmailValidator\Warning\Warning[]
+     * @return Warning[]
      */
     public function getWarnings()
     {

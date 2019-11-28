@@ -2,12 +2,12 @@
 
 namespace Illuminate\Database\Eloquent\Relations;
 
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class BelongsToMany extends Relation
 {
@@ -505,7 +505,7 @@ class BelongsToMany extends Relation
     public function find($id, $columns = ['*'])
     {
         return is_array($id) ? $this->findMany($id, $columns) : $this->where(
-            $this->getRelated()->getQualifiedKeyName(), '=', $this->parseId($id)
+            $this->getRelated()->getQualifiedKeyName(), '=', $id
         )->first($columns);
     }
 
@@ -519,7 +519,7 @@ class BelongsToMany extends Relation
     public function findMany($ids, $columns = ['*'])
     {
         return empty($ids) ? $this->getRelated()->newCollection() : $this->whereIn(
-            $this->getRelated()->getQualifiedKeyName(), $this->parseIds($ids)
+            $this->getRelated()->getQualifiedKeyName(), $ids
         )->get($columns);
     }
 
@@ -750,22 +750,6 @@ class BelongsToMany extends Relation
     }
 
     /**
-     * Get a lazy collection for the given query.
-     *
-     * @return \Illuminate\Support\LazyCollection
-     */
-    public function cursor()
-    {
-        $this->query->addSelect($this->shouldSelect());
-
-        return $this->query->cursor()->map(function ($model) {
-            $this->hydratePivotRelation([$model]);
-
-            return $model;
-        });
-    }
-
-    /**
      * Hydrate the pivot table relationship on the models.
      *
      * @param  array  $models
@@ -936,11 +920,11 @@ class BelongsToMany extends Relation
     /**
      * Create an array of new instances of the related models.
      *
-     * @param  iterable  $records
+     * @param  array  $records
      * @param  array  $joinings
      * @return array
      */
-    public function createMany(iterable $records, array $joinings = [])
+    public function createMany(array $records, array $joinings = [])
     {
         $instances = [];
 
@@ -1148,15 +1132,5 @@ class BelongsToMany extends Relation
     public function getPivotAccessor()
     {
         return $this->accessor;
-    }
-
-    /**
-     * Get the pivot columns for this relationship.
-     *
-     * @return array
-     */
-    public function getPivotColumns()
-    {
-        return $this->pivotColumns;
     }
 }

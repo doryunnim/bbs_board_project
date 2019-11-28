@@ -2,8 +2,8 @@
 
 namespace Illuminate\Foundation\Testing\Constraints;
 
-use PHPUnit\Framework\Constraint\Constraint;
 use ReflectionClass;
+use PHPUnit\Framework\Constraint\Constraint;
 
 class SeeInOrder extends Constraint
 {

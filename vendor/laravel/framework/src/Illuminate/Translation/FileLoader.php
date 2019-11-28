@@ -2,9 +2,9 @@
 
 namespace Illuminate\Translation;
 
-use Illuminate\Contracts\Translation\Loader;
-use Illuminate\Filesystem\Filesystem;
 use RuntimeException;
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\Contracts\Translation\Loader;
 
 class FileLoader implements Loader
 {

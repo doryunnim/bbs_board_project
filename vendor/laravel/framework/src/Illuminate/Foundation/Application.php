@@ -3,25 +3,24 @@
 namespace Illuminate\Foundation;
 
 use Closure;
-use Illuminate\Container\Container;
-use Illuminate\Contracts\Foundation\Application as ApplicationContract;
-use Illuminate\Contracts\Http\Kernel as HttpKernelContract;
-use Illuminate\Events\EventServiceProvider;
-use Illuminate\Filesystem\Filesystem;
-use Illuminate\Foundation\Bootstrap\LoadEnvironmentVariables;
-use Illuminate\Http\Request;
-use Illuminate\Log\LogServiceProvider;
-use Illuminate\Routing\RoutingServiceProvider;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Env;
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Str;
 use RuntimeException;
-use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
-use Symfony\Component\HttpKernel\Exception\HttpException;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
+use Illuminate\Container\Container;
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\Log\LogServiceProvider;
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Events\EventServiceProvider;
+use Illuminate\Routing\RoutingServiceProvider;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
+use Symfony\Component\HttpKernel\Exception\HttpException;
+use Illuminate\Contracts\Http\Kernel as HttpKernelContract;
+use Illuminate\Foundation\Bootstrap\LoadEnvironmentVariables;
+use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Illuminate\Contracts\Foundation\Application as ApplicationContract;
 
 class Application extends Container implements ApplicationContract, HttpKernelInterface
 {
@@ -30,7 +29,7 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
      *
      * @var string
      */
-    const VERSION = '6.5.2';
+    const VERSION = '5.8.35';
 
     /**
      * The base path for the Laravel installation.
@@ -550,8 +549,8 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
      */
     public function runningInConsole()
     {
-        if (Env::get('APP_RUNNING_IN_CONSOLE') !== null) {
-            return Env::get('APP_RUNNING_IN_CONSOLE') === true;
+        if (isset($_ENV['APP_RUNNING_IN_CONSOLE'])) {
+            return $_ENV['APP_RUNNING_IN_CONSOLE'] === 'true';
         }
 
         return php_sapi_name() === 'cli' || php_sapi_name() === 'phpdbg';
@@ -864,7 +863,7 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
     protected function fireAppCallbacks(array $callbacks)
     {
         foreach ($callbacks as $callback) {
-            $callback($this);
+            call_user_func($callback, $this);
         }
     }
 
@@ -894,7 +893,7 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
      */
     public function getCachedServicesPath()
     {
-        return $this->normalizeCachePath('APP_SERVICES_CACHE', 'cache/services.php');
+        return $_ENV['APP_SERVICES_CACHE'] ?? $this->bootstrapPath().'/cache/services.php';
     }
 
     /**
@@ -904,7 +903,7 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
      */
     public function getCachedPackagesPath()
     {
-        return $this->normalizeCachePath('APP_PACKAGES_CACHE', 'cache/packages.php');
+        return $_ENV['APP_PACKAGES_CACHE'] ?? $this->bootstrapPath().'/cache/packages.php';
     }
 
     /**
@@ -924,7 +923,7 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
      */
     public function getCachedConfigPath()
     {
-        return $this->normalizeCachePath('APP_CONFIG_CACHE', 'cache/config.php');
+        return $_ENV['APP_CONFIG_CACHE'] ?? $this->bootstrapPath().'/cache/config.php';
     }
 
     /**
@@ -944,7 +943,7 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
      */
     public function getCachedRoutesPath()
     {
-        return $this->normalizeCachePath('APP_ROUTES_CACHE', 'cache/routes.php');
+        return $_ENV['APP_ROUTES_CACHE'] ?? $this->bootstrapPath().'/cache/routes.php';
     }
 
     /**
@@ -964,25 +963,7 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
      */
     public function getCachedEventsPath()
     {
-        return $this->normalizeCachePath('APP_EVENTS_CACHE', 'cache/events.php');
-    }
-
-    /**
-     * Normalize a relative or absolute path to a cache file.
-     *
-     * @param  string  $key
-     * @param  string  $default
-     * @return string
-     */
-    protected function normalizeCachePath($key, $default)
-    {
-        if (is_null($env = Env::get($key))) {
-            return $this->bootstrapPath($default);
-        }
-
-        return Str::startsWith($env, '/')
-                ? $env
-                : $this->basePath($env);
+        return $_ENV['APP_EVENTS_CACHE'] ?? $this->bootstrapPath().'/cache/events.php';
     }
 
     /**
@@ -1152,12 +1133,11 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
             'auth.driver'          => [\Illuminate\Contracts\Auth\Guard::class],
             'blade.compiler'       => [\Illuminate\View\Compilers\BladeCompiler::class],
             'cache'                => [\Illuminate\Cache\CacheManager::class, \Illuminate\Contracts\Cache\Factory::class],
-            'cache.store'          => [\Illuminate\Cache\Repository::class, \Illuminate\Contracts\Cache\Repository::class, \Psr\SimpleCache\CacheInterface::class],
-            'cache.psr6'           => [\Symfony\Component\Cache\Adapter\Psr16Adapter::class, \Symfony\Component\Cache\Adapter\AdapterInterface::class, \Psr\Cache\CacheItemPoolInterface::class],
+            'cache.store'          => [\Illuminate\Cache\Repository::class, \Illuminate\Contracts\Cache\Repository::class],
             'config'               => [\Illuminate\Config\Repository::class, \Illuminate\Contracts\Config\Repository::class],
             'cookie'               => [\Illuminate\Cookie\CookieJar::class, \Illuminate\Contracts\Cookie\Factory::class, \Illuminate\Contracts\Cookie\QueueingFactory::class],
             'encrypter'            => [\Illuminate\Encryption\Encrypter::class, \Illuminate\Contracts\Encryption\Encrypter::class],
-            'db'                   => [\Illuminate\Database\DatabaseManager::class, \Illuminate\Database\ConnectionResolverInterface::class],
+            'db'                   => [\Illuminate\Database\DatabaseManager::class],
             'db.connection'        => [\Illuminate\Database\Connection::class, \Illuminate\Database\ConnectionInterface::class],
             'events'               => [\Illuminate\Events\Dispatcher::class, \Illuminate\Contracts\Events\Dispatcher::class],
             'files'                => [\Illuminate\Filesystem\Filesystem::class],

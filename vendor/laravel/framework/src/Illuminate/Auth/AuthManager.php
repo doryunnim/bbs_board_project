@@ -3,8 +3,8 @@
 namespace Illuminate\Auth;
 
 use Closure;
-use Illuminate\Contracts\Auth\Factory as FactoryContract;
 use InvalidArgumentException;
+use Illuminate\Contracts\Auth\Factory as FactoryContract;
 
 class AuthManager implements FactoryContract
 {
@@ -283,16 +283,6 @@ class AuthManager implements FactoryContract
         $this->customProviderCreators[$name] = $callback;
 
         return $this;
-    }
-
-    /**
-     * Determines if any guards have already been resolved.
-     *
-     * @return bool
-     */
-    public function hasResolvedGuards()
-    {
-        return count($this->guards) > 0;
     }
 
     /**

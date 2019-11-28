@@ -2,8 +2,8 @@
 
 namespace Illuminate\Database\Console\Migrations;
 
-use Illuminate\Database\Migrations\Migrator;
 use Illuminate\Support\Collection;
+use Illuminate\Database\Migrations\Migrator;
 use Symfony\Component\Console\Input\InputOption;
 
 class StatusCommand extends BaseCommand
@@ -52,9 +52,7 @@ class StatusCommand extends BaseCommand
         $this->migrator->setConnection($this->option('database'));
 
         if (! $this->migrator->repositoryExists()) {
-            $this->error('Migration table not found.');
-
-            return 1;
+            return $this->error('Migration table not found.');
         }
 
         $ran = $this->migrator->getRepository()->getRan();
