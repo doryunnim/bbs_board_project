@@ -12,6 +12,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
 
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <!-- 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -89,8 +90,23 @@
     </nav>
     <!-- ->네비게이션바에 가려져서 일단 공백처리했음 -->
     <br><br><br><br>
+
+    @if(session()->has('flash_message'))
+        <div id="message_id" class="alert alert-info" role="alert">
+            {{ session('flash_message') }}
+        </div>
+        <script>
+            window.onload = function(){
+                setTimeout(function(){
+                    var parent = document.getElementById("message_id");
+                    parent.remove();
+                }, 3000 );
+            }
+        </script>
+    @endif
     <main class="py-4">
-        @yield('content')
+        @yield('content')          
     </main>
+    @yield('script')
 </body>
 </html>

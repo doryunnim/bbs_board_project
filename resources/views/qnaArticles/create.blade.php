@@ -15,7 +15,7 @@
 
         <div class="form-group {{ $errors->has('content') ? 'has-error' : ''}}"></div>
             <label for="content">내용</label>
-            <input type="text" name="content" id="content" value="{{old('content')}}" class="form-control">
+            <textarea name="content" id="content" cols="30" rows="10" class="form-control">{{old('content')}}</textarea>
             {!! $errors->first('content', '<span class="form-error">:message</span>') !!}
         <div class="form-group">
             <button type="submit" class="btn btn-primary">저장</button>

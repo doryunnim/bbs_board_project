@@ -9,13 +9,3 @@
     <textarea name="content" id="content" rows="10" class="form-control">{{old('content', $qnaArticle->content)}}</textarea>
         {!! $errors->first('content', '<span class="form-error">:message</span>') !!}
 </div>
-
-<div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
-    <label for="password">비밀번호</label>
-    <input type="password" name="password" id="password" value="{{old('password', $qnaArticle->password)}}" class="form-control" />
-        {!! $errors->first('password', '<span class="form-error">:message</span>') !!}
-</div>
-
-<div class="form-group">
-    <button type="submit" class="btn btn-primary">수정</button>
-</div>

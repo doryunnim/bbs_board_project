@@ -9,6 +9,9 @@
         {!! csrf_field() !!}
         {!! method_field('PUT') !!}
         @include('qnaArticles.partial.form')
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">수정</button>
+        </div>
     </form>
 </div>
 @stop
