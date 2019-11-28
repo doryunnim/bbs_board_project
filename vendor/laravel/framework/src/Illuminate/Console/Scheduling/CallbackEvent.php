@@ -2,9 +2,9 @@
 
 namespace Illuminate\Console\Scheduling;
 
-use Illuminate\Contracts\Container\Container;
-use InvalidArgumentException;
 use LogicException;
+use InvalidArgumentException;
+use Illuminate\Contracts\Container\Container;
 
 class CallbackEvent extends Event
 {

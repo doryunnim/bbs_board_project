@@ -2,10 +2,10 @@
 
 namespace Illuminate\Queue\Jobs;
 
-use Illuminate\Container\Container;
-use Illuminate\Contracts\Queue\Job as JobContract;
-use Pheanstalk\Job as PheanstalkJob;
 use Pheanstalk\Pheanstalk;
+use Illuminate\Container\Container;
+use Pheanstalk\Job as PheanstalkJob;
+use Illuminate\Contracts\Queue\Job as JobContract;
 
 class BeanstalkdJob extends Job implements JobContract
 {

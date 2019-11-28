@@ -2,14 +2,14 @@
 
 namespace Illuminate\Routing;
 
-use ArrayIterator;
 use Countable;
+use ArrayIterator;
+use IteratorAggregate;
+use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Arr;
-use IteratorAggregate;
-use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 
 class RouteCollection implements Countable, IteratorAggregate
 {

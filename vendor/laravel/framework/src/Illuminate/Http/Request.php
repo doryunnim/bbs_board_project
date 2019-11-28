@@ -2,13 +2,13 @@
 
 namespace Illuminate\Http;
 
-use ArrayAccess;
 use Closure;
-use Illuminate\Contracts\Support\Arrayable;
+use ArrayAccess;
+use RuntimeException;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Macroable;
-use RuntimeException;
+use Illuminate\Contracts\Support\Arrayable;
 use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 
@@ -522,7 +522,7 @@ class Request extends SymfonyRequest implements Arrayable, ArrayAccess
      *
      * @param  string|null  $param
      * @param  mixed   $default
-     * @return \Illuminate\Routing\Route|object|string|null
+     * @return \Illuminate\Routing\Route|object|string
      */
     public function route($param = null, $default = null)
     {

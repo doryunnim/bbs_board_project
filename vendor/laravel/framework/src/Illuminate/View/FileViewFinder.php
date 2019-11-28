@@ -2,8 +2,8 @@
 
 namespace Illuminate\View;
 
-use Illuminate\Filesystem\Filesystem;
 use InvalidArgumentException;
+use Illuminate\Filesystem\Filesystem;
 
 class FileViewFinder implements ViewFinderInterface
 {

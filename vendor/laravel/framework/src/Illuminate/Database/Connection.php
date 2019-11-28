@@ -2,25 +2,25 @@
 
 namespace Illuminate\Database;
 
+use PDO;
 use Closure;
-use DateTimeInterface;
-use Doctrine\DBAL\Connection as DoctrineConnection;
 use Exception;
+use PDOStatement;
+use LogicException;
+use DateTimeInterface;
+use Illuminate\Support\Arr;
+use Illuminate\Database\Query\Expression;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Database\Events\QueryExecuted;
-use Illuminate\Database\Query\Builder as QueryBuilder;
-use Illuminate\Database\Query\Expression;
-use Illuminate\Database\Query\Grammars\Grammar as QueryGrammar;
+use Doctrine\DBAL\Connection as DoctrineConnection;
 use Illuminate\Database\Query\Processors\Processor;
+use Illuminate\Database\Query\Builder as QueryBuilder;
 use Illuminate\Database\Schema\Builder as SchemaBuilder;
-use Illuminate\Support\Arr;
-use LogicException;
-use PDO;
-use PDOStatement;
+use Illuminate\Database\Query\Grammars\Grammar as QueryGrammar;
 
 class Connection implements ConnectionInterface
 {
-    use DetectsConcurrencyErrors,
+    use DetectsDeadlocks,
         DetectsLostConnections,
         Concerns\ManagesTransactions;
 
@@ -257,13 +257,12 @@ class Connection implements ConnectionInterface
     /**
      * Begin a fluent query against a database table.
      *
-     * @param  \Closure|\Illuminate\Database\Query\Builder|string  $table
-     * @param  string|null  $as
+     * @param  string  $table
      * @return \Illuminate\Database\Query\Builder
      */
-    public function table($table, $as = null)
+    public function table($table)
     {
-        return $this->query()->from($table, $as);
+        return $this->query()->from($table);
     }
 
     /**

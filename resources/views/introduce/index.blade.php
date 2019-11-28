@@ -3,34 +3,29 @@
 @section('content')
 <br><br><br>
 <div class="container">
-    <!-- 조원사진, 이름 part -->
-    <div class="row">
-        @php
-        $photos = App\NabeIntroduce::all();
-        @endphp
-        @foreach($photos as $photo)
-        <div class="col-md-4">
-            <img src="{{ $photo->url }}" class="img-fluid">
-            <h4>{{ $photo->name }}</h4>
-        </div>
-        @endforeach
-    </div>
-    <div>
-        <ul class="bt-evnet">
-            <a href="{{ route('introduce.create') }}">ADD</a>
-        </ul>
+    <div class="page-header">
+        <h3>Introduce My teams</h3>
     </div>
     <hr>
-    <!-- 조원 소개 detail part -->
-    <div class="#">
-        
-
-    <div class="event_button" id="eventResponsive">
-        <ul class="bt-event">
-            <a href="{{ route('introduce.create') }}">수정</a>
-            <a href="{{ route('introduce.create') }}">삭제</a>
-        </ul>
+    <div class="row">
+        <!-- 조원 사진 & 추가 부분 -->
+        @foreach($introduces as $introduce)
+        <div class="col-md-1">
+            <img src="{{ $introduce->url }}" class="img-fluid">
+            <h4>{{ $introduce->name }}</h4>
+        </div>
+        @endforeach
+        <a href="{{ route('introduces.create') }}">ADD</a>
     </div>
+    <hr>
+    <div>
+        <h2>우리 조는 말이죠</h2>
+    </div>
+    <hr>
+    <div class="row">
+        @foreach($introduces as $introduce)
+            @include('introduce.partial.introduce')
+        @endforeach
     </div>
 </div>
 @endsection

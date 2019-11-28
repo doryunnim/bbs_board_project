@@ -2,11 +2,11 @@
 
 namespace Illuminate\Support;
 
-use Illuminate\Support\Traits\Macroable;
-use Ramsey\Uuid\Codec\TimestampFirstCombCodec;
-use Ramsey\Uuid\Generator\CombGenerator;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidFactory;
+use Illuminate\Support\Traits\Macroable;
+use Ramsey\Uuid\Generator\CombGenerator;
+use Ramsey\Uuid\Codec\TimestampFirstCombCodec;
 
 class Str
 {
@@ -34,14 +34,7 @@ class Str
     protected static $studlyCache = [];
 
     /**
-     * The callback that should be used to generate UUIDs.
-     *
-     * @var callable
-     */
-    protected static $uuidFactory;
-
-    /**
-     * Return the remainder of a string after the first occurrence of a given value.
+     * Return the remainder of a string after a given value.
      *
      * @param  string  $subject
      * @param  string  $search
@@ -50,18 +43,6 @@ class Str
     public static function after($subject, $search)
     {
         return $search === '' ? $subject : array_reverse(explode($search, $subject, 2))[0];
-    }
-
-    /**
-     * Return the remainder of a string after the last occurrence of a given value.
-     *
-     * @param  string  $subject
-     * @param  string  $search
-     * @return string
-     */
-    public static function afterLast($subject, $search)
-    {
-        return $search === '' ? $subject : array_reverse(explode($search, $subject))[0];
     }
 
     /**
@@ -87,7 +68,7 @@ class Str
     }
 
     /**
-     * Get the portion of a string before the first occurrence of a given value.
+     * Get the portion of a string before a given value.
      *
      * @param  string  $subject
      * @param  string  $search
@@ -96,28 +77,6 @@ class Str
     public static function before($subject, $search)
     {
         return $search === '' ? $subject : explode($search, $subject)[0];
-    }
-
-    /**
-     * Get the portion of a string before the last occurrence of a given value.
-     *
-     * @param  string  $subject
-     * @param  string  $search
-     * @return string
-     */
-    public static function beforeLast($subject, $search)
-    {
-        if ($search === '') {
-            return $subject;
-        }
-
-        $pos = mb_strrpos($subject, $search);
-
-        if ($pos === false) {
-            return $subject;
-        }
-
-        return static::substr($subject, 0, $pos);
     }
 
     /**
@@ -607,9 +566,7 @@ class Str
      */
     public static function uuid()
     {
-        return static::$uuidFactory
-                    ? call_user_func(static::$uuidFactory)
-                    : Uuid::uuid4();
+        return Uuid::uuid4();
     }
 
     /**
@@ -619,11 +576,7 @@ class Str
      */
     public static function orderedUuid()
     {
-        if (static::$uuidFactory) {
-            return call_user_func(static::$uuidFactory);
-        }
-
-        $factory = new UuidFactory();
+        $factory = new UuidFactory;
 
         $factory->setRandomGenerator(new CombGenerator(
             $factory->getRandomGenerator(),
@@ -635,27 +588,6 @@ class Str
         ));
 
         return $factory->uuid4();
-    }
-
-    /**
-     * Set the callable that will be used to generate UUIDs.
-     *
-     * @param  callable  $factory
-     * @return void
-     */
-    public static function createUuidsUsing(callable $factory = null)
-    {
-        static::$uuidFactory = $factory;
-    }
-
-    /**
-     * Indicate that UUIDs should be created normally and not using a custom factory.
-     *
-     * @return void
-     */
-    public static function createUuidsNormally()
-    {
-        static::$uuidFactory = null;
     }
 
     /**

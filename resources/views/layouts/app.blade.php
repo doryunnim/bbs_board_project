@@ -43,7 +43,7 @@
             <div class="navbar-collapse collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{{route('introduce.index')}}">조원소개</a>
+                        <a class="nav-link js-scroll-trigger" href="{{route('introduces.index')}}">조원소개</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="#">현지학기제</a>
@@ -83,14 +83,13 @@
                 <li class="nav-item auth">
                     <a class="nav-link js-scroll-trigger" href="{{route('login')}}">로그인/로그아웃</a>
                 </li>                
--->
+                    -->
                 </ul>
             </div>
         </div>
     </nav>
     <!-- ->네비게이션바에 가려져서 일단 공백처리했음 -->
-<<<<<<< HEAD
-=======
+
     <br><br><br><br>
 
     @if(session()->has('flash_message'))
@@ -106,7 +105,6 @@
             }
         </script>
     @endif
->>>>>>> d615f5891abcbfd3ac6f4ab932dc671bce64c8ae
     <main class="py-4">
         @yield('content')          
     </main>

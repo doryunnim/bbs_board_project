@@ -2,9 +2,9 @@
 
 namespace Illuminate\Mail;
 
-use Illuminate\Support\Traits\ForwardsCalls;
-use Swift_Attachment;
 use Swift_Image;
+use Swift_Attachment;
+use Illuminate\Support\Traits\ForwardsCalls;
 
 /**
  * @mixin \Swift_Message

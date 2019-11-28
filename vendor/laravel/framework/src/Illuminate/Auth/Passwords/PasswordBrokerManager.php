@@ -2,9 +2,9 @@
 
 namespace Illuminate\Auth\Passwords;
 
-use Illuminate\Contracts\Auth\PasswordBrokerFactory as FactoryContract;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
+use Illuminate\Contracts\Auth\PasswordBrokerFactory as FactoryContract;
 
 /**
  * @mixin \Illuminate\Contracts\Auth\PasswordBroker
@@ -95,8 +95,7 @@ class PasswordBrokerManager implements FactoryContract
             $this->app['hash'],
             $config['table'],
             $key,
-            $config['expire'],
-            $config['throttle'] ?? 0
+            $config['expire']
         );
     }
 

@@ -16,7 +16,7 @@
 
     <div class="row mb-4">
         <div class="col-md-4 offset-md-4">
-            <form action="{{ route('introduce.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('introduces.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                 <br><br><br><br>

@@ -13,7 +13,9 @@ class DatabaseNotificationCollection extends Collection
      */
     public function markAsRead()
     {
-        $this->each->markAsRead();
+        $this->each(function ($notification) {
+            $notification->markAsRead();
+        });
     }
 
     /**
@@ -23,6 +25,8 @@ class DatabaseNotificationCollection extends Collection
      */
     public function markAsUnread()
     {
-        $this->each->markAsUnread();
+        $this->each(function ($notification) {
+            $notification->markAsUnread();
+        });
     }
 }

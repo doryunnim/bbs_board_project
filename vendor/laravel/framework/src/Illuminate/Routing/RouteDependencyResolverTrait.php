@@ -2,10 +2,10 @@
 
 namespace Illuminate\Routing;
 
-use Illuminate\Support\Arr;
-use ReflectionFunctionAbstract;
 use ReflectionMethod;
 use ReflectionParameter;
+use Illuminate\Support\Arr;
+use ReflectionFunctionAbstract;
 
 trait RouteDependencyResolverTrait
 {

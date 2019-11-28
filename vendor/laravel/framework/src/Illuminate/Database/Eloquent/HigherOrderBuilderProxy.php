@@ -24,7 +24,7 @@ class HigherOrderBuilderProxy
     /**
      * Create a new proxy instance.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $builder
+     * @param Builder $builder
      * @param string $method
      */
     public function __construct(Builder $builder, $method)

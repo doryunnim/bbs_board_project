@@ -2,11 +2,10 @@
 
 namespace Illuminate\Foundation\Events;
 
-use Illuminate\Support\Str;
-use ReflectionClass;
-use ReflectionException;
-use ReflectionMethod;
 use SplFileInfo;
+use ReflectionClass;
+use ReflectionMethod;
+use Illuminate\Support\Str;
 use Symfony\Component\Finder\Finder;
 
 class DiscoverEvents
@@ -39,13 +38,9 @@ class DiscoverEvents
         $listenerEvents = [];
 
         foreach ($listeners as $listener) {
-            try {
-                $listener = new ReflectionClass(
-                    static::classFromFile($listener, $basePath)
-                );
-            } catch (ReflectionException $e) {
-                continue;
-            }
+            $listener = new ReflectionClass(
+                static::classFromFile($listener, $basePath)
+            );
 
             if (! $listener->isInstantiable()) {
                 continue;

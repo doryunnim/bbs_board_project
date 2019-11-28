@@ -12,7 +12,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('articles','NabeJapanController');
 Route::resource('qnaArticles','QnaArticlesController');
-Route::resource('introduce', 'NabeIntroduceController');
+Route::resource('introduces', 'NabeIntroduceController');
 
 DB::listen(function ($query){
 });
+
