@@ -11,7 +11,8 @@ class NabeIntroduceController extends Controller
 {
     public function index()
     {
-        return view('introduce.index');
+        $introduces = \App\NabeIntroduce::all();
+        return view('introduce.index', compact('introduces'));
     }
 
     public function create()
@@ -41,7 +42,7 @@ class NabeIntroduceController extends Controller
         ]);
 
         #사진 처리 완료되면 실행됨
-        return redirect('/introduces');
+        return redirect(route('introduces.index'));
     }
 
     public function show(NabeIntroduce $introduce)
@@ -52,32 +53,19 @@ class NabeIntroduceController extends Controller
 
     public function edit(NabeIntroduce $introduce)
     {
-        $introduces = \APP\NabeIntroduce::get();
-        return view('introduce.edit', compact('introduce', 'introduces')); 
+        return view('introduce.edit', compact('introduce'));
     }
 
     public function update(Request $request, NabeIntroduce $introduce)
     {
 
-        $request->validate([
-            'name' => 'required',
-            'comment' => 'required',
-            'url' => 'required',
-            'hashname' => 'required',
-            'originalname' => 'required',
-        ]);
-
         $introduce->update($request->all());
-
-        return redirect()->route('introduce.index')
-                        ->with('success', 'introduce update successfully');
+        return redirect(route('introduce.index'));
     }
 
     public function destroy(NabeIntroduce $introduce)
     {
         $introduce->delete();
-
-        return redirect()->route('introduce.index')
-                        ->with('success', 'introduce delete successfully');
+        return response()->json([],204);
     }
 }
