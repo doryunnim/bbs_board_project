@@ -1,53 +1,67 @@
 @extends('layouts.app')
 @section('content')
-<div class="container">
-    <div class="page-header">
-        <h3 class="title">{{$japan->title}}</h3>
-    </div>
-
-    <small class="text-right">{{$japan->created_at}}</small>
-    
-    <article class="m-b">
-        <h5>{!! markdown($japan->content) !!}</h5>
-        <hr>
-        @if($japan->attachments->count())
-            <ul class="attachment__article">
-                @foreach($japan->attachments as $attachment)
-                    <li>
-                        <a href="{{$attachment->url}}">{{$attachment->filename}}</a>
-                    </li>
-                @endforeach
-            </ul>
-        @endif
-    </article>
-
-    <div class="action__article">
-        <a href="{{route('japan.index')}}" class="btn btn-info">목록</a>
-
-        <a  href="{{route('japan.edit', $japan->id)}}" class="btn btn-info offset-9-5">수정</a>
-        <!-- <button class="btn btn-info button__edit offset-9-5" @click="onEdit()">수정</button> -->
-
-        <form action="{{route('japan.destroy', $japan->id)}}" method="post" class="del-btn">
-            @csrf
-            @method('DELETE')
-            <button class="button__delete btn btn-danger">삭제</a>
-        </form>
-        <!-- <button class="button__delete btn btn-danger" @click="onDelete()">글 삭제</button> -->
+<!-- Styles -->
+<link href="{{ asset('css/headercss.css') }}" rel="stylesheet">
+<link href="{{ asset('css/japan.css') }}" rel="stylesheet">
+<!-- <div class="container"> -->
+<div class="contain">
+        <div class="page-header">
+        <h3 class="title">현지학기제</h3>
     </div>
 </div>
 
-<aside class="side-bar">
-    <div class="row">
-        <div class="col">
-            <a href="{{route('japan.create')}}" class="btn btn-primary m-b">글 쓰기</a>
-            @forelse($japans as $japan)
+
+<div class="contains">
+    <aside class="side-bar">
+        <div class="row">
+            <div class="col">
+                <a href="{{route('japan.create')}}" class="btn btn-primary m-b">글 쓰기</a>
+                @forelse($japans as $japan)
                 @include('japan.partial.article', compact('japan'))
-            @empty
-                <p class="text-center text-danger">글이 없습니다.</p>
-            @endforelse
+                @empty
+                <p class="text-center text-danger btn">글이 없습니다.</p>
+                @endforelse
+            </div>
         </div>
+    </aside>
+    <div class="main-chart">
+        <div class="updatebtn">
+            <a href="{{route('japan.index')}}" >목록</a>
+        </div>
+        <div class="view m-b">
+            <small class="text-right">{{$japan->created_at}}</small>
+            <div class="jp_title">
+                <h3>{{$japan->title}}</h3>
+                <h5>{!! markdown($japan->content) !!}</h5>
+            </div>
+            <div class="japanImage">
+                @if($japan->attachments->count())
+                    <ul class="attachment__article">
+                        @foreach($japan->attachments as $attachment)
+                            <li>
+                            <!-- <img src="{{$attachment->filename}}" > -->
+                                <a href="{{$attachment->url}}">
+                                    {{$attachment->filename}}
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                @endif
+            </div>
+        </div>
+        <div class="changebtn">
+            <div class="updatebtn">
+                <a  href="{{route('japan.edit', $japan->id)}}" >수정</a>
+            </div>
+            <form action="{{route('japan.destroy', $japan->id)}}" method="post" class="del-btn">
+                @csrf
+                @method('DELETE')
+                <button class="button__delete updatebtn">삭제</a>
+            </form>
+        </div>  
     </div>
-</aside>
+    
+</div>
 
 <!-- <script>
     var edit = new Vue({

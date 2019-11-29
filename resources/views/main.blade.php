@@ -13,20 +13,20 @@
       <!--Navigation-->
       <nav id="mainNav" class="navbar navbar-expand-lg navbar-dark fixed-top">
        <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">1조 홈페이지</a>
+        <a class="navbar-brand js-scroll-trigger" href="{{ url('/') }}">1조 홈페이지</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu
             <i class="fas fa-bars"></i>
         </button>        
         <div class="navbar-collapse collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#mainNav">조원소개</a>
+                    <a class="nav-link js-scroll-trigger" href="{{ url('/') }}">조원소개</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="{{route('japan.index')}}">현지학기제</a>
                 </li>                
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#mainNav">Q&amp;A</a>
+                    <a class="nav-link js-scroll-trigger" href="{{ url('/') }}">Q&amp;A</a>
                 </li>
                 @guest
                     <li class="nav-item">

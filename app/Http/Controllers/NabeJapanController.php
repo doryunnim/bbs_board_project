@@ -17,7 +17,7 @@ class NabeJapanController extends Controller
      */
     public function index()
     {
-        $japans = \App\NabeJapan::oldest()->paginate(100);
+        $japans = \App\NabeJapan::oldest()->paginate(5);
         return view('japan.index', compact('japans'));
     }
 
