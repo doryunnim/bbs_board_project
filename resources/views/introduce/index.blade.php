@@ -24,10 +24,10 @@
         <a href="{{ route('introduces.create') }}">ADD</a>
     </div>
     <div class="container" style="text-align:center">
-        <h2>우리 조는 말이죠</h2>
-        <h2>우리 조는 말이죠</h2>
-        <h2>우리 조는 말이죠</h2>
-        <h2>우리 조는 말이죠</h2>
+        <h2>우리 조는 ...</h2>
+        <h2>우리 조는 ...</h2>
+        <h2>우리 조는 ...</h2>
+        <h2>우리 조는 ...</h2>
         <hr>
     </div>
     <div class="row"> 

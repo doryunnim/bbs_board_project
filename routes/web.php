@@ -12,15 +12,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('articles','NabeJapanController');
 Route::resource('qnaArticles','QnaArticlesController');
-<<<<<<< HEAD
-
-Route::resource('qnaComments', 'QnaCommentsController', ['only' => ['update', 'destroy']]);
-Route::resource('qnaArticles.qnaComments', 'QnaCommentsController', ['only' => 'store']);
-
-Route::resource('introduce', 'NabeIntroduceController');
-=======
 Route::resource('introduces', 'NabeIntroduceController');
->>>>>>> 2354ea1a01a2e7fe3e99ae76da10876bd6f61564
 
 DB::listen(function ($query){
 });
