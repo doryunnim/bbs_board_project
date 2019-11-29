@@ -23,6 +23,12 @@
         <a href="{{route('qnaArticles.index')}}" class="btn btn-info">
             <i class="fa fa-list"></i> 목록
         </a>
+<<<<<<< HEAD
+=======
+        <div class="container__comment">
+            @include('qnaComments.index')
+        </div>
+>>>>>>> f773e4ceb2ae734a12587f5b4fccd8893328f718
     </div>
 </div>
 

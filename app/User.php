@@ -41,8 +41,23 @@ class User extends Authenticatable
     {
         return $this->hasMany(Qna_article::class);
     }
+<<<<<<< HEAD
+=======
+    public function nabe_introduce()
+    {
+        return $this->hasMany(NabeIntroduce::class);
+    }
+>>>>>>> f773e4ceb2ae734a12587f5b4fccd8893328f718
 
     public function isAdmin(){
         return ($this->id ===1) ? true : false;
     }
+<<<<<<< HEAD
+=======
+
+    public function qna_comments()
+    {
+        return $this->hasMany(Qna_comment::class);
+    }
+>>>>>>> f773e4ceb2ae734a12587f5b4fccd8893328f718
 }

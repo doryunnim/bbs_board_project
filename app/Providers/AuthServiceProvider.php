@@ -27,7 +27,12 @@ class AuthServiceProvider extends ServiceProvider
             return $user->isAdmin();
         });
         
+<<<<<<< HEAD
         // $this->registerPolicies();
+=======
+        $this->registerPolicies();
+        
+>>>>>>> f773e4ceb2ae734a12587f5b4fccd8893328f718
         Gate::define('update', function($user, $model){
             return $user->id === $model->user_id;
         });

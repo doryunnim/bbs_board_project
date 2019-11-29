@@ -16,9 +16,16 @@
 
     <div class="row mb-4">
         <div class="col-md-4 offset-md-4">
+<<<<<<< HEAD
             <form action="{{ route('introduce.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
+=======
+            <form action="{{ route('introduces.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group">
+                <br><br><br><br>
+>>>>>>> f773e4ceb2ae734a12587f5b4fccd8893328f718
                     <input type="file" name="photo" class="form-control-file"><br><br>
                     <input type="text" name="name" placeholder="name"><br><br>
                     <input type="text" name="comment" placeholder="comment"><br><br>
