@@ -2,10 +2,10 @@
 
 namespace Illuminate\Queue;
 
-use Pheanstalk\Pheanstalk;
-use Pheanstalk\Job as PheanstalkJob;
-use Illuminate\Queue\Jobs\BeanstalkdJob;
 use Illuminate\Contracts\Queue\Queue as QueueContract;
+use Illuminate\Queue\Jobs\BeanstalkdJob;
+use Pheanstalk\Job as PheanstalkJob;
+use Pheanstalk\Pheanstalk;
 
 class BeanstalkdQueue extends Queue implements QueueContract
 {
@@ -139,7 +139,7 @@ class BeanstalkdQueue extends Queue implements QueueContract
      * Delete a message from the Beanstalk queue.
      *
      * @param  string  $queue
-     * @param  string  $id
+     * @param  string|int  $id
      * @return void
      */
     public function deleteMessage($queue, $id)

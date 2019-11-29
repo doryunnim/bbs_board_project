@@ -41,11 +41,7 @@
                         </i>
                     </span>
                     <hr>
-<<<<<<< HEAD
                     <h4 class="service-heading"><a href="{{route('japan.index')}}">현지학기제</a></h4>
-=======
-                    <h4 class="service-heading"><a href="#">현지학기제</a></h4>
->>>>>>> f773e4ceb2ae734a12587f5b4fccd8893328f718
                     <p class="text-muted">
                         <p class="text-center text-danger">글이 없습니다.</p>
                     </p>
