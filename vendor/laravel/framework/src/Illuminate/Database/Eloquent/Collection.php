@@ -2,13 +2,13 @@
 
 namespace Illuminate\Database\Eloquent;
 
-use LogicException;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
-use Illuminate\Contracts\Support\Arrayable;
-use Illuminate\Contracts\Queue\QueueableEntity;
 use Illuminate\Contracts\Queue\QueueableCollection;
+use Illuminate\Contracts\Queue\QueueableEntity;
+use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Collection as BaseCollection;
+use Illuminate\Support\Str;
+use LogicException;
 
 class Collection extends BaseCollection implements QueueableCollection
 {
@@ -314,6 +314,10 @@ class Collection extends BaseCollection implements QueueableCollection
     public function intersect($items)
     {
         $intersect = new static;
+
+        if (empty($items)) {
+            return $intersect;
+        }
 
         $dictionary = $this->getDictionary($items);
 

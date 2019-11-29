@@ -12,6 +12,11 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
 
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <!-- 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -47,7 +52,7 @@
                         <a class="nav-link js-scroll-trigger" href="{{route('introduces.index')}}">조원소개</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#">현지학기제</a>
+                        <a class="nav-link js-scroll-trigger" href="{{route('japan.index')}}">현지학기제</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{route('qnaArticles.index')}}">Q&amp;A</a>

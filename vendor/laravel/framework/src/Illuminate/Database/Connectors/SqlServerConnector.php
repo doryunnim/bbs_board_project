@@ -2,8 +2,8 @@
 
 namespace Illuminate\Database\Connectors;
 
-use PDO;
 use Illuminate\Support\Arr;
+use PDO;
 
 class SqlServerConnector extends Connector implements ConnectorInterface
 {
@@ -138,6 +138,22 @@ class SqlServerConnector extends Connector implements ConnectorInterface
 
         if (isset($config['multi_subnet_failover'])) {
             $arguments['MultiSubnetFailover'] = $config['multi_subnet_failover'];
+        }
+
+        if (isset($config['column_encryption'])) {
+            $arguments['ColumnEncryption'] = $config['column_encryption'];
+        }
+
+        if (isset($config['key_store_authentication'])) {
+            $arguments['KeyStoreAuthentication'] = $config['key_store_authentication'];
+        }
+
+        if (isset($config['key_store_principal_id'])) {
+            $arguments['KeyStorePrincipalId'] = $config['key_store_principal_id'];
+        }
+
+        if (isset($config['key_store_secret'])) {
+            $arguments['KeyStoreSecret'] = $config['key_store_secret'];
         }
 
         return $this->buildConnectString('sqlsrv', $arguments);

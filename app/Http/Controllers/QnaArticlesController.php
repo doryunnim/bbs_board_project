@@ -67,9 +67,10 @@ class QnaArticlesController extends Controller
     {
         //qnaArticle 글하나만 불러옴 밑에 qnaArticles 글 여러개 불러옴
         // $qnaArticles = \App\Qna_article::get();
-        $qnaComments = $qnaArticle->qna_comments()->with('replies')->whereNull('parent_id')->latest()->get();
 
+        $qnaComments = $qnaArticle->qna_comments()->with('replies')->whereNull('parent_id')->latest()->get();
         return view('qnaArticles.show', compact('qnaArticle', 'qnaComments'));
+
     }
 
 

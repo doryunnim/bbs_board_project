@@ -6,18 +6,15 @@ Route::get('/', function () {
     return view('main');
 });
 
-Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-
-Route::resource('articles','NabeJapanController');
+Route::resource('japan','NabeJapanController');
 Route::resource('qnaArticles','QnaArticlesController');
 Route::resource('introduces', 'NabeIntroduceController');
+Route::resource('articles','NabeJapanController');
 
 Route::resource('qnaComments', 'QnaCommentsController', ['only' => ['update', 'destroy']]);
 Route::resource('qnaArticles.qnaComments', 'QnaCommentsController', ['only' => 'store']);
 
-
 DB::listen(function ($query){
 });
-
