@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\JapanAttachments;
+use App\NabeJapan;
 
 class JapanAttachmentsController extends Controller
 {
@@ -42,7 +44,15 @@ class JapanAttachmentsController extends Controller
 
             foreach($files as $file) {
                 $filename = filter_var($file->getClientOriginalName(), FILTER_SANITIZE_URL);
-                $file->move();
+                $payload = [
+                    'filename'=>$filename,
+                    'bytes'=>$file->getClientSize(),
+                    'mime'=>$file->getClientMimeType()
+                ];
+
+                $file->move(attachments_path(), $filename);
+
+                $attachments[] = ($id = $request->input('nabe_japan_id')) ? \App\NabeJapan::findOrFail($id)->attachments->create($payload) : \App\JapanAttachments::create($payload);
             }
         }
     }
@@ -79,6 +89,24 @@ class JapanAttachmentsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $attachments = [];
+
+        if($request->hasFile('files')) {
+            $files = $request->file('files');
+
+            foreach($files as $file) {
+                $filename = filter_var($file->getClientOriginalName(), FILTER_SANITIZE_URL);
+                $payload = [
+                    'filename'=>$filename,
+                    'bytes'=>$file->getClientSize(),
+                    'mime'=>$file->getClientMimeType()
+                ];
+
+                $file->move(attachments_path(), $filename);
+
+                $attachments[] = ($id = $request->input('nabe_japan_id')) ? \App\NabeJapan::findOrFail($id)->attachments->update($payload) : \App\JapanAttachments::update($payload);
+            }
+        }
     }
 
     /**

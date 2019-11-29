@@ -1,25 +1,28 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>1조</title>
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
-
-    <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    
 
     <!-- Styles -->
     <link href="{{ asset('css/navcss.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/headercss.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/servcss.css') }}" rel="stylesheet">
+    
     
 
 </head>
@@ -35,13 +38,13 @@
             <div class="navbar-collapse collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#mainNav">조원소개</a>
+                        <a class="nav-link js-scroll-trigger" href="{{route('introduce.index')}}">조원소개</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{route('japan.index')}}">현지학기제</a>
                     </li>                
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#mainNav">Q&amp;A</a>
+                        <a class="nav-link js-scroll-trigger" href="{{route('qnaArticles.index')}}">Q&amp;A</a>
                     </li>
                     @guest
                         <li class="nav-item">
@@ -77,9 +80,22 @@
         </div>
         </nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
+    @if(session()->has('flash_message'))
+        <div id="message_id" class="alert alert-info" role="alert">
+            {{ session('flash_message') }}
+        </div>
+        <script>
+            window.onload = function(){
+                setTimeout(function(){
+                    var parent = document.getElementById("message_id");
+                    parent.remove();
+                }, 3000 );
+            }
+        </script>
+    @endif
+    <main class="py-4">
+        @yield('content')          
+    </main>
+    @yield('script')
 </body>
 </html>

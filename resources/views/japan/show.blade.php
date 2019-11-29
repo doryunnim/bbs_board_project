@@ -1,89 +1,87 @@
 @extends('layouts.app')
 @section('content')
-<!-- Styles -->
-<link href="{{ asset('css/headercss.css') }}" rel="stylesheet">
 <link href="{{ asset('css/japan.css') }}" rel="stylesheet">
-<!-- <div class="container"> -->
-<div class="contain">
-        <div class="page-header">
-        <h3 class="title">현지학기제</h3>
+<link href="{{ asset('css/headercss.css') }}" rel="stylesheet">
+<div class="container">
+    <div class="page-header">
+        <h3>현지학기제</h3>
     </div>
 </div>
 
-
 <div class="contains">
+    <div class="main-chart">
+        <a href="{{route('japan.index')}}" class="listbtn btn-primary">목록</a>
+        <div class="view">
+            <small class="text-right">{{$japan->created_at}}</small>
+            <div class="japanImage">
+                @if($japan->attachments->count())
+                    <!-- <ul class="attachment__article">
+                        @foreach($japan->attachments as $attachment)
+                            <img src="{{$attachment->url}}" class="Imagecontent">
+                        @endforeach
+                    </ul> -->
+                    @foreach($japan->attachments as $attachment)
+                            <img src="{{$attachment->url}}" class="Imagecontent">
+                    @endforeach
+                @endif
+            </div>
+            <div class="jp_title">
+                <h3 class="title">{{$japan->title}}</h3>    
+                <article class="m-b">
+                    <h5>{!! markdown($japan->content) !!}</h5>
+                </article>
+            </div>
+        </div>
+
+        <div class="action__article">
+            
+
+            <a  href="{{route('japan.edit', $japan->id)}}" 
+                class=" btn-info updatebtn left30">수정</a>
+            <button class="button__delete  btn-danger updatebtn">삭제</button>
+        </div>
+
+    </div>
+
     <aside class="side-bar">
         <div class="row">
             <div class="col">
-                <a href="{{route('japan.create')}}" class="btn btn-primary m-b">글 쓰기</a>
+                <a href="{{route('japan.create')}}" class="btn btn-info m-b create"><img src="img/add.png"></a>
                 @forelse($japans as $japan)
-                @include('japan.partial.article', compact('japan'))
+                    @include('japan.partial.article', compact('japan'))
                 @empty
-                <p class="text-center text-danger btn">글이 없습니다.</p>
+                    <p class="text-center text-danger">글이 없습니다.</p>
                 @endforelse
             </div>
         </div>
     </aside>
-    <div class="main-chart">
-        <div class="updatebtn">
-            <a href="{{route('japan.index')}}" >목록</a>
-        </div>
-        <div class="view m-b">
-            <small class="text-right">{{$japan->created_at}}</small>
-            <div class="jp_title">
-                <h3>{{$japan->title}}</h3>
-                <h5>{!! markdown($japan->content) !!}</h5>
-            </div>
-            <div class="japanImage">
-                @if($japan->attachments->count())
-                    <ul class="attachment__article">
-                        @foreach($japan->attachments as $attachment)
-                            <li>
-                            <!-- <img src="{{$attachment->filename}}" > -->
-                                <a href="{{$attachment->url}}">
-                                    {{$attachment->filename}}
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
-                @endif
-            </div>
-        </div>
-        <div class="changebtn">
-            <div class="updatebtn">
-                <a  href="{{route('japan.edit', $japan->id)}}" >수정</a>
-            </div>
-            <form action="{{route('japan.destroy', $japan->id)}}" method="post" class="del-btn">
-                @csrf
-                @method('DELETE')
-                <button class="button__delete updatebtn">삭제</a>
-            </form>
-        </div>  
-    </div>
-    
 </div>
+@stop
 
-<!-- <script>
-    var edit = new Vue({
-        el: '.button__edit',
-        methods: {
-            onEdit: function() {
-                if(confirm("작성 글 비밀번호 확인")) {
-                    location.replace('{{route('japan.edit', $japan->id)}}');
-                }
-            }
+@section('script')
+<script>
+  $(document).ready(function () {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-
-    var del = new Vue({
-        el: '.button__delete',
-        methods: {
-            onDelete: function() {
-                if(confirm("작성 글 비밀번호 확인")) {
-                    location.replace('{{route('japan.index')}}');
+    $('.button__delete').on('click', function() {
+        var japan = $('japan');
+        var str = JSON.stringify(japan);
+        var jsn = JSON.parse(str);
+        console.log('japan:'+str);
+        if(confirm("Delete")) {
+            $.ajax({
+                type: 'DELETE',
+                success: function(data) {
+                    console.log(data)
                 }
-            }
+            }).then(function() {
+                window.location.href = '/japan';
+            });
         }
     });
-</script> -->
+  });
+</script>
 @stop

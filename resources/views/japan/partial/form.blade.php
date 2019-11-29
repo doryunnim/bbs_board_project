@@ -19,5 +19,8 @@
 <div class="form-group1 {{ $errors->has('files') ? 'has-error' : '' }}">
     <label class="left30" for="files">파일</label>
     <input type="file" name="files[]" id="files" class="form-control" multiple="multiple" />
+    <!-- <div class="form-group filebox {{ $errors->has('files') ? 'has-error' : '' }}">
+    <label for="files">파일 업로드</label>
+    <input type="file" name="files[]" id="files" multiple="multiple" /> -->
         {!! $errors->first('files.0', '<span class="form-error">:message</span>') !!}
 </div>

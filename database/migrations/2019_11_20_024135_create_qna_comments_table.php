@@ -15,9 +15,15 @@ class CreateQnaCommentsTable extends Migration
     {
         Schema::create('qna_comments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('slug')->index();
+            $table->unsignedBigInteger('user_id')->index();
+            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->string('commentable_type');
+            $table->unsignedBigInteger('commentable_ud');
+            $table->text('content');
             $table->timestamps();
+
+            $talbe->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('parent_id')->references('id')->on('comments');
         });
     }
 
@@ -28,6 +34,11 @@ class CreateQnaCommentsTable extends Migration
      */
     public function down()
     {
+        Schema::table('qna_comments', function(Blueprint $table){
+            $table->dropForeign('qna_comments_parent_id_foreign');
+            $table->dropForeign('qna_comments_user_id_foreign');
+        });
+
         Schema::dropIfExists('qna_comments');
     }
 }

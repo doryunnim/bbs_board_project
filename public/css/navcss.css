@@ -3,7 +3,7 @@
     top: 0;
     right: 0;
     left: 0;
-    z-index: 1030;
+    /* z-index: 1030; */
 }
 .navbar-expand-lg{
     flex-direction: row;
@@ -163,14 +163,12 @@ body{
     background-color: lightsalmon;
 }
 
-@media(min-width:1200px){
     .container{
     max-width: 1140px;
     }
     #mainNav{
         background-color: lightsalmon;
     }
-}
 
 
 .container{

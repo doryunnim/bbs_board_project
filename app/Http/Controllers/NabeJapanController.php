@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Database\Eloquent\Collection;
+
 use App\NabeJapan;
 use File;
 
@@ -74,7 +76,7 @@ class NabeJapanController extends Controller
             return back();
         }
 
-        return redirect(route('japan.index'));
+        return redirect(route('japan.show', $japan->id));
     }
 
     /**
@@ -86,6 +88,7 @@ class NabeJapanController extends Controller
     public function show(NabeJapan $japan)
     {
         //
+        
         $japans = \App\NabeJapan::get();
         return view('japan.show', compact('japan', 'japans'));
     }
@@ -121,7 +124,7 @@ class NabeJapanController extends Controller
             foreach($files as $file){
                 $filename = filter_var($file->getClientOriginalName(), FILTER_SANITIZE_URL);
 
-                $japan->attachments()->create([
+                $japan->attachments()->update([
                     'filename'=>$filename,
                     'bytes'=>$file->getSize(),
                     'mime'=>$file->getClientMimeType()
@@ -142,8 +145,21 @@ class NabeJapanController extends Controller
      */
     public function destroy($japan)
     {
+        $this->deleteAttachments($japan->attachments);
         $japan->delete();
+        return response()->json([], 200);
+    }
 
-        return redirect(route('japan.index'));
+    public function deleteAttachments(Collection $attachmetns)
+    {
+        $attachmetns->each(function ($attachment) {
+            $filePath = $attachment->filename;
+
+            if (File::exists($filePath)) {
+                File::delete($filePath);
+            }
+
+            return $attachment->delete();
+        });
     }
 }
