@@ -11,7 +11,6 @@
         {!! $japans->appends((Request::except('page')))->render() !!}
     </div>
     @endif
-    <button class="btn btn-info test">Ajax Test</button>
 </div>
 
 <aside class="side-bar">
