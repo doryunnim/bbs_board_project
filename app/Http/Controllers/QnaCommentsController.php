@@ -36,7 +36,7 @@ class QnaCommentsController extends Controller
 
     public function destroy(Qna_comment $comment)
     {
-        $coment->delete();
+        $comment->delete();
 
         return response()->json([], 204, [], JSON_PRETTY_PRINT);
     }

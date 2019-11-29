@@ -21,12 +21,14 @@ class CreateQnaCommentsTable extends Migration
             $table->foreign('parent_id')->references('id')->on('qna_comments');
         });
     }
+
     public function down()
     {
         Schema::table('qna_comments', function (Blueprint $table){
             $table->dropForeign('qna_comments_parent_id_foreign');
             $table->dropForeign('qna_comments_user_id_foreign');
         });
+
         Schema::dropIfExists('qna_comments');
     }
 }
