@@ -24,13 +24,14 @@
         <a  href="{{route('japan.edit', $japan->id)}}" class="btn btn-info offset-9-5">수정</a>
         <!-- <button class="btn btn-info button__edit offset-9-5" @click="onEdit()">수정</button> -->
 
-        <form action="{{route('japan.destroy', $japan->id)}}" method="post" class="del-btn">
+        <!-- <form action="{{route('japan.destroy', $japan->id)}}" method="post" class="del-btn">
             @csrf
             @method('DELETE')
-            <button class="button__delete btn btn-danger">삭제</a>
-        </form>
-        <!-- <button class="button__delete btn btn-danger" @click="onDelete()">글 삭제</button> -->
+            <button class="button__delete btn btn-danger">삭제</button>
+        </form> -->
+        <button class="button__delete btn btn-danger del-btn">삭제</button>
     </div>
+
 </div>
 
 <aside class="side-bar">
@@ -45,28 +46,34 @@
         </div>
     </div>
 </aside>
+@stop
 
-<!-- <script>
-    var edit = new Vue({
-        el: '.button__edit',
-        methods: {
-            onEdit: function() {
-                if(confirm("작성 글 비밀번호 확인")) {
-                    location.replace('{{route('japan.edit', $japan->id)}}');
-                }
-            }
+@section('script')
+<script>
+  $(document).ready(function () {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
 
-    var del = new Vue({
-        el: '.button__delete',
-        methods: {
-            onDelete: function() {
-                if(confirm("작성 글 비밀번호 확인")) {
-                    location.replace('{{route('japan.index')}}');
+    $('.button__delete').on('click', function() {
+        var japan = $('japan');
+        var str = JSON.stringify(japan);
+        var jsn = JSON.parse(str);
+        console.log('japan:'+str);
+
+        if(confirm("Delete")) {
+            $.ajax({
+                type: 'DELETE',
+                success: function(data) {
+                    console.log(data)
                 }
-            }
+            }).then(function() {
+                window.location.href = '/japan';
+            });
         }
     });
-</script> -->
+  });
+</script>
 @stop

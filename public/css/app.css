@@ -51,8 +51,8 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-/* article,
-aside, */
+article,
+aside,
 figcaption,
 figure,
 footer,
@@ -62,26 +62,6 @@ main,
 nav,
 section {
   display: block;
-}
-
-main {
-  width: 79.6666666666%;
-}
-
-article {
-  height: 360px;
-  padding: 10px;
-  border: 1px solid rgb(155, 155, 155);
-}
-
-aside {
-  display: inline-block;
-  padding: 10px;
-  background-color: #e7e7e7;
-}
-
-.m-b {
-  margin-bottom: 10px;
 }
 
 body {
@@ -171,7 +151,6 @@ strong {
 
 small {
   font-size: 80%;
-  display: block;
 }
 
 sub,
@@ -601,16 +580,7 @@ pre code {
 }
 
 .container {
-  float: right;
   width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.container2 {
-  width: 70%;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
@@ -925,10 +895,6 @@ pre code {
   margin-left: 41.6666666667%;
 }
 
-.offset-5-5 {
-  margin-left: 45%;
-}
-
 .offset-6 {
   margin-left: 50%;
 }
@@ -943,10 +909,6 @@ pre code {
 
 .offset-9 {
   margin-left: 75%;
-}
-
-.offset-9-5 {
-  margin-left: 80.9999999999%;
 }
 
 .offset-10 {
@@ -2165,32 +2127,6 @@ pre code {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.filebox label {
-  display: inline-block;
-  padding: .5em .75em;
-  color: #fff;
-  font-size: inherit;
-  line-height: normal;
-  vertical-align: middle;
-  background-color: #5cb85c;
-  cursor: pointer;
-  border: 1px solid #5cb85c;
-  border-radius: .25em;
-  -webkit-transition: background-color 0.2s;
-  transition: background-color 0.2s;
-}
-
-.filebox input[type=file] {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .form-control {
     -webkit-transition: none;
@@ -2764,10 +2700,6 @@ textarea.form-control.is-invalid {
   border-radius: 0.25rem;
   -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-.del-btn {
-  display: inline-block;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -5360,10 +5292,6 @@ input[type=button].btn-block {
   padding-left: 0;
   list-style: none;
   border-radius: 0.25rem;
-}
-
-.page-header {
-  background-color: #ddd;
 }
 
 .page-link {
@@ -8430,10 +8358,6 @@ button.bg-dark:focus {
 
 .float-right {
   float: right !important;
-}
-
-.item-right {
-  align-content: center;
 }
 
 .float-none {

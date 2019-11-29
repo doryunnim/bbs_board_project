@@ -1,25 +1,19 @@
 <?php
-use App\NabeJapan;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
+# 127.0.0.1:8000 들어가면 나오는 메인페이지
 Route::get('/', function () {
-    $japans = \App\NabeJapan::get();
-    return view('main', compact('japans'));
+    return view('main');
 });
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+
+
 Route::resource('japan','NabeJapanController');
 
-Route::resource('attachments', 'JapanAttachmentsController', ['only'=>['store','update','destroy']]);
+Route::resource('qnaArticles','QnaArticlesController');
+
+Route::resource('introduce', 'NabeIntroduceController');
+
+DB::listen(function ($query){
+});

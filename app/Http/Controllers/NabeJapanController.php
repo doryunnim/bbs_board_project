@@ -146,7 +146,7 @@ class NabeJapanController extends Controller
     {
         $this->deleteAttachments($japan->attachments);
         $japan->delete();
-        return redirect(route('japan.index'));
+        return response()->json([], 200);
     }
 
     public function deleteAttachments(Collection $attachmetns)
