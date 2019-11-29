@@ -21,6 +21,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/navcss.css') }}">
     <link rel="stylesheet" href="{{ asset('css/headercss.css') }}">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     <!-- <link href="{{ asset('css/servcss.css') }}" rel="stylesheet">
         이 css쓰면 조원소개 사진크기가 이상해져서 일단 app.css로 대체했음 
@@ -88,10 +89,6 @@
             </div>
         </div>
     </nav>
-    <!-- ->네비게이션바에 가려져서 일단 공백처리했음 -->
-
-    <br><br><br><br>
-
     @if(session()->has('flash_message'))
         <div id="message_id" class="alert alert-info" role="alert">
             {{ session('flash_message') }}
