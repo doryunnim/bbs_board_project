@@ -2,25 +2,25 @@
 
 namespace Illuminate\Cache;
 
-use ArrayAccess;
-use BadMethodCallException;
 use Closure;
+use ArrayAccess;
 use DateTimeInterface;
-use Illuminate\Cache\Events\CacheHit;
-use Illuminate\Cache\Events\CacheMissed;
-use Illuminate\Cache\Events\KeyForgotten;
-use Illuminate\Cache\Events\KeyWritten;
-use Illuminate\Contracts\Cache\Repository as CacheContract;
-use Illuminate\Contracts\Cache\Store;
-use Illuminate\Contracts\Events\Dispatcher;
+use BadMethodCallException;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\InteractsWithTime;
+use Illuminate\Cache\Events\CacheHit;
+use Illuminate\Contracts\Cache\Store;
+use Illuminate\Cache\Events\KeyWritten;
+use Illuminate\Cache\Events\CacheMissed;
 use Illuminate\Support\Traits\Macroable;
+use Illuminate\Cache\Events\KeyForgotten;
+use Illuminate\Support\InteractsWithTime;
+use Illuminate\Contracts\Events\Dispatcher;
+use Illuminate\Contracts\Cache\Repository as CacheContract;
 
 /**
  * @mixin \Illuminate\Contracts\Cache\Store
  */
-class Repository implements ArrayAccess, CacheContract
+class Repository implements CacheContract, ArrayAccess
 {
     use InteractsWithTime;
     use Macroable {
@@ -504,7 +504,7 @@ class Repository implements ArrayAccess, CacheContract
     /**
      * Get the default cache time.
      *
-     * @return int|null
+     * @return int
      */
     public function getDefaultCacheTime()
     {

@@ -2,8 +2,8 @@
 
 namespace Illuminate\Hashing;
 
-use Illuminate\Contracts\Hashing\Hasher as HasherContract;
 use RuntimeException;
+use Illuminate\Contracts\Hashing\Hasher as HasherContract;
 
 class ArgonHasher extends AbstractHasher implements HasherContract
 {

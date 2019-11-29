@@ -2,8 +2,8 @@
 
 namespace Illuminate\Http\Resources;
 
-use Illuminate\Pagination\AbstractPaginator;
 use Illuminate\Support\Str;
+use Illuminate\Pagination\AbstractPaginator;
 
 trait CollectsResources
 {

@@ -2,8 +2,8 @@
 
 namespace Illuminate\Notifications\Messages;
 
-use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Notifications\Action;
+use Illuminate\Contracts\Support\Htmlable;
 
 class SimpleMessage
 {

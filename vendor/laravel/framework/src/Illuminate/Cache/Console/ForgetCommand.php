@@ -2,8 +2,8 @@
 
 namespace Illuminate\Cache\Console;
 
-use Illuminate\Cache\CacheManager;
 use Illuminate\Console\Command;
+use Illuminate\Cache\CacheManager;
 
 class ForgetCommand extends Command
 {

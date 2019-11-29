@@ -2,10 +2,10 @@
 
 namespace Illuminate\Notifications\Events;
 
-use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Broadcasting\PrivateChannel;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
 class BroadcastNotificationCreated implements ShouldBroadcast
 {
@@ -60,19 +60,13 @@ class BroadcastNotificationCreated implements ShouldBroadcast
             return $channels;
         }
 
-        if (is_string($channels = $this->channelName())) {
-            return [new PrivateChannel($channels)];
-        }
-
-        return collect($channels)->map(function ($channel) {
-            return new PrivateChannel($channel);
-        })->all();
+        return [new PrivateChannel($this->channelName())];
     }
 
     /**
      * Get the broadcast channel name for the event.
      *
-     * @return array|string
+     * @return string
      */
     protected function channelName()
     {

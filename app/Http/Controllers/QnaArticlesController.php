@@ -75,21 +75,30 @@ class QnaArticlesController extends Controller
 
     public function edit(Qna_article $qnaArticle)
     {
+<<<<<<< HEAD
         // $this->authorize('update', $article);
+=======
+        #$this->authorize('update', $qnaArticle);
+>>>>>>> 2354ea1a01a2e7fe3e99ae76da10876bd6f61564
         return view('qnaArticles.edit', compact('qnaArticle'));
     }
-
-
+ 
     public function update(Request $request, Qna_article $qnaArticle)
     {
         $qnaArticle->update($request->all());
         return redirect(route('qnaArticles.show', $qnaArticle->id))->with('flash_message', '글이 수정되었습니다.');
     }
 
+<<<<<<< HEAD
 
     public function destroy(\App\Qna_article $article)
     {
         // $this->authorize('delete', $article);
+=======
+    public function destroy(Qna_article $qnaArticle)
+    {
+        #$this->authorize('update', $qnaArticle);
+>>>>>>> 2354ea1a01a2e7fe3e99ae76da10876bd6f61564
         $qnaArticle->delete();
         return response()->json([],204);
     }

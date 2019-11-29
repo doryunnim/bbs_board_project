@@ -2,9 +2,9 @@
 
 namespace Illuminate\Database\Console\Seeds;
 
-use Illuminate\Console\GeneratorCommand;
-use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Composer;
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\Console\GeneratorCommand;
 
 class SeederMakeCommand extends GeneratorCommand
 {

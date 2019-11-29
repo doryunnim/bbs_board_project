@@ -2,13 +2,13 @@
 
 namespace Illuminate\Database\Schema;
 
-use BadMethodCallException;
 use Closure;
-use Illuminate\Database\Connection;
-use Illuminate\Database\Schema\Grammars\Grammar;
-use Illuminate\Database\SQLiteConnection;
+use BadMethodCallException;
 use Illuminate\Support\Fluent;
+use Illuminate\Database\Connection;
 use Illuminate\Support\Traits\Macroable;
+use Illuminate\Database\SQLiteConnection;
+use Illuminate\Database\Schema\Grammars\Grammar;
 
 class Blueprint
 {
@@ -1178,17 +1178,6 @@ class Blueprint
     public function multiPolygon($column)
     {
         return $this->addColumn('multipolygon', $column);
-    }
-
-    /**
-     * Create a new multipolygon column on the table.
-     *
-     * @param  string  $column
-     * @return \Illuminate\Database\Schema\ColumnDefinition
-     */
-    public function multiPolygonZ($column)
-    {
-        return $this->addColumn('multipolygonz', $column);
     }
 
     /**

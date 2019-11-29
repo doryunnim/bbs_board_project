@@ -3,16 +3,16 @@
 namespace Illuminate\Foundation\Testing;
 
 use Closure;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+use Illuminate\Support\Carbon;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Testing\Assert as PHPUnit;
-use Illuminate\Foundation\Testing\Constraints\SeeInOrder;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Str;
-use Illuminate\Support\Traits\Macroable;
 use Illuminate\Support\Traits\Tappable;
+use Illuminate\Support\Traits\Macroable;
+use Illuminate\Foundation\Testing\Assert as PHPUnit;
 use Symfony\Component\HttpFoundation\StreamedResponse;
+use Illuminate\Foundation\Testing\Constraints\SeeInOrder;
 
 /**
  * @mixin \Illuminate\Http\Response
@@ -85,38 +85,6 @@ class TestResponse
             $this->isOk(),
             'Response status code ['.$this->getStatusCode().'] does not match expected 200 status code.'
         );
-
-        return $this;
-    }
-
-    /**
-     * Assert that the response has a 201 status code.
-     *
-     * @return $this
-     */
-    public function assertCreated()
-    {
-        $actual = $this->getStatusCode();
-
-        PHPUnit::assertTrue(
-            201 === $actual,
-            'Response status code ['.$actual.'] does not match expected 201 status code.'
-        );
-
-        return $this;
-    }
-
-    /**
-     * Assert that the response has the given status code and no content.
-     *
-     * @param  int  $status
-     * @return $this
-     */
-    public function assertNoContent($status = 204)
-    {
-        $this->assertStatus($status);
-
-        PHPUnit::assertEmpty($this->getContent(), 'Response content is not empty.');
 
         return $this;
     }
@@ -497,25 +465,6 @@ class TestResponse
     }
 
     /**
-     * Assert that the expected value exists at the given path in the response.
-     *
-     * @param  string  $path
-     * @param  mixed  $expect
-     * @param  bool  $strict
-     * @return $this
-     */
-    public function assertJsonPath($path, $expect, $strict = false)
-    {
-        if ($strict) {
-            PHPUnit::assertSame($expect, $this->json($path));
-        } else {
-            PHPUnit::assertEquals($expect, $this->json($path));
-        }
-
-        return $this;
-    }
-
-    /**
      * Assert that the response has the exact given JSON.
      *
      * @param  array  $data
@@ -703,16 +652,15 @@ class TestResponse
      * Assert that the response has the given JSON validation errors.
      *
      * @param  string|array  $errors
-     * @param  string  $responseKey
      * @return $this
      */
-    public function assertJsonValidationErrors($errors, $responseKey = 'errors')
+    public function assertJsonValidationErrors($errors)
     {
         $errors = Arr::wrap($errors);
 
         PHPUnit::assertNotEmpty($errors, 'No validation errors were provided.');
 
-        $jsonErrors = $this->json()[$responseKey] ?? [];
+        $jsonErrors = $this->json()['errors'] ?? [];
 
         $errorMessage = $jsonErrors
                 ? 'Response has the following JSON validation errors:'.
@@ -752,10 +700,9 @@ class TestResponse
      * Assert that the response has no JSON validation errors for the given keys.
      *
      * @param  string|array|null  $keys
-     * @param  string  $responseKey
      * @return $this
      */
-    public function assertJsonMissingValidationErrors($keys = null, $responseKey = 'errors')
+    public function assertJsonMissingValidationErrors($keys = null)
     {
         if ($this->getContent() === '') {
             PHPUnit::assertTrue(true);
@@ -765,13 +712,13 @@ class TestResponse
 
         $json = $this->json();
 
-        if (! array_key_exists($responseKey, $json)) {
-            PHPUnit::assertArrayNotHasKey($responseKey, $json);
+        if (! array_key_exists('errors', $json)) {
+            PHPUnit::assertArrayNotHasKey('errors', $json);
 
             return $this;
         }
 
-        $errors = $json[$responseKey];
+        $errors = $json['errors'];
 
         if (is_null($keys) && count($errors) > 0) {
             PHPUnit::fail(

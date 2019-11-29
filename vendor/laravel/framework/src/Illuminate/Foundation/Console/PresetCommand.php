@@ -2,8 +2,8 @@
 
 namespace Illuminate\Foundation\Console;
 
-use Illuminate\Console\Command;
 use InvalidArgumentException;
+use Illuminate\Console\Command;
 
 class PresetCommand extends Command
 {

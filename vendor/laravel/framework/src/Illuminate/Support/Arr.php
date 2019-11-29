@@ -3,8 +3,8 @@
 namespace Illuminate\Support;
 
 use ArrayAccess;
-use Illuminate\Support\Traits\Macroable;
 use InvalidArgumentException;
+use Illuminate\Support\Traits\Macroable;
 
 class Arr
 {
@@ -172,7 +172,7 @@ class Arr
         }
 
         foreach ($array as $key => $value) {
-            if ($callback($value, $key)) {
+            if (call_user_func($callback, $value, $key)) {
                 return $value;
             }
         }
@@ -275,7 +275,7 @@ class Arr
      * Get an item from an array using "dot" notation.
      *
      * @param  \ArrayAccess|array  $array
-     * @param  string|int|null  $key
+     * @param  string|int  $key
      * @param  mixed   $default
      * @return mixed
      */

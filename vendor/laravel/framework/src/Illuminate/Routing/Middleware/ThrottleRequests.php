@@ -3,12 +3,12 @@
 namespace Illuminate\Routing\Middleware;
 
 use Closure;
-use Illuminate\Cache\RateLimiter;
-use Illuminate\Http\Exceptions\ThrottleRequestsException;
-use Illuminate\Support\InteractsWithTime;
-use Illuminate\Support\Str;
 use RuntimeException;
+use Illuminate\Support\Str;
+use Illuminate\Cache\RateLimiter;
+use Illuminate\Support\InteractsWithTime;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Http\Exceptions\ThrottleRequestsException;
 
 class ThrottleRequests
 {
@@ -39,14 +39,13 @@ class ThrottleRequests
      * @param  \Closure  $next
      * @param  int|string  $maxAttempts
      * @param  float|int  $decayMinutes
-     * @param  string  $prefix
      * @return \Symfony\Component\HttpFoundation\Response
      *
      * @throws \Illuminate\Http\Exceptions\ThrottleRequestsException
      */
-    public function handle($request, Closure $next, $maxAttempts = 60, $decayMinutes = 1, $prefix = '')
+    public function handle($request, Closure $next, $maxAttempts = 60, $decayMinutes = 1)
     {
-        $key = $prefix.$this->resolveRequestSignature($request);
+        $key = $this->resolveRequestSignature($request);
 
         $maxAttempts = $this->resolveMaxAttempts($request, $maxAttempts);
 

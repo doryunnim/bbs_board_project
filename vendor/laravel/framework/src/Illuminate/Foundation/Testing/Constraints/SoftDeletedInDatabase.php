@@ -29,27 +29,17 @@ class SoftDeletedInDatabase extends Constraint
     protected $data;
 
     /**
-     * The name of the column that indicates soft deletion has occurred.
-     *
-     * @var string
-     */
-    protected $deletedAtColumn;
-
-    /**
      * Create a new constraint instance.
      *
      * @param  \Illuminate\Database\Connection  $database
      * @param  array  $data
-     * @param  string  $deletedAtColumn
      * @return void
      */
-    public function __construct(Connection $database, array $data, string $deletedAtColumn)
+    public function __construct(Connection $database, array $data)
     {
         $this->data = $data;
 
         $this->database = $database;
-
-        $this->deletedAtColumn = $deletedAtColumn;
     }
 
     /**
@@ -61,9 +51,7 @@ class SoftDeletedInDatabase extends Constraint
     public function matches($table): bool
     {
         return $this->database->table($table)
-                ->where($this->data)
-                ->whereNotNull($this->deletedAtColumn)
-                ->count() > 0;
+                ->where($this->data)->whereNotNull('deleted_at')->count() > 0;
     }
 
     /**
@@ -88,18 +76,16 @@ class SoftDeletedInDatabase extends Constraint
      */
     protected function getAdditionalInfo($table)
     {
-        $query = $this->database->table($table);
-
-        $results = $query->limit($this->show)->get();
+        $results = $this->database->table($table)->get();
 
         if ($results->isEmpty()) {
             return 'The table is empty';
         }
 
-        $description = 'Found: '.json_encode($results, JSON_PRETTY_PRINT);
+        $description = 'Found: '.json_encode($results->take($this->show), JSON_PRETTY_PRINT);
 
-        if ($query->count() > $this->show) {
-            $description .= sprintf(' and %s others', $query->count() - $this->show);
+        if ($results->count() > $this->show) {
+            $description .= sprintf(' and %s others', $results->count() - $this->show);
         }
 
         return $description;

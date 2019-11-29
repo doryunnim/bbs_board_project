@@ -2,9 +2,9 @@
 
 namespace Illuminate\Foundation\Auth;
 
-use Illuminate\Auth\Access\AuthorizationException;
-use Illuminate\Auth\Events\Verified;
 use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Verified;
+use Illuminate\Auth\Access\AuthorizationException;
 
 trait VerifiesEmails
 {
@@ -32,11 +32,7 @@ trait VerifiesEmails
      */
     public function verify(Request $request)
     {
-        if (! hash_equals((string) $request->route('id'), (string) $request->user()->getKey())) {
-            throw new AuthorizationException;
-        }
-
-        if (! hash_equals((string) $request->route('hash'), sha1($request->user()->getEmailForVerification()))) {
+        if ($request->route('id') != $request->user()->getKey()) {
             throw new AuthorizationException;
         }
 

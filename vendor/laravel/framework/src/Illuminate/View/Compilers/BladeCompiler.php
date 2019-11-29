@@ -326,7 +326,7 @@ class BladeCompiler extends Compiler implements CompilerInterface
     protected function compileExtensions($value)
     {
         foreach ($this->extensions as $compiler) {
-            $value = $compiler($value, $this);
+            $value = call_user_func($compiler, $value, $this);
         }
 
         return $value;
@@ -433,12 +433,6 @@ class BladeCompiler extends Compiler implements CompilerInterface
             return $expression !== ''
                     ? "<?php if (\Illuminate\Support\Facades\Blade::check('{$name}', {$expression})): ?>"
                     : "<?php if (\Illuminate\Support\Facades\Blade::check('{$name}')): ?>";
-        });
-
-        $this->directive('unless'.$name, function ($expression) use ($name) {
-            return $expression !== ''
-                ? "<?php if (! \Illuminate\Support\Facades\Blade::check('{$name}', {$expression})): ?>"
-                : "<?php if (! \Illuminate\Support\Facades\Blade::check('{$name}')): ?>";
         });
 
         $this->directive('else'.$name, function ($expression) use ($name) {

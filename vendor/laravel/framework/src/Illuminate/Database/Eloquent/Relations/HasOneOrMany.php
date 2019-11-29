@@ -2,9 +2,9 @@
 
 namespace Illuminate\Database\Eloquent\Relations;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 
 abstract class HasOneOrMany extends Relation
 {
@@ -285,10 +285,10 @@ abstract class HasOneOrMany extends Relation
     /**
      * Create a Collection of new instances of the related model.
      *
-     * @param  iterable  $records
+     * @param  array  $records
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function createMany(iterable $records)
+    public function createMany(array $records)
     {
         $instances = $this->related->newCollection();
 
