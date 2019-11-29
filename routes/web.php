@@ -20,10 +20,3 @@ Route::resource('qnaArticles.qnaComments', 'QnaCommentsController', ['only' => '
 
 DB::listen(function ($query){
 });
-
-Route::resource('articles','NabeJapanController');
-Route::resource('qnaArticles','QnaArticlesController');
-Route::resource('introduces', 'NabeIntroduceController');
-
-DB::listen(function ($query){
-});
