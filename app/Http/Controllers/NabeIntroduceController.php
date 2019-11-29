@@ -50,6 +50,7 @@ class NabeIntroduceController extends Controller
 
     public function edit(NabeIntroduce $introduce)
     {
+        
         return view('introduce.edit', compact('introduce'));
     }
 

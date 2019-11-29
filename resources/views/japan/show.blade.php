@@ -4,7 +4,11 @@
     @if($japan->attachments->count())
         <ul class="attachment__article">
             @foreach($japan->attachments as $attachment)
+<<<<<<< HEAD
                 <img src="{{$attachment->url}}" class="row">
+=======
+                <img src="{{ $attachment->url }}" class="img-fluid">
+>>>>>>> 129dfba387701ba2b082403cc0cb0b12c2f78878
             @endforeach
         </ul>
     @endif
