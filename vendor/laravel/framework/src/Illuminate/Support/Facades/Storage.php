@@ -15,20 +15,18 @@ class Storage extends Facade
      * Replace the given disk with a local testing disk.
      *
      * @param  string|null  $disk
-     * @param  array  $config
-     * @return \Illuminate\Contracts\Filesystem\Filesystem
+     *
+     * @return \Illuminate\Filesystem\Filesystem
      */
-    public static function fake($disk = null, array $config = [])
+    public static function fake($disk = null)
     {
-        $disk = $disk ?: static::$app['config']->get('filesystems.default');
+        $disk = $disk ?: self::$app['config']->get('filesystems.default');
 
         (new Filesystem)->cleanDirectory(
             $root = storage_path('framework/testing/disks/'.$disk)
         );
 
-        static::set($disk, $fake = static::createLocalDriver(array_merge($config, [
-            'root' => $root,
-        ])));
+        static::set($disk, $fake = self::createLocalDriver(['root' => $root]));
 
         return $fake;
     }
@@ -37,16 +35,15 @@ class Storage extends Facade
      * Replace the given disk with a persistent local testing disk.
      *
      * @param  string|null  $disk
-     * @param  array  $config
-     * @return \Illuminate\Contracts\Filesystem\Filesystem
+     * @return \Illuminate\Filesystem\Filesystem
      */
-    public static function persistentFake($disk = null, array $config = [])
+    public static function persistentFake($disk = null)
     {
-        $disk = $disk ?: static::$app['config']->get('filesystems.default');
+        $disk = $disk ?: self::$app['config']->get('filesystems.default');
 
-        static::set($disk, $fake = static::createLocalDriver(array_merge($config, [
+        static::set($disk, $fake = self::createLocalDriver([
             'root' => storage_path('framework/testing/disks/'.$disk),
-        ])));
+        ]));
 
         return $fake;
     }

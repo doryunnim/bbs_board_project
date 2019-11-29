@@ -21,6 +21,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/navcss.css') }}">
     <link rel="stylesheet" href="{{ asset('css/headercss.css') }}">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     <!-- <link href="{{ asset('css/servcss.css') }}" rel="stylesheet">
         이 css쓰면 조원소개 사진크기가 이상해져서 일단 app.css로 대체했음 
@@ -36,14 +37,14 @@
     <!--Navigation-->
     <nav id="mainNav" class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="{{route('home')}}">1조 홈페이지</a>
+            <a class="navbar-brand js-scroll-trigger" href="{{ route('home') }}">1조 홈페이지</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu
                 <i class="fas fa-bars"></i>
             </button>
             <div class="navbar-collapse collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{{route('introduce.index')}}">조원소개</a>
+                        <a class="nav-link js-scroll-trigger" href="{{route('introduces.index')}}">조원소개</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="#">현지학기제</a>
@@ -83,14 +84,11 @@
                 <li class="nav-item auth">
                     <a class="nav-link js-scroll-trigger" href="{{route('login')}}">로그인/로그아웃</a>
                 </li>                
--->
+                    -->
                 </ul>
             </div>
         </div>
     </nav>
-    <!-- ->네비게이션바에 가려져서 일단 공백처리했음 -->
-    <br><br><br><br>
-
     @if(session()->has('flash_message'))
         <div id="message_id" class="alert alert-info" role="alert">
             {{ session('flash_message') }}

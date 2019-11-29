@@ -2,16 +2,15 @@
 
 namespace Illuminate\Foundation\Testing;
 
+use Mockery;
 use Carbon\Carbon;
 use Carbon\CarbonImmutable;
-use Illuminate\Console\Application as Artisan;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\Str;
-use Mockery;
+use Illuminate\Support\Facades\Facade;
+use Illuminate\Database\Eloquent\Model;
 use Mockery\Exception\InvalidCountException;
+use Illuminate\Console\Application as Artisan;
 use PHPUnit\Framework\TestCase as BaseTestCase;
-use Throwable;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -82,7 +81,7 @@ abstract class TestCase extends BaseTestCase
         $this->setUpTraits();
 
         foreach ($this->afterApplicationCreatedCallbacks as $callback) {
-            $callback();
+            call_user_func($callback);
         }
 
         Facade::clearResolvedInstances();
@@ -206,7 +205,7 @@ abstract class TestCase extends BaseTestCase
         $this->afterApplicationCreatedCallbacks[] = $callback;
 
         if ($this->setUpHasRun) {
-            $callback();
+            call_user_func($callback);
         }
     }
 
@@ -230,8 +229,8 @@ abstract class TestCase extends BaseTestCase
     {
         foreach ($this->beforeApplicationDestroyedCallbacks as $callback) {
             try {
-                $callback();
-            } catch (Throwable $e) {
+                call_user_func($callback);
+            } catch (\Throwable $e) {
                 if (! $this->callbackException) {
                     $this->callbackException = $e;
                 }

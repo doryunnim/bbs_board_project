@@ -3,8 +3,8 @@
 namespace Illuminate\Database\Eloquent;
 
 use Faker\Generator as Faker;
-use Illuminate\Support\Traits\Macroable;
 use InvalidArgumentException;
+use Illuminate\Support\Traits\Macroable;
 
 class FactoryBuilder
 {
@@ -344,7 +344,10 @@ class FactoryBuilder
             return $stateAttributes;
         }
 
-        return $stateAttributes($this->faker, $attributes);
+        return call_user_func(
+            $stateAttributes,
+            $this->faker, $attributes
+        );
     }
 
     /**

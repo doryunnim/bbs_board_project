@@ -2,8 +2,8 @@
 
 namespace Illuminate\Broadcasting\Broadcasters;
 
-use Illuminate\Contracts\Redis\Factory as Redis;
 use Illuminate\Support\Arr;
+use Illuminate\Contracts\Redis\Factory as Redis;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class RedisBroadcaster extends Broadcaster
@@ -25,24 +25,15 @@ class RedisBroadcaster extends Broadcaster
     protected $connection;
 
     /**
-     * The Redis key prefix.
-     *
-     * @var string
-     */
-    protected $prefix;
-
-    /**
      * Create a new broadcaster instance.
      *
      * @param  \Illuminate\Contracts\Redis\Factory  $redis
      * @param  string|null  $connection
-     * @param  string  $prefix
      * @return void
      */
-    public function __construct(Redis $redis, $connection = null, $prefix = '')
+    public function __construct(Redis $redis, $connection = null)
     {
         $this->redis = $redis;
-        $this->prefix = $prefix;
         $this->connection = $connection;
     }
 
@@ -56,9 +47,7 @@ class RedisBroadcaster extends Broadcaster
      */
     public function auth($request)
     {
-        $channelName = $this->normalizeChannelName(
-            str_replace($this->prefix, '', $request->channel_name)
-        );
+        $channelName = $this->normalizeChannelName($request->channel_name);
 
         if ($this->isGuardedChannel($request->channel_name) &&
             ! $this->retrieveUser($request, $channelName)) {

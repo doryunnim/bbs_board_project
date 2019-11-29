@@ -2,9 +2,9 @@
 
 namespace Illuminate\Routing;
 
-use Illuminate\Support\Str;
-use ReflectionFunction;
 use ReflectionMethod;
+use ReflectionFunction;
+use Illuminate\Support\Str;
 
 class RouteSignatureParameters
 {

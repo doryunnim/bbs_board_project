@@ -3,8 +3,8 @@
 namespace Illuminate\Notifications\Console;
 
 use Illuminate\Console\Command;
-use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Composer;
+use Illuminate\Filesystem\Filesystem;
 
 class NotificationTableCommand extends Command
 {

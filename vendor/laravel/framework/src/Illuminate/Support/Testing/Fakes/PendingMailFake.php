@@ -2,8 +2,8 @@
 
 namespace Illuminate\Support\Testing\Fakes;
 
-use Illuminate\Contracts\Mail\Mailable;
 use Illuminate\Mail\PendingMail;
+use Illuminate\Contracts\Mail\Mailable;
 
 class PendingMailFake extends PendingMail
 {
