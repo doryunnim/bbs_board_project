@@ -9,11 +9,6 @@
         <h3>현지학기제</h3>
     </div>
 
-    @if($japans->count())
-        <div class="text-center">
-            {!! $japans->appends((Request::except('page')))->render() !!}
-        </div>
-    @endif
     <!-- <button class="btn btn-info test">Ajax Test</button> -->
 </div>
 <div class="contains">
@@ -25,6 +20,11 @@
         
     </div>
     <aside class="side-bar">
+    @if($japans->count())
+        <div class="text-center">
+            {!! $japans->appends((Request::except('page')))->render() !!}
+        </div>
+    @endif
         <div class="row">
             <div class="col">
                 <a href="{{route('japan.create')}}" class="btn btn-info m-b create"><img src="img/add.png"></a>
