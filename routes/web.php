@@ -13,6 +13,9 @@ Route::resource('articles','NabeJapanController');
 
 Route::resource('qnaArticles','QnaArticlesController');
 
+Route::resource('qnaComments', 'QnaCommentsController', ['only' => ['update', 'destroy']]);
+Route::resource('qnaArticles.qnaComments', 'QnaCommentsController', ['only' => 'store']);
+
 Route::resource('introduce', 'NabeIntroduceController');
 
 DB::listen(function ($query){

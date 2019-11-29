@@ -45,4 +45,9 @@ class User extends Authenticatable
     public function isAdmin(){
         return ($this->id ===1) ? true : false;
     }
+
+    public function qna_comments()
+    {
+        return $this->hasMany(Qna_comment::class);
+    }
 }

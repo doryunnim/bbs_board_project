@@ -29,6 +29,7 @@ class RouteServiceProvider extends ServiceProvider
         
         Route::model('japan', \App\NabeJapan::class);   //{article} 파라미터를 연결하는 구문
         Route::model('qnaArticles', \App\Qna_article::class);
+        Route::model('qnaComments', \App\Qna_comment::class);
     }
 
     /**
