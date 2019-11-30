@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit3b9eaa0b28b50ed1c57bf72bb9656963
+class ComposerStaticInitcf36b38a7147398b8fe6e81d4e726a61
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -623,6 +623,7 @@ class ComposerStaticInit3b9eaa0b28b50ed1c57bf72bb9656963
         'Facade\\FlareClient\\Context\\ContextInterface' => __DIR__ . '/..' . '/facade/flare-client-php/src/Context/ContextInterface.php',
         'Facade\\FlareClient\\Context\\RequestContext' => __DIR__ . '/..' . '/facade/flare-client-php/src/Context/RequestContext.php',
         'Facade\\FlareClient\\Contracts\\ProvidesFlareContext' => __DIR__ . '/..' . '/facade/flare-client-php/src/Contracts/ProvidesFlareContext.php',
+        'Facade\\FlareClient\\Enums\\GroupingTypes' => __DIR__ . '/..' . '/facade/flare-client-php/src/Enums/GroupingTypes.php',
         'Facade\\FlareClient\\Enums\\MessageLevels' => __DIR__ . '/..' . '/facade/flare-client-php/src/Enums/MessageLevels.php',
         'Facade\\FlareClient\\Flare' => __DIR__ . '/..' . '/facade/flare-client-php/src/Flare.php',
         'Facade\\FlareClient\\Frame' => __DIR__ . '/..' . '/facade/flare-client-php/src/Frame.php',
@@ -698,6 +699,7 @@ class ComposerStaticInit3b9eaa0b28b50ed1c57bf72bb9656963
         'Facade\\Ignition\\Middleware\\AddLogs' => __DIR__ . '/..' . '/facade/ignition/src/Middleware/AddLogs.php',
         'Facade\\Ignition\\Middleware\\AddQueries' => __DIR__ . '/..' . '/facade/ignition/src/Middleware/AddQueries.php',
         'Facade\\Ignition\\Middleware\\AddSolutions' => __DIR__ . '/..' . '/facade/ignition/src/Middleware/AddSolutions.php',
+        'Facade\\Ignition\\Middleware\\CustomizeGrouping' => __DIR__ . '/..' . '/facade/ignition/src/Middleware/CustomizeGrouping.php',
         'Facade\\Ignition\\Middleware\\SetNotifierName' => __DIR__ . '/..' . '/facade/ignition/src/Middleware/SetNotifierName.php',
         'Facade\\Ignition\\QueryRecorder\\Query' => __DIR__ . '/..' . '/facade/ignition/src/QueryRecorder/Query.php',
         'Facade\\Ignition\\QueryRecorder\\QueryRecorder' => __DIR__ . '/..' . '/facade/ignition/src/QueryRecorder/QueryRecorder.php',
@@ -4304,10 +4306,10 @@ class ComposerStaticInit3b9eaa0b28b50ed1c57bf72bb9656963
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit3b9eaa0b28b50ed1c57bf72bb9656963::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit3b9eaa0b28b50ed1c57bf72bb9656963::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit3b9eaa0b28b50ed1c57bf72bb9656963::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit3b9eaa0b28b50ed1c57bf72bb9656963::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitcf36b38a7147398b8fe6e81d4e726a61::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitcf36b38a7147398b8fe6e81d4e726a61::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitcf36b38a7147398b8fe6e81d4e726a61::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitcf36b38a7147398b8fe6e81d4e726a61::$classMap;
 
         }, null, ClassLoader::class);
     }

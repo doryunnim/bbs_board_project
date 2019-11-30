@@ -4,11 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
     "content-hash": "6dbff1cdfce667fe7968c26159f3e42b",
-=======
-    "content-hash": "889608974ffd012cdd3d5086c67c1111",
->>>>>>> 129dfba387701ba2b082403cc0cb0b12c2f78878
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1169,16 +1165,16 @@
         },
         {
             "name": "opis/closure",
-            "version": "3.4.2",
+            "version": "3.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/opis/closure.git",
-                "reference": "27fdc275b7963492d0bf0852525da57ff2be67a0"
+                "reference": "93ebc5712cdad8d5f489b500c59d122df2e53969"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/opis/closure/zipball/27fdc275b7963492d0bf0852525da57ff2be67a0",
-                "reference": "27fdc275b7963492d0bf0852525da57ff2be67a0",
+                "url": "https://api.github.com/repos/opis/closure/zipball/93ebc5712cdad8d5f489b500c59d122df2e53969",
+                "reference": "93ebc5712cdad8d5f489b500c59d122df2e53969",
                 "shasum": ""
             },
             "require": {
@@ -1191,7 +1187,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.4.x-dev"
+                    "dev-master": "3.5.x-dev"
                 }
             },
             "autoload": {
@@ -1226,7 +1222,7 @@
                 "serialization",
                 "serialize"
             ],
-            "time": "2019-11-29T11:33:32+00:00"
+            "time": "2019-11-29T22:36:02+00:00"
         },
         {
             "name": "paragonie/random_compat",
