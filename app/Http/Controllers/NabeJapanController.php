@@ -12,7 +12,6 @@ use File;
 
 class NabeJapanController extends Controller
 {
-    //
     /**
      * Display a listing of the resource.
      *
@@ -43,7 +42,7 @@ class NabeJapanController extends Controller
      */
     public function store(Request $request)
     {
-        $japan = \App\NabeJapan::create($request->all());  
+        $japan = \App\NabeJapan::create($request->all());
 
         $rules = [
             'title'=>['required'],
@@ -53,10 +52,8 @@ class NabeJapanController extends Controller
 
         if($request->hasFile('imgs')){
             $imgs = $request->file('imgs');
-
             foreach($imgs as $img){
                 $imgName = $img->store('public');
-
                 $japan->attachments()->create([
                     'filename'=>Storage::url($imgName),
                     'bytes'=>$img->getSize(),
@@ -66,7 +63,6 @@ class NabeJapanController extends Controller
         }
 
         $validator = \Validator::make($request->all(), $rules);
-
         if($validator->fails()){
             return back()->withErrors($validator)->withInput();
         }
@@ -74,7 +70,7 @@ class NabeJapanController extends Controller
         if(!$japan){
             return back();
         }
-
+        
         return redirect(route('japan.show', $japan->id));
     }
 

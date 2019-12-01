@@ -14,7 +14,7 @@
 
     <small class="text-right">{{$japan->created_at}}</small>
     
-    <article class="m-b">
+    <article class="m-b" data-id="{{$japan->id}}" data-password="{{$japan->password}}">
         <h5>{!! markdown($japan->content) !!}</h5>
     </article>
 
@@ -24,11 +24,6 @@
         <a  href="{{route('japan.edit', $japan->id)}}" class="btn btn-info offset-9-5">수정</a>
         <!-- <button class="btn btn-info button__edit offset-9-5" @click="onEdit()">수정</button> -->
 
-        <!-- <form action="{{route('japan.destroy', $japan->id)}}" method="post" class="del-btn">
-            @csrf
-            @method('DELETE')
-            <button class="button__delete btn btn-danger">삭제</button>
-        </form> -->
         <button class="button__delete btn btn-danger del-btn">삭제</button>
     </div>
 
@@ -58,20 +53,33 @@
     });
 
     $('.button__delete').on('click', function() {
-        var japan = $('japan');
-        var str = JSON.stringify(japan);
-        var jsn = JSON.parse(str);
-        console.log('japan:'+str);
+        var japanId = $('article').data('id');
+        var japanpw = $('article').data('password');
+        console.log(japanpw);
 
-        if(confirm("Delete")) {
-            $.ajax({
-                type: 'DELETE',
-                success: function(data) {
-                    console.log(data)
-                }
-            }).then(function() {
-                window.location.href = '/japan';
-            });
+        var pw_check = prompt("비밀번호 확인", "");
+
+        if(pw_check == "") {
+            alert("작성 글 비밀번호를 입력하시오");
+        } 
+        else if (pw_check == null) {
+                alert("삭제 취소");
+        } 
+        else if (pw_check != "") {
+
+            if(pw_check != japanpw) {
+                alert("작성 글 비밀번호를 틀렸습니다");
+            } 
+
+            else {
+                alert("작성 글을 삭제합니다");
+                $.ajax({
+                    type: 'DELETE',
+                    url: '/japan/'+japanId
+                }).then(function() {
+                    window.location.href = '/japan';
+                });
+            }
         }
     });
   });
