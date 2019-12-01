@@ -16,6 +16,7 @@
         {!! $errors->first('password', '<span class="form-error">:message</span>') !!}
 </div>
 
+<<<<<<< HEAD
 <div class="form-group1 {{ $errors->has('files') ? 'has-error' : '' }}">
     <label class="left30" for="files">파일</label>
     <input type="file" name="files[]" id="files" class="form-control" multiple="multiple" />
@@ -23,4 +24,10 @@
     <label for="files">파일 업로드</label>
     <input type="file" name="files[]" id="files" multiple="multiple" /> -->
         {!! $errors->first('files.0', '<span class="form-error">:message</span>') !!}
+=======
+<div class="form-group filebox {{ $errors->has('imgs') ? 'has-error' : '' }}">
+    <label for="imgs">파일 업로드</label>
+    <input type="file" name="imgs[]" id="imgs" multiple="multiple" />
+        {!! $errors->first('imgs.0', '<span class="form-error">:message</span>') !!}
+>>>>>>> 6476852aa6d152dfc674eb8220d0bceabcfbfdc1
 </div>

@@ -20,8 +20,10 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
-        'articles',
-        'articles/*',
+        'introduces',
+        'introduces/*',
+        'japan',
+        'japan/*',
         'qnaArticles',
         'qnaArticles/*'
     ];

@@ -36,3 +36,18 @@ $factory->define(App\Qna_article::class, function (Faker $faker) {
     ];
 });
 
+$factory->define(App\Qna_comment::class, function (Faker $faker){
+    $articleIds = App\Qna_article::pluck('id')->toArray();
+    $userIds = App\User::pluck('id')->toArray();
+
+    return [
+        'content' => $faker->paragraph,
+        'commentable_type' => App\Qna_article::class,
+        'commentable_id' => function() use ($faker, $articleIds){
+            return $faker->randomElement($articleIds);
+        },
+        'user_id' => function() use ($faker, $userIds){
+            return $faker->randomElement($userIds);
+        },
+    ];
+});

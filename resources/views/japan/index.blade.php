@@ -25,6 +25,7 @@
             {!! $japans->appends((Request::except('page')))->render() !!}
         </div>
     @endif
+<<<<<<< HEAD
         <div class="row">
             <div class="col">
                 <a href="{{route('japan.create')}}" class="btn btn-info m-b create"><img src="img/add.png"></a>
@@ -35,6 +36,8 @@
                 @endforelse
         </div>
     </aside>
+=======
+>>>>>>> 6476852aa6d152dfc674eb8220d0bceabcfbfdc1
 </div>
 
 @stop

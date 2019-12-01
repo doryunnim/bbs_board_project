@@ -20,15 +20,14 @@ class QnaArticlesController extends Controller
         // $qnaArticles = \App\Qna_article::get();
         // $qnaArticles->load('user');
         // 페이징
-        $qnaArticles = \App\Qna_article::latest()->paginate(3);
+        $qnaArticles = \App\Qna_article::latest()->paginate(5);
         return view('qnaArticles.index', compact('qnaArticles'));
-    
     }
 
     public function create()
     {
-        $qnaARticle = new \App\Qna_article;
-        return view("qnaArticles.create", compact('article'));
+        $qnaArticle = new \App\Qna_article;
+        return view("qnaArticles.create", compact('qnaArticle'));
     }
 
     public function store(\App\Http\Requests\QnaArticlesRequest $request)
@@ -57,7 +56,7 @@ class QnaArticlesController extends Controller
         // $qnaArticles = \App\User::find(1)->qna_article()->create($request->all());
         $qnaArticle = $request->user()->qna_article()->create($request->all());
         // 성공적으로 저장되면 변수에 새로운 인스턴스 추가
-        if(!$qnaArticles){
+        if(!$qnaArticle){
             return back()->with('flash_message', '글이 저장되지 않았데스케레도모...')->withInput();
         }
         return redirect(route('qnaArticles.index'))->with('flash_message', '글이 저장되었습니다.');
@@ -68,17 +67,19 @@ class QnaArticlesController extends Controller
     {
         //qnaArticle 글하나만 불러옴 밑에 qnaArticles 글 여러개 불러옴
         // $qnaArticles = \App\Qna_article::get();
-        return view('qnaArticles.show', compact('qnaArticle'));
+
+        $qnaComments = $qnaArticle->qna_comments()->with('replies')->whereNull('parent_id')->latest()->get();
+        return view('qnaArticles.show', compact('qnaArticle', 'qnaComments'));
+
     }
 
 
     public function edit(Qna_article $qnaArticle)
     {
-        $this->authorize('update', $article);
-        // return view('qnaArticles.edit', compact('qnaArticle'));
+        // $this->authorize('update', $article);
+        return view('qnaArticles.edit', compact('qnaArticle'));
     }
-
-
+ 
     public function update(Request $request, Qna_article $qnaArticle)
     {
         $qnaArticle->update($request->all());
@@ -86,10 +87,10 @@ class QnaArticlesController extends Controller
     }
 
 
-    public function destroy(Qna_article $qnaArticle)
+    public function destroy(\App\Qna_article $qnaArticle)
     {
-        $this->authorize('update', $article);
-        // $qnaArticle->delete();
-        // return response()->json([],204);
+        // $this->authorize('delete', $article);
+        $qnaArticle->delete();
+        return response()->json([],204);
     }
 }

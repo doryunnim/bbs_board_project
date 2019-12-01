@@ -3,6 +3,16 @@
 <link href="{{ asset('css/japan.css') }}" rel="stylesheet">
 <link href="{{ asset('css/headercss.css') }}" rel="stylesheet">
 <div class="container">
+<<<<<<< HEAD
+=======
+    @if($japan->attachments->count())
+        <ul class="attachment__article">
+            @foreach($japan->attachments as $attachment)
+                <img src="{{ $attachment->filename }}" class="img-fluid">
+            @endforeach
+        </ul>
+    @endif
+>>>>>>> 6476852aa6d152dfc674eb8220d0bceabcfbfdc1
     <div class="page-header">
         <h3>현지학기제</h3>
     </div>

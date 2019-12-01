@@ -6,7 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Qna_article extends Model
 {
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = ['title', 'content'];
+    /**
+     * The relations to eager load on every query.
+     *
+     * @var array
+     */
     protected $with = ['user'];
 
     public function user()
@@ -14,10 +24,9 @@ class Qna_article extends Model
         return $this->belongsTo(User::class);
     }
 
-    
 
-    public function qna_comment()
+    public function qna_comments()
     {
-        return $this->belongsToMany(Qna_comment::class);
+        return $this->morphMany(Qna_comment::class, 'commentable');
     }
 }

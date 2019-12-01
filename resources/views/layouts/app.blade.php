@@ -17,11 +17,29 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<!-- 
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/app.js') }}" defer></script>
+ -->
 
     <!-- Styles -->
+<<<<<<< HEAD
     <link href="{{ asset('css/navcss.css') }}" rel="stylesheet">
     <link href="{{ asset('css/headercss.css') }}" rel="stylesheet">
     <link href="{{ asset('css/servcss.css') }}" rel="stylesheet">
+=======
+    <link rel="stylesheet" href="{{ asset('css/navcss.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/headercss.css') }}">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <!-- <link href="{{ asset('css/servcss.css') }}" rel="stylesheet">
+        이 css쓰면 조원소개 사진크기가 이상해져서 일단 app.css로 대체했음 
+        나중에 css 하실 때 수정하시기 바랍니다.
+     -->
+    
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+>>>>>>> 6476852aa6d152dfc674eb8220d0bceabcfbfdc1
     
     
 
@@ -31,14 +49,18 @@
         <!--Navigation-->
         <nav id="mainNav" class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
+<<<<<<< HEAD
             <a class="navbar-brand js-scroll-trigger" href="{{ url('/') }}">1조 홈페이지</a>
+=======
+            <a class="navbar-brand js-scroll-trigger" href="{{ route('home') }}">1조 홈페이지</a>
+>>>>>>> 6476852aa6d152dfc674eb8220d0bceabcfbfdc1
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu
                 <i class="fas fa-bars"></i>
             </button>        
             <div class="navbar-collapse collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{{route('introduce.index')}}">조원소개</a>
+                        <a class="nav-link js-scroll-trigger" href="{{route('introduces.index')}}">조원소개</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{route('japan.index')}}">현지학기제</a>
@@ -75,11 +97,23 @@
                             <!-- </div> -->
                         </li>
                     @endguest
+<<<<<<< HEAD
                 </ul>
             </div>
         </div>
         </nav>
 
+=======
+                    <!--
+                <li class="nav-item auth">
+                    <a class="nav-link js-scroll-trigger" href="{{route('login')}}">로그인/로그아웃</a>
+                </li>                
+                    -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+>>>>>>> 6476852aa6d152dfc674eb8220d0bceabcfbfdc1
     @if(session()->has('flash_message'))
         <div id="message_id" class="alert alert-info" role="alert">
             {{ session('flash_message') }}

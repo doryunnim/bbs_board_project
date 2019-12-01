@@ -16,9 +16,10 @@
 
     <div class="row mb-4">
         <div class="col-md-4 offset-md-4">
-            <form action="{{ route('introduce.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('introduces.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
+                <br><br><br><br>
                     <input type="file" name="photo" class="form-control-file"><br><br>
                     <input type="text" name="name" placeholder="name"><br><br>
                     <input type="text" name="comment" placeholder="comment"><br><br>
