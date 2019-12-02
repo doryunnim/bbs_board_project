@@ -8,10 +8,10 @@
     
     <form action="{{ route('japan.store') }}" method="post" enctype="multipart/form-data">
         {!! csrf_field() !!}
-        @include('japan.partial.form')
-
         <div class="form-group">
+            @include('japan.partial.form')
             <button type="submit" class="btn btn-primary">저장</button>
+            <!-- <button type="button" class="btn btn-primary">저장</button> -->
         </div>
     </form>
 </div>
@@ -28,4 +28,32 @@
         </div>
     </div>
 </aside>
+@stop
+
+@section('script')
+<script>
+  $(document).ready(function () {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $('button').on('click', function() {
+        if(confirm("Create")) {
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                success: function(data) {
+                    console.log(data)
+                },
+                error: function(request, status, error) {
+                    consol.log(request.status+"\n"+request.responseText)                    
+                }
+            });
+        }
+    });
+
+  });
+</script>
 @stop

@@ -40,7 +40,7 @@
 
 <body id="page-top">
     <!--Navigation-->
-    <nav id="mainNav" class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <!-- <nav id="mainNav" class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand js-scroll-trigger" href="{{ route('home') }}">1조 홈페이지</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu
@@ -73,7 +73,6 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <!-- <div class="nav-item" aria-labelledby="navbarDropdown"> -->
                         <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
@@ -82,18 +81,13 @@
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
-                        <!-- </div> -->
                     </li>
                     @endguest
-                    <!--
-                <li class="nav-item auth">
-                    <a class="nav-link js-scroll-trigger" href="{{route('login')}}">로그인/로그아웃</a>
-                </li>                
-                    -->
                 </ul>
             </div>
         </div>
-    </nav>
+    </nav> -->
+
     @if(session()->has('flash_message'))
         <div id="message_id" class="alert alert-info" role="alert">
             {{ session('flash_message') }}

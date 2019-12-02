@@ -8,6 +8,7 @@
             @endforeach
         </ul>
     @endif
+
     <div class="page-header">
         <h3 class="title">{{$japan->title}}</h3>
     </div>
@@ -21,12 +22,11 @@
     <div class="action__article">
         <a href="{{route('japan.index')}}" class="btn btn-info">목록</a>
 
-        <a  href="{{route('japan.edit', $japan->id)}}" class="btn btn-info offset-9-5">수정</a>
-        <!-- <button class="btn btn-info button__edit offset-9-5" @click="onEdit()">수정</button> -->
+        <!-- <a  href="{{route('japan.edit', $japan->id)}}" class="btn btn-info offset-9-5">수정</a> -->
+        <button class="btn btn-info button__edit offset-9-5" >수정</button>
 
         <button class="button__delete btn btn-danger del-btn">삭제</button>
     </div>
-
 </div>
 
 <aside class="side-bar">
@@ -46,33 +46,54 @@
 @section('script')
 <script>
   $(document).ready(function () {
+    var japanId = $('article').data('id');
+    var japanPw = $('article').data('password');
+    console.log(japanPw);
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
 
-    $('.button__delete').on('click', function() {
-        var japanId = $('article').data('id');
-        var japanpw = $('article').data('password');
-        console.log(japanpw);
-
-        var pw_check = prompt("비밀번호 확인", "");
-
+    $('.button__edit').on('click', function() {
+        var pw_check = prompt("작성 글 비밀번호 확인", "");
         if(pw_check == "") {
-            alert("작성 글 비밀번호를 입력하시오");
+            alert("작성 글 비밀번호를 입력하세요.");
         } 
         else if (pw_check == null) {
-                alert("삭제 취소");
+                alert("작성 글 수정을 취소합니다.");
         } 
         else if (pw_check != "") {
 
-            if(pw_check != japanpw) {
-                alert("작성 글 비밀번호를 틀렸습니다");
+            if(pw_check != japanPw) {
+                alert("작성 글 비밀번호를 틀렸습니다.");
             } 
 
             else {
-                alert("작성 글을 삭제합니다");
+                alert("작성 글을 수정합니다.");
+                window.location.href = '/japan/'+japanId+'/edit';
+            }
+        }
+    })
+
+    $('.button__delete').on('click', function() {
+        var pw_check = prompt("작성 글 비밀번호 확인", "");
+
+        if(pw_check == "") {
+            alert("작성 글 비밀번호를 입력하세요.");
+        } 
+        else if (pw_check == null) {
+                alert("작성 글 삭제를 취소합니다.");
+        } 
+        else if (pw_check != "") {
+
+            if(pw_check != japanPw) {
+                alert("작성 글 비밀번호를 틀렸습니다.");
+            } 
+
+            else {
+                alert("작성 글을 삭제합니다.");
                 $.ajax({
                     type: 'DELETE',
                     url: '/japan/'+japanId

@@ -16,6 +16,7 @@
         {!! $errors->first('password', '<span class="form-error">:message</span>') !!}
 </div>
 
+<!-- 파일 탐색기 떴을 때 이미지 여러 개 올라감(드래그?, 컨트롤+클릭) -->
 <div class="form-group filebox {{ $errors->has('imgs') ? 'has-error' : '' }}">
     <label for="imgs">파일 업로드</label>
     <input type="file" name="imgs[]" id="imgs" multiple="multiple" />
