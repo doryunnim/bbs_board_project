@@ -22,17 +22,27 @@ aside {
   float: right;
 }
 .listbtn{
-  margin-left:90%;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  width: 100px;
-}
-.updatebtn{
-  margin-left:60%;
+  float: right;
   margin-top: 10px;
   margin-right: 20px;
   margin-bottom: 10px;
-  width: 50px;
+  width: 70px;
+  padding: 3px;
+  text-align: center;
+  text-align: center;
+}
+.btn-info{
+  height: 31px;
+  line-height: 27px;
+}
+.updatebtn{
+  float: right;
+  margin-top: 10px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  width: 70px;
+  padding: 3px;
+  text-align: center;
   background-color: lavender;
   text-align: center;
 }
@@ -59,13 +69,14 @@ html, body{
     color: black;
 }
 .view{
+    margin-top: 52px;
+    display: list-item;
     width:95%;
     margin-left: auto;
     margin-right: auto;
     height: auto;
     background-color: #709090;
     padding: 5px;
-    margin-top: 15px;
 }
 .Imagecontent{
   width:100%;
@@ -107,19 +118,16 @@ a{
     text-decoration: none;
     color: black;
 }
-.left30{
-  padding-left: 3px;
+/* .left30{
+  padding-left: 10%;
   padding-right: 3px;
-}
+} */
 @media (min-width: 576px) {
   .contain {
     max-width: 540px;
   }
   .contains{
     width:87%;
-  }
-  .left30{
-    margin-left: 60%;
   }
 }
 .btn{
@@ -137,9 +145,6 @@ a{
   .contains{
     width:84%;
   }
-  .left30{
-    margin-left: 65%;
-  }
 }
 
 @media (min-width: 992px) {
@@ -148,9 +153,6 @@ a{
   }
   .contains{
     width:80%;
-  }
-  .left30{
-    margin-left: 70%;
   }
 }
 
@@ -162,6 +164,12 @@ a{
     max-width:1200px;
   }
   .left30{
-    margin-left: 80%;
+    padding-left: 10%;
+    padding-right: 3px;
+  }
+}
+@media (min-width: 1300px) {
+  .left30{
+    padding-left: 3%;
   }
 }

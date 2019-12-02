@@ -24,11 +24,6 @@
  -->
 
     <!-- Styles -->
-<<<<<<< HEAD
-    <link href="{{ asset('css/navcss.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/headercss.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/servcss.css') }}" rel="stylesheet">
-=======
     <link rel="stylesheet" href="{{ asset('css/navcss.css') }}">
     <link rel="stylesheet" href="{{ asset('css/headercss.css') }}">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -39,7 +34,6 @@
      -->
     
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
->>>>>>> 6476852aa6d152dfc674eb8220d0bceabcfbfdc1
     
     
 
@@ -49,11 +43,7 @@
         <!--Navigation-->
         <nav id="mainNav" class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
-<<<<<<< HEAD
-            <a class="navbar-brand js-scroll-trigger" href="{{ url('/') }}">1조 홈페이지</a>
-=======
             <a class="navbar-brand js-scroll-trigger" href="{{ route('home') }}">1조 홈페이지</a>
->>>>>>> 6476852aa6d152dfc674eb8220d0bceabcfbfdc1
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu
                 <i class="fas fa-bars"></i>
             </button>        
@@ -97,23 +87,10 @@
                             <!-- </div> -->
                         </li>
                     @endguest
-<<<<<<< HEAD
-                </ul>
-            </div>
-        </div>
-        </nav>
-
-=======
-                    <!--
-                <li class="nav-item auth">
-                    <a class="nav-link js-scroll-trigger" href="{{route('login')}}">로그인/로그아웃</a>
-                </li>                
-                    -->
                 </ul>
             </div>
         </div>
     </nav>
->>>>>>> 6476852aa6d152dfc674eb8220d0bceabcfbfdc1
     @if(session()->has('flash_message'))
         <div id="message_id" class="alert alert-info" role="alert">
             {{ session('flash_message') }}
