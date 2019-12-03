@@ -6,28 +6,14 @@
         <h3>새 글 쓰기</h3>
     </div>
     
-    <form action="{{ route('japan.store') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('japan.store') }}" id="createJapan" method="post" enctype="multipart/form-data">
         {!! csrf_field() !!}
         <div class="form-group">
             @include('japan.partial.form')
-            <button type="submit" class="btn btn-primary">저장</button>
-            <!-- <button type="button" class="btn btn-primary">저장</button> -->
+            <button type="submit" id="saveBtn" class="btn btn-primary">저장</button>
         </div>
     </form>
 </div>
-
-<aside class="side-bar">
-    <div class="row">
-        <div class="col">
-            <a href="{{route('japan.create')}}" class="btn btn-primary m-b">글 쓰기</a>
-            @forelse($japans as $japan)
-                @include('japan.partial.article', compact('japan'))
-            @empty
-                <p class="text-center text-danger">글이 없습니다.</p>
-            @endforelse
-        </div>
-    </div>
-</aside>
 @stop
 
 @section('script')
@@ -39,21 +25,27 @@
         }
     });
 
-    $('button').on('click', function() {
-        if(confirm("Create")) {
-            $.ajax({
-                type: "GET",
-                dataType: "json",
-                success: function(data) {
-                    console.log(data)
-                },
-                error: function(request, status, error) {
-                    consol.log(request.status+"\n"+request.responseText)                    
-                }
-            });
+    $('#createJapan').on('submit', function() {
+        var form = $(this);
+        var formdata = false;
+        if(window.formData) {
+            formdata = new FormData(form[0]);
+            formdata.append('imgs', $('imgs')[0].files[0]);
         }
-    });
 
+        var formAction = form.attr('action');
+        $.ajax({
+            data: formdata ? formdata : form.serialize(),
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: "POST",
+            url: "{{route('japan.store')}}",
+            success: function(data) {
+                window.location.href = '/japan';
+            }
+        });
+    });
   });
 </script>
 @stop

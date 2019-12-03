@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\JapanAttachments;
 use Illuminate\Foundation\Http\FormRequest;
 
 class JapanRequest extends FormRequest
@@ -48,5 +49,13 @@ class JapanRequest extends FormRequest
             'password' => '비밀번호',
             'img' => '이미지'
         ];
+    }
+
+    public function getAttachments()
+    {
+        return JapanAtachments::whereIn(
+            'id',
+            $this->input('attachments', [])
+        )->get();
     }
 }

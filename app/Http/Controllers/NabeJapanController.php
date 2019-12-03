@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Request\JapanRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Database\Eloquent\Collection;
@@ -19,7 +20,7 @@ class NabeJapanController extends Controller
      */
     public function index()
     {
-        $japans = \App\NabeJapan::oldest()->paginate(100);
+        $japans = \App\NabeJapan::oldest()->paginate(10);
         return view('japan.index', compact('japans'));
     }
 
@@ -30,8 +31,7 @@ class NabeJapanController extends Controller
      */
     public function create(NabeJapan $japan)
     {
-        $japans = \App\NabeJapan::get();
-        return view("japan.create", compact('japan','japans'));
+        return view("japan.create", compact('japan'));
     }
 
     /**
@@ -63,15 +63,21 @@ class NabeJapanController extends Controller
         }
 
         $validator = \Validator::make($request->all(), $rules);
+
         if($validator->fails()){
             return back()->withErrors($validator)->withInput();
         }
 
+        $request->getAttachments()->each(function($attachment) use ($article) {
+            $attachment->japan()->associate($attachment);
+            $attachment->save();
+        });
+        
         if(!$japan){
             return back();
         }
-        
-        return redirect(route('japan.show', $japan->id));
+
+        return response()->json(200);
     }
 
     /**
