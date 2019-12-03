@@ -230,7 +230,7 @@ class QuestionHelper extends Helper
             } elseif ("\177" === $c) { // Backspace Character
                 if (0 === $numMatches && 0 !== $i) {
                     --$i;
-                    $fullChoice = self::substr($fullChoice, 0, $i);
+                    $fullChoice = substr($fullChoice, 0, -1);
                     // Move cursor backwards
                     $output->write("\033[1D");
                 }
@@ -244,7 +244,7 @@ class QuestionHelper extends Helper
                 }
 
                 // Pop the last character off the end of our string
-                $ret = self::substr($ret, 0, $i);
+                $ret = substr($ret, 0, $i);
             } elseif ("\033" === $c) {
                 // Did we read an escape sequence?
                 $c .= fread($inputStream, 2);
@@ -270,7 +270,7 @@ class QuestionHelper extends Helper
                         $remainingCharacters = substr($ret, \strlen(trim($this->mostRecentlyEnteredValue($fullChoice))));
                         $output->write($remainingCharacters);
                         $fullChoice .= $remainingCharacters;
-                        $i = self::strlen($fullChoice);
+                        $i = \strlen($fullChoice);
 
                         $matches = array_filter(
                             $autocomplete($ret),
@@ -286,8 +286,6 @@ class QuestionHelper extends Helper
                         $output->write($c);
                         break;
                     }
-
-                    $numMatches = 0;
                 }
 
                 continue;

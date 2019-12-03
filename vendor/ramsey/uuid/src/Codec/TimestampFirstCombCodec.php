@@ -13,7 +13,6 @@
  */
 namespace Ramsey\Uuid\Codec;
 
-use Ramsey\Uuid\Exception\InvalidUuidStringException;
 use Ramsey\Uuid\UuidInterface;
 
 /**
@@ -61,7 +60,7 @@ class TimestampFirstCombCodec extends StringCodec
      * @param string $encodedUuid
      *
      * @return UuidInterface
-     * @throws InvalidUuidStringException
+     * @throws \Ramsey\Uuid\Exception\InvalidUuidStringException
      */
     public function decode($encodedUuid)
     {
@@ -78,7 +77,7 @@ class TimestampFirstCombCodec extends StringCodec
      * @param string $bytes
      *
      * @return UuidInterface
-     * @throws InvalidUuidStringException
+     * @throws \Ramsey\Uuid\Exception\InvalidUuidStringException
      */
     public function decodeBytes($bytes)
     {

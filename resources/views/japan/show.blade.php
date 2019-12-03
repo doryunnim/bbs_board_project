@@ -24,7 +24,7 @@
                         @endforeach
                     </ul> -->
                     @foreach($japan->attachments as $attachment)
-                            <img src="{{$attachment->filename}}" class="Imagecontent">
+                            <img src="{{$attachment->url}}" class="Imagecontent">
                     @endforeach
                 @endif
             </div>

@@ -30,21 +30,25 @@ final class LazyOption extends Option
     private $option;
 
     /**
+     * Helper Constructor.
+     *
      * @param callable $callback
-     * @param array    $arguments
+     * @param array $arguments
      *
      * @return LazyOption
      */
-    public static function create($callback, array $arguments = [])
+    public static function create($callback, array $arguments = array())
     {
         return new self($callback, $arguments);
     }
 
     /**
+     * Constructor.
+     *
      * @param callable $callback
-     * @param array    $arguments
+     * @param array $arguments
      */
-    public function __construct($callback, array $arguments = [])
+    public function __construct($callback, array $arguments = array())
     {
         if (!is_callable($callback)) {
             throw new \InvalidArgumentException('Invalid callback given');
@@ -156,8 +160,7 @@ final class LazyOption extends Option
             $this->option = call_user_func_array($this->callback, $this->arguments);
             if (!$this->option instanceof Option) {
                 $this->option = null;
-
-                throw new \RuntimeException(sprintf('Expected instance of \%s', Option::class));
+                throw new \RuntimeException('Expected instance of \PhpOption\Option');
             }
         }
 

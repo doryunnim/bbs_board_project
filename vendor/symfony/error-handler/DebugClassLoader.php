@@ -724,11 +724,7 @@ class DebugClassLoader
                 $real = self::$darwinCache[$kDir][0];
             } else {
                 $dir = getcwd();
-
-                if (!@chdir($real)) {
-                    return $real.$file;
-                }
-
+                chdir($real);
                 $real = getcwd().'/';
                 chdir($dir);
 

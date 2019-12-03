@@ -13,9 +13,9 @@
     <input type="password" name="password" id="password" value="{{old('password', $japan->password)}}" class="form-control" />
         {!! $errors->first('password', '<span class="form-error">:message</span>') !!}
 </div>
-<div class="form-group1 {{ $errors->has('imgs') ? 'has-error' : '' }}">
-    <label class="left30" for="imgs">파일</label>
-    <input type="file" name="imgs[]" id="imgs" class="form-control formimg" multiple="multiple" />
+<div class="form-group1 {{ $errors->has('files') ? 'has-error' : '' }}">
+    <label class="left30" for="files">파일</label>
+    <input type="file" name="files[]" id="files" class="form-control formimg" multiple="multiple" />
     <!-- <div class="form-group filebox {{ $errors->has('files') ? 'has-error' : '' }}">
     <label for="files">파일 업로드</label>
     <input type="file" name="files[]" id="files" multiple="multiple" /> -->

@@ -44,18 +44,18 @@
         }
     });
  
-//     $('.test').on('click', function () {
-//         if(confirm("Test")) {
-//             $.ajax({
-//                 success: function(data) {
-//                     console.log(data)
-//                 },
-//                 error: function(request, status, error) {
-//                     consol.log(request.status+"\n"+request.responseText)                    
-//                 }
-//             });
-//        }
-//     });
+    $('.test').on('click', function () {
+        if(confirm("Test")) {
+            $.ajax({
+                success: function(data) {
+                    console.log(data)
+                },
+                error: function(request, status, error) {
+                    consol.log(request.status+"\n"+request.responseText)                    
+                }
+            });
+       }
+    });
     $('.create').on('click', function() {
         if(confirm("Create")) {
             $.ajax({
