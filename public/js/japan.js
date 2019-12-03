@@ -11,9 +11,9 @@ $(document).ready(function () {
     $('.button__create').on('click', function() {
         $.ajax({
             type: "GET",
-            url: '{{route("japan.create")}}',
+            url: '/japan/create',
             success: function() {
-                window.location.href = '{{route("japan.create")}}';
+                window.location.href = '/japan/create';
             }
         });
     });
