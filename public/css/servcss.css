@@ -5,7 +5,14 @@
 section{
     display: block;
 }
-
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+img {
+    vertical-align: middle;
+    border-style: none;
+}   
 .container{
     width: 100%;
     padding-right: 15px;

@@ -1,5 +1,14 @@
-.fixed-top{
-    position: fixed;
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+img {
+    vertical-align: middle;
+    border-style: none;
+}   
+.fixed-top {
+    position: relative;
     top: 0;
     right: 0;
     left: 0;

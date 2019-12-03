@@ -21,6 +21,6 @@ class JapanAttachments extends Model
 
     public function getUrlAttribute()
     {
-        return url('files/'.$this->filename);
+        return url('storage/'.$this->filename);
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Storage;
 
 use App\NabeJapan;
 use File;
@@ -19,7 +20,7 @@ class NabeJapanController extends Controller
      */
     public function index()
     {
-        $japans = \App\NabeJapan::oldest()->paginate(100);
+        $japans = \App\NabeJapan::oldest()->paginate(5);
         return view('japan.index', compact('japans'));
     }
 
@@ -50,19 +51,17 @@ class NabeJapanController extends Controller
             'password'=>['required', 'min:4']
         ];
 
-        if($request->hasFile('files')){
-            $files = $request->file('files');
+        if($request->hasFile('imgs')){
+            $imgs = $request->file('imgs');
 
-            foreach($files as $file){
-                $filename = filter_var($file->getClientOriginalName(), FILTER_SANITIZE_URL);
+            foreach($imgs as $img){
+                $imgName = $img->store('public');
 
                 $japan->attachments()->create([
-                    'filename'=>$filename,
-                    'bytes'=>$file->getSize(),
-                    'mime'=>$file->getClientMimeType()
+                    'filename'=>Storage::url($imgName),
+                    'bytes'=>$img->getSize(),
+                    'mime'=>$img->getClientMimeType()
                 ]);
-
-                $file->move(attachments_path(), $filename);
             }
         }
 
@@ -88,6 +87,7 @@ class NabeJapanController extends Controller
     public function show(NabeJapan $japan)
     {
         //
+        
         $japans = \App\NabeJapan::get();
         return view('japan.show', compact('japan', 'japans'));
     }
@@ -117,21 +117,20 @@ class NabeJapanController extends Controller
     {
         //
         // $this->authorize('update', $japan);
-        if($request->hasFile('files')){
-            $files = $request->file('files');
+        if($request->hasFile('imgs')){
+            $imgs = $request->file('imgs');
 
-            foreach($files as $file){
-                $filename = filter_var($file->getClientOriginalName(), FILTER_SANITIZE_URL);
+            foreach($imgs as $img){
+                $imgName = $img->store('public');
 
-                $japan->attachments()->update([
-                    'filename'=>$filename,
-                    'bytes'=>$file->getSize(),
-                    'mime'=>$file->getClientMimeType()
+                $japan->attachments()->create([
+                    'filename'=>Storage::url($imgName),
+                    'bytes'=>$img->getSize(),
+                    'mime'=>$img->getClientMimeType()
                 ]);
-
-                $file->move(attachments_path(), $filename);
             }
         }
+
         $japan->update($request->all());
         return redirect(route('japan.show', $japan->id));
     }

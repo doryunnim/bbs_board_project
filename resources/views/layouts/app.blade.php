@@ -36,16 +36,17 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     
     
-</head>
 
-<body id="page-top">
-    <!--Navigation-->
-    <nav id="mainNav" class="navbar navbar-expand-lg navbar-dark fixed-top">
+</head>
+<body class="page-top">
+    <div id="app">
+        <!--Navigation-->
+        <nav id="mainNav" class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand js-scroll-trigger" href="{{ route('home') }}">1조 홈페이지</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu
                 <i class="fas fa-bars"></i>
-            </button>
+            </button>        
             <div class="navbar-collapse collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ml-auto">
                     <li class="nav-item">
@@ -53,43 +54,39 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{route('japan.index')}}">현지학기제</a>
-                    </li>
+                    </li>                
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{route('qnaArticles.index')}}">Q&amp;A</a>
                     </li>
                     @guest
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    </li>
-                    @if (Route::has('register'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                    </li>
-                    @endif
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </li>
+                        @if (Route::has('register'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            </li>
+                        @endif
                     @else
-                    <li class="nav-item">
-                        <a id="nav-link" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <!-- <div class="nav-item" aria-labelledby="navbarDropdown"> -->
-                        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
+                        <li class="nav-item">
+                            <a id="nav-link" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <!-- <div class="nav-item" aria-labelledby="navbarDropdown"> -->
+                            <a class="nav-link" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                        <!-- </div> -->
-                    </li>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                            <!-- </div> -->
+                        </li>
                     @endguest
-                    <!--
-                <li class="nav-item auth">
-                    <a class="nav-link js-scroll-trigger" href="{{route('login')}}">로그인/로그아웃</a>
-                </li>                
-                    -->
                 </ul>
             </div>
         </div>

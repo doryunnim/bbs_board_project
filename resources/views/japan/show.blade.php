@@ -1,79 +1,87 @@
 @extends('layouts.app')
 @section('content')
-<div class="container">
-    @if($japan->attachments->count())
-        <ul class="attachment__article">
-            @foreach($japan->attachments as $attachment)
-                <img src="{{ $attachment->url }}" class="img-fluid">
-            @endforeach
-        </ul>
-    @endif
-    <div class="page-header">
-        <h3 class="title">{{$japan->title}}</h3>
-    </div>
+<link href="{{ asset('css/japan.css') }}" rel="stylesheet">
+<link href="{{ asset('css/headercss.css') }}" rel="stylesheet">
+<!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
 
-    <small class="text-right">{{$japan->created_at}}</small>
-    
-    <article class="m-b">
-        <h5>{!! markdown($japan->content) !!}</h5>
-    </article>
-
-    <div class="action__article">
-        <a href="{{route('japan.index')}}" class="btn btn-info">목록</a>
-
-        <a  href="{{route('japan.edit', $japan->id)}}" class="btn btn-info offset-9-5">수정</a>
-        <!-- <button class="btn btn-info button__edit offset-9-5" @click="onEdit()">수정</button> -->
-
-        <!-- <form action="{{route('japan.destroy', $japan->id)}}" method="post" class="del-btn">
-            @csrf
-            @method('DELETE')
-            <button class="button__delete btn btn-danger">삭제</button>
-        </form> -->
-        <button class="button__delete btn btn-danger del-btn">삭제</button>
-    </div>
-
+<div class="container">
+    <div class="page-header">
+        <h3>현지학기제</h3>
+    </div>
 </div>
-
-<aside class="side-bar">
-    <div class="row">
-        <div class="col">
-            <a href="{{route('japan.create')}}" class="btn btn-info m-b">+</a>
-            @forelse($japans as $japan)
-                @include('japan.partial.article', compact('japan'))
-            @empty
-                <p class="text-center text-danger">글이 없습니다.</p>
-            @endforelse
-        </div>
-    </div>
-</aside>
+<div class="contains">
+    <div class="main-chart">
+        <div class="listbtn btn-primary">
+            <a href="{{route('japan.index')}}" >목록</a>
+        </div>
+        <div class="view">
+            <small class="text-right">{{$japan->created_at}}</small>
+            <div class="japanImage">
+                @if($japan->attachments->count())
+                    <!-- <ul class="attachment__article">
+                        @foreach($japan->attachments as $attachment)
+                            <img src="{{$attachment->url}}" class="Imagecontent">
+                        @endforeach
+                    </ul> -->
+                    @foreach($japan->attachments as $attachment)
+                            <img src="{{$attachment->filename}}" class="Imagecontent">
+                    @endforeach
+                @endif
+            </div>
+            <div class="jp_title">
+                <h3 class="title">{{$japan->title}}</h3>    
+                <article class="m-b">
+                    <h5>{!! markdown($japan->content) !!}</h5>
+                </article>
+            </div>
+        </div>
+        <div class="action__article">
+            
+            <div class="">
+                <a  href="{{route('japan.edit', $japan->id)}}" 
+                    class=" btn-info updatebtn">수정</a>
+            </div>
+            <button class="button__delete  btn-danger updatebtn">삭제</button>
+        </div>
+    </div>
+    <aside class="side-bar">
+        <div class="row">
+            <div class="col">
+                <a href="{{route('japan.create')}}" class="btn btn-info m-b create"><img src="img/add.png"></a>
+                @forelse($japans as $japan)
+                    @include('japan.partial.article', compact('japan'))
+                @empty
+                    <p class="text-center text-danger">글이 없습니다.</p>
+                @endforelse
+            </div>
+        </div>
+    </aside>
+</div>
 @stop
-
 @section('script')
 <script>
-  $(document).ready(function () {
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-
-    $('.button__delete').on('click', function() {
-        var japan = $('japan');
-        var str = JSON.stringify(japan);
-        var jsn = JSON.parse(str);
-        console.log('japan:'+str);
-
-        if(confirm("Delete")) {
-            $.ajax({
-                type: 'DELETE',
-                success: function(data) {
-                    console.log(data)
-                }
-            }).then(function() {
-                window.location.href = '/japan';
-            });
-        }
-    });
-  });
+  $(document).ready(function () {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $('.button__delete').on('click', function() {
+        var japan = $('japan');
+        var str = JSON.stringify(japan);
+        var jsn = JSON.parse(str);
+        console.log('japan:'+str);
+        if(confirm("Delete")) {
+            $.ajax({
+                type: 'DELETE',
+                success: function(data) {
+                    console.log(data)
+                }
+            }).then(function() {
+                window.location.href = '/japan';
+            });
+        }
+    });
+  });
 </script>
 @stop
