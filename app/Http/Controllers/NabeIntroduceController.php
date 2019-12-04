@@ -17,12 +17,12 @@ class NabeIntroduceController extends Controller
 
     public function create()
     {
-        $introduce = new NabeIntroduce;
-        return view('introduce.create', compact('introduce'));
+        $introduces = NabeIntroduce::all();
+        return view('introduce.create', compact('introduces'));
     }
 
     public function store(Request $request)
-    {
+    {   
         if(!$request->file('photo')) {
             return redirect()->back()->withErrors([
                 'error' => "사진을 업로드 하세요"
@@ -33,25 +33,27 @@ class NabeIntroduceController extends Controller
         $data = [
             'name' => $request->name,
             'comment' => $request->comment,
-            'url' => Storage::url($path),
+            'url' => Storage::url($path)
         ];
+
         $introduce = $request->user()->nabe_introduce()->create($data);
         if(!$introduce){
             return back()->with('flash_message', '인적사항이 저장되지 않았데스..')->withInput();
         }
-        #사진 처리 완료되면 실행됨
-        return redirect(route('introduces.index'))->with('flash_message', '정보가 저장되었습니다.');
+        return redirect()->route('introduces.index');
+        // return view('introduce.index', compact('introduces'));   
     }
 
-    public function show(NabeIntroduce $introduce)
+    public function show($id)
     {
-        return view('introduce.show', compact('introduce'));   
+        $data = NabeIntroduce::where('id', $id)->with('user')->get();
+        return response()->json($data);
     }
 
-    public function edit(NabeIntroduce $introduce)
+    public function edit($id)
     {
-        
-        return view('introduce.edit', compact('introduce'));
+        $introduce = NabeIntroduce::find($id);
+        return response()->json($introduce);
     }
 
     public function update(Request $request, NabeIntroduce $introduce)
