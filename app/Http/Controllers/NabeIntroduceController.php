@@ -56,23 +56,25 @@ class NabeIntroduceController extends Controller
         return response()->json($introduce);
     }
 
-    public function update(Request $request, NabeIntroduce $introduce)
+    public function update(Request $request, $id)
     {
-        #file에 사진이 있는지 확인하고 없으면 에러
-        if(!$request->file('url')) {
-            return back()->with('flash_message', '사진 안넣으면 수정안해줌');
-        }
-        #edit에서 수정파일의 경로를 다시 지정
+        $introduce = NabeIntroduce::find($id);
+        // #file에 사진이 있는지 확인하고 없으면 에러
+        // if(!$request->file('url')) {
+        //     return back()->with('flash_message', '사진 안넣으면 수정안해줌');
+        // }
+        // #edit에서 수정파일의 경로를 다시 지정
         $path = $request->file('url')->store('public');
-        
         $data = [
             'name' => $request->name,
             'comment' => $request->comment,
             'url' => Storage::url($path),
         ];
+        
         $introduce->update($data);
 
-        return redirect()->route('introduces.index');
+        return response()->json([], 204);
+        #return redirect()->route('introduces.index');
     }
      
     public function destroy(NabeIntroduce $introduce)

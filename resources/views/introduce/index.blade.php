@@ -32,7 +32,7 @@
     </div>
     <div class="row">
         @foreach($introduces as $introduce)
-        <div class="col-md-4" data-id="{{ $introduce->id }}">
+        <div class="col-md-4">
             <img src="{{ $introduce->url }}" class="img-fluid">
             <h4>{{ $introduce->name }}</h4>
             <h3>{{ $introduce->comment }}</h3>
@@ -51,17 +51,13 @@
 
 @section('script')
 <script>
-$(document).ready(function() {
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
     $('.btn__update').on('click', function(e) {
-        var target = $('.col-md-4').data('id');
-        // var tagert_id = $(target).data('id');
-        // var target = e.target;
-        // var target_id = $(target).data('id');
+        var target = e.target.id;
         alert(target);
         $.ajax({
                 type: 'GET',
@@ -93,18 +89,17 @@ $(document).ready(function() {
     });
 
     $('.btn__delete').on('click', function(e) {
-        var target = $('.col-md-4')
-        var target_id = $('.col-md-4').data('id')
+        var target = e.target.id;
         if (confirm('글을 삭제합니다.')) {
             $.ajax({
                 type: 'DELETE',
-                url: '/introduces/' + target_id
+                url: '/introduces/' + target
             }).then(function(){
                 alert('처음 삭제')
+                $(".col-md-2:first").remove();
                 $(".col-md-4:first").remove();
             });
         }
     });
-});
 </script>
 @stop
