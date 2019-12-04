@@ -65,21 +65,30 @@
             })
             .then((data) => {
                 console.log(data);
-            // $('.container').html('')
-            // $('.container').load("index.blade.php");
-            // $('.container').append("<form id=edit action={{ route('introduces.store') }} method=post enctype=multipart/form-data />")
+                // var chage_data = JSON.stringify(data);
+                // console.log(chage_data);
+                var name = data[0].name;
+                var comment = data[0].comment;
+                var url = data[0].url;
+            
+                console.log(name);
+                console.log(comment);
+                console.log(url);
+            $('.container').html('')
+            $('.container').append("<form id=edit action={{ route('introduces.store') }} method=post enctype=multipart/form-data />")
 
-            // $('#edit').append("<div class=form-group0 {{ $errors->has('url') ? 'has-error' : '' }}> </div>")
-            // $('.form-group0').append("<label for=photo> 사진 </label>")
-            // $('.form-group0').append("<img class=img-fluid src={{$introduce->url}} width=400 height=400 />")
-            // $('#edit').append("<div class=form-group1 {{ $errors->has('name') ? 'has-error' : '' }}> </div>")
-            // $('.form-group1').append("<label for=photo> 이름 : </label>")
-            // $('.form-group1').append("<input type=text id=name value={{ old('$introduce->name') }}>  </input>")
-            // $('#edit').append("<div class=form-group2 {{ $errors->has('comment') ? 'has-error' : '' }}> </div>")
-            // $('.form-group2').append("<label for=photo> 한마디 : </label>")
-            // $('.form-group2').append("<input type=text id=comment value={{ old('$introduce->comment') }}>  </input>")
-            // $('#edit').append("<div class=form-group3></div>")
-            // $('.form-group3').append("<button type=submit class=button__edit>저장</button>")
+            $('#edit').append("<div class=form-group0 {{ $errors->has('url') ? 'has-error' : '' }}> </div>")
+            $('.form-group0').append("<label for=photo> 사진 </label>")
+            $('.form-group0').append("<img class=img-fluid width=400 height=400 />")
+            $('.img-fluid').attr("src", url)
+            $('#edit').append("<div class=form-group1 {{ $errors->has('name') ? 'has-error' : '' }}> </div>")
+            $('.form-group1').append("<label for=photo> 이름 : </label>")
+            $('.form-group1').append("<input type=text id=name value={{ old('$introduce->name') }}>  </input>")
+            $('#edit').append("<div class=form-group2 {{ $errors->has('comment') ? 'has-error' : '' }}> </div>")
+            $('.form-group2').append("<label for=photo> 한마디 : </label>")
+            $('.form-group2').append("<input type=text id=comment></input>")
+            $('#edit').append("<div class=form-group3></div>")
+            $('.form-group3').append("<button type=submit class=button__edit>저장</button>")
 
             // $('.container').append("<div class=text-center id=action__article/>")
             // $('.text-center').append("<a href={{route('introduces.edit', $introduce->id)}}>저장</a>")
