@@ -7,20 +7,11 @@
     </div>
     <hr>
     <div class="row">
-        <!-- 조원 사진 & 추가 부분 -->
-        @foreach($introduces as $introduce)
-        <div class="col-md-2">
-            <div class="w3-container">
-                <div class="w3-card" style="width:150px; height:150px">
-                    <img src="{{ $introduce->url }}" alt="Person" style="width:150px; height:118px">
-                    <div class="w3-container">
-                        <h4>{{ $introduce->name }}</h4>
-                    </div>
-                </div>
-            </div>
-            <br>
-        </div>
-        @endforeach
+        @forelse($introduces as $introduce)
+            @include('introduce.partial.member', compact('introduce'))
+        @empty
+            <p class="text-center text-danger">글이 없습니다.</p>
+        @endforelse
         <a href="{{ route('introduces.create') }}">ADD</a>
     </div>
     <div class="container" style="text-align:center">
@@ -31,27 +22,18 @@
         <hr>
     </div>
     <div class="row">
-        @foreach($introduces as $introduce)
-        <div class="col-md-4">
-            <img src="{{ $introduce->url }}" class="img-fluid">
-            <h4>{{ $introduce->name }}</h4>
-            <h3>{{ $introduce->comment }}</h3>
-
-            <button class="btn btn-primary btn__update" id="{{ $introduce->id }}">
-                <i class="fa fa-trash-o"></i> 수정
-            </button>
-            <button class="btn btn-danger btn__delete" id="{{ $introduce->id }}">
-                <i class="fa fa-trash-o"></i> 삭제
-            </button>
-        </div>
-        @endforeach
+        @forelse($introduces as $introduce)
+            @include('introduce.partial.detail', compact('introduce'))
+        @empty
+            <p class="text-center text-danger">글이 없습니다.</p>
+        @endforelse
     </div>
 
     <div class="modal" id="Mymodal" style="width:500; height:300">
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>수정하는 창입니다 호호</h2><br>
-            <form class="member_update" action="{{ route('introduces.update', $introduce->id) }}" enctype="multipart/form-data">
+            <form class="member_update" enctype="multipart/form-data">
                 @csrf
                 <!-- 사진 인풋 -->
                 <div class="form-group {{ $errors->has('url') ? 'has-error' : '' }}">
@@ -74,7 +56,6 @@
                     {!! $errors->first('name', '<span class="form-error">:message</span>') !!}
                 </div>
                 <div class="form-group">
-                    <!-- <button type="btn btn-primary btn__update__saved" id="{{ $introduce->id }}">저장</button> -->
                     <button class="btn btn-primary btn__saved" id="{{ $introduce->id }}">
                         <i class="fa fa-trash-o"></i> 완료
                     </button>
@@ -100,7 +81,6 @@
                 url: '/introduces/' + target,
             })
             .then((data) => {
-                // data[0]{name:~~, comment:aa~~ 등등} 로그찍어보셈
                 console.log(data);
                 console.log('첫번째 수정이벤트');
                 $('#Mymodal').css("display", "block");
@@ -112,12 +92,10 @@
     $('.btn__saved').on('click', function(e) {
         var target = e.target.id;
         $.ajax({
-                type: 'PATCH',
+                type: 'PUT',
                 url: '/introduces/' + target,
             })
             .then((Newdata) => {
-                console.log(Newdata);
-                console.log('2번째 수정이벤트');
                 alert('저장완료');
                 $('#photo_preview').attr("src", Newdata[0].url); // 뉴 사진 로딩
                 $('#name').attr("value", Newdata[0].name); // 뉴 이름 로딩

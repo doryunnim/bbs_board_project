@@ -12,7 +12,6 @@ class NabeIntroduceController extends Controller
     public function index()
     {
         $introduces = NabeIntroduce::all();
-        // compact로 보내줘야 index 블레이드 안에서 $introduce->id같이 쓸수있음
         return view('introduce.index', compact('introduces'));
     }
 
