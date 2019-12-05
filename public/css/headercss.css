@@ -5,7 +5,7 @@ header.masthead{
     background-attachment: scroll;
     background-position: center center;
     background-size: cover;
-    background-image: url("bImage.jpg");
+    background-image: url("../img/img.jpg");
 }
 
 header{

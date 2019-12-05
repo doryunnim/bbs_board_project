@@ -1,5 +1,9 @@
 .fixed-top{
+<<<<<<< HEAD
     
+=======
+    position: static;
+>>>>>>> 9309dc365877903785890702e4a956f85f5add52
     top: 0;
     right: 0;
     left: 0;

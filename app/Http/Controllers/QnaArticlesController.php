@@ -54,7 +54,7 @@ class QnaArticlesController extends Controller
         // $qnaArticles = \App\Qna_article::find(1)->create($request->all());
 
         // $qnaArticles = \App\User::find(1)->qna_article()->create($request->all());
-        $qnaArticle = $request->user()->qna_article()->create($request->all());
+        $qnaArticle = $request->user()->qna_articles()->create($request->all());
         // 성공적으로 저장되면 변수에 새로운 인스턴스 추가
         if(!$qnaArticle){
             return back()->with('flash_message', '글이 저장되지 않았데스케레도모...')->withInput();
@@ -66,17 +66,16 @@ class QnaArticlesController extends Controller
     public function show(Qna_article $qnaArticle)
     {
         //qnaArticle 글하나만 불러옴 밑에 qnaArticles 글 여러개 불러옴
-        // $qnaArticles = \App\Qna_article::get();
+       // $qnaArticles = \App\Qna_article::get();
 
         $qnaComments = $qnaArticle->qna_comments()->with('replies')->whereNull('parent_id')->latest()->get();
         return view('qnaArticles.show', compact('qnaArticle', 'qnaComments'));
-
     }
 
 
     public function edit(Qna_article $qnaArticle)
     {
-        // $this->authorize('update', $article);
+        // $this->authorize('update', $qnaArticle);
         return view('qnaArticles.edit', compact('qnaArticle'));
     }
  
@@ -87,9 +86,10 @@ class QnaArticlesController extends Controller
     }
 
 
-    public function destroy(\App\Qna_article $qnaArticle)
-    {
-        // $this->authorize('delete', $article);
+    public function destroy(Qna_article $qnaArticle)
+    {   
+        // $this->authorize('delete', $qnaArticle);
+        var_dump($qnaArticle);
         $qnaArticle->delete();
         return response()->json([],204);
     }
