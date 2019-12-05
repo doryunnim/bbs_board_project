@@ -111,6 +111,9 @@ $(document).ready(function () {
             processData: false,
             type: "POST",
             url: "{{route('japan.store')}}",
+            error: function(data) {
+                console.log(data);
+            }
         }).then(function() {
             window.location.reload();
         });
@@ -120,19 +123,21 @@ $(document).ready(function () {
     $('#updateJapan').on('click', function() {
         var form = $(this);
         alert('clicked');
-        $.ajax({
-            type: 'POST',
-            url: '/japan/'+japanData.id,
-            data: form.serialize(),
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: function() {   //http 요청 성공 시 실행
-                window.history.back();
-            },
-            error: function(error) {    //http 요청 실패 시 실행
-                console.log('msg:'+error);
-            }
-        });
+        if(form.serialize()) {
+            $.ajax({
+                type: 'POST',
+                url: '/japan/'+japanData.id,
+                data: form.serialize(),
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function() {   //http 요청 성공 시 실행
+                    window.history.back();
+                },
+                error: function(error) {    //http 요청 실패 시 실행
+                    console.log('msg:'+error);
+                }
+            });
+        }
     });
 });

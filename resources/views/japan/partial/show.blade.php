@@ -3,7 +3,7 @@
         <img src="" id="attach" class="img-fluid">
     </ul>
 
-    <div class="page-header">
+    <div class="page-header jp_title">
         <h3 class="title"></h3>
         <small class="created"></small>
     </div>

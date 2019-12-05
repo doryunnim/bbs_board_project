@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\JapanRequest;
+use App\Http\Requests\NabeJapansRequest;
+use App\Http\Requests\StoreBlogPost;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Database\Eloquent\Collection;
@@ -40,33 +41,13 @@ class NabeJapanController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $japan = \App\NabeJapan::create($request->all());
-
-        // $rules = [  
-        //     'title'=>['required'],
-        //     'content'=>['required'],
-        //     'password'=>['required', 'min:4'],
-        //     'files'=>['required'],
-        // ];
-        // $messages=[
-        //     'title.required'=>'제목을 적어주세요.',
-        //     'content.required'=>'본문을 적어주세요.',
-        //     'password.required'=>'비밀번호를 적어주세요',
-        //     'password.min'=>'비밀번호는 4자 이상 적어주세요',
-        //     'files.required'=>'사진을 추가해 주세요',
-        // ];
-        // $validator = \Validator::make($request->all(), $rules, $messages);
-        
-        // if($validator->fails()){
-        //     return back()->withErrors($validator)->withInput();
-        // }
      
-
         if($request->hasFile('imgs')){
             $imgs = $request->file('imgs');
             foreach($imgs as $img){
@@ -77,12 +58,17 @@ class NabeJapanController extends Controller
                     'mime'=>$img->getClientMimeType()
                 ]);
             }
+        } else {
+            return redirect()->back()->withErrors([
+                'error' => "이미지를 업로드 하세요"
+            ]);
         }
 
         if(!$japan){
-            return back();
+            return back()->with('flash_message','글이 저장되지 않았습니다')->withInput();
         }
-        return redirect('/japan');
+
+        return redirect('/japan')->with('flash_message', '글이 저장되었습니다.');
         // return response()->json($japan, 200);
     }
 

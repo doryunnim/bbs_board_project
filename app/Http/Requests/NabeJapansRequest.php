@@ -5,19 +5,19 @@ namespace App\Http\Requests;
 use App\JapanAttachments;
 use Illuminate\Foundation\Http\FormRequest;
 
-class JapanRequest extends FormRequest
+class NabeJapansRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize()     //인자
+    public function authorize()     //로그인 안 해도 글 쓸 수 있어서 false 값 줌
     {
         return false;
     }
 
-    protected $dontFlash = ['files'];
+    protected $dontFlash = ['imgs'];
 
     /**
      * Get the validation rules that apply to the request.
@@ -31,8 +31,8 @@ class JapanRequest extends FormRequest
             'title'=>['required'],
             'content'=>['required'],
             'password'=>['required', 'min:4'],
-            'files'=>['required'],
-            'files.*'=>['mimes:jpg', 'max:30000'],
+            'imgs'=>['required'],
+            'imgs.*'=>['mimes:jpg', 'max:30000'],
         ];
     }
 

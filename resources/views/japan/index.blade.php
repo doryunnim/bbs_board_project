@@ -1,7 +1,9 @@
 @extends('layouts.app')
 @section('content')
+<link href="{{ asset('css/headercss.css') }}" rel="stylesheet">
+<link href="{{ asset('css/japan.css') }}" rel="stylesheet">
 <div class="container">
-    <div class="page-header">
+    <div class="page-header contain">
         <h3>현지학기제</h3>
     </div>
     <hr>
@@ -27,6 +29,11 @@
             @endforeach
         </div>
     </div>
+    @if($japans->count())
+        <div class="text-center">
+            {!! $japans->appends((Request::except('page')))->render() !!}
+        </div>
+    @endif
 </aside>
 @stop
 @section('script')
