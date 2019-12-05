@@ -114,10 +114,11 @@ class NabeJapanController extends Controller
                 ]);
             }
         }
-
         $japan->update($request->all());
-        // return response()->json($japan, 200);
         return redirect('/japan');
+        // return response()->json($japan, 200);
+        // $request: {"_token":"i5YjriXCc1LydGOIswmq7mceAHHut0XkgknAIQtC","_method":"PUT","title":"","content":"","password":""}
+        // $japan: {"id":,"title":"","content":"","":"","created_at":"","updated_at":""}
     }
 
     /**

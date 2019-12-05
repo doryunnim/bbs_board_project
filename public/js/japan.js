@@ -19,9 +19,9 @@ $(document).ready(function () {
             console.log(e);
             console.log(japanData.password);
             $.ajax({
-                type: "GET",
-                url: '/japan/'+e,
-                data: japanData,
+                type: "GET",        //http 요청방식
+                url: '/japan/'+e,   //요청이 전송되는 url이 포함된 문자열
+                data: japanData,    //요청후 return하는 값
             }).then(function() {
                 $('#create').hide();
                 $('#show').show();
@@ -116,19 +116,23 @@ $(document).ready(function () {
         });
     });
 
-    //글 수정 method: PATCH
+    //글 수정: PUT이랑 PATCH 안되서 POST로 함
     $('#updateJapan').on('click', function() {
         var form = $(this);
         alert('clicked');
         $.ajax({
-            type: 'PATCH',
+            type: 'POST',
             url: '/japan/'+japanData.id,
             data: form.serialize(),
             cache: false,
             contentType: false,
             processData: false,
-        }).then(function() {
-            window.location.reload();
+            success: function() {   //http 요청 성공 시 실행
+                window.history.back();
+            },
+            error: function(error) {    //http 요청 실패 시 실행
+                console.log('msg:'+error);
+            }
         });
     });
 });
