@@ -28,60 +28,64 @@
     <link rel="stylesheet" href="{{ asset('css/headercss.css') }}">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-    <!-- <link href="{{ asset('css/servcss.css') }}" rel="stylesheet">
-        이 css쓰면 조원소개 사진크기가 이상해져서 일단 app.css로 대체했음 
-        나중에 css 하실 때 수정하시기 바랍니다.
-     -->
-    
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/servcss.css') }}" rel="stylesheet">
+        <!-- 이 css쓰면 조원소개 사진크기가 이상해져서 일단 app.css로 대체했음 
+        나중에 css 하실 때 수정하시기 바랍니다. -->
     
     
-</head>
+    <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
+    
+    
 
-<body id="page-top">
-    <!--Navigation-->
-    <nav id="mainNav" class="navbar navbar-expand-lg navbar-dark fixed-top">
+</head>
+<body class="page-top">
+    <div id="app">
+        <!--Navigation-->
+        <nav id="mainNav" class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand js-scroll-trigger" href="{{ route('home') }}">1조 홈페이지</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu
                 <i class="fas fa-bars"></i>
-            </button>
+            </button>        
             <div class="navbar-collapse collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{{route('introduces.index')}}">조원소개</a>
+                        <a class="nav-link js-scroll-trigger nav-here" href="{{route('introduces.index')}}">조원소개</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{{route('japan.index')}}">현지학기제</a>
-                    </li>
+                        <a class="nav-link js-scroll-trigger nav-here" href="{{route('japan.index')}}">현지학기제</a>
+                    </li>                
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{{route('qnaArticles.index')}}">Q&amp;A</a>
+                        <a class="nav-link js-scroll-trigger nav-here" href="{{route('qnaArticles.index')}}">Q&amp;A</a>
                     </li>
                     @guest
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    </li>
-                    @if (Route::has('register'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                    </li>
-                    @endif
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </li>
+                        @if (Route::has('register'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            </li>
+                        @endif
                     @else
-                    <li class="nav-item">
-                        <a id="nav-link" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
+                        <li class="nav-item">
+                            <a id="nav-link" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <!-- <div class="nav-item" aria-labelledby="navbarDropdown"> -->
+                            <a class="nav-link" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </li>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                            <!-- </div> -->
+                        </li>
                     @endguest
                 </ul>
             </div>

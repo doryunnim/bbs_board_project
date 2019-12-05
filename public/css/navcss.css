@@ -1,4 +1,18 @@
-.fixed-top{
+.py-4{
+    padding-top: 4.43rem;
+}
+html{
+    scroll-behavior: smooth;
+}
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+img {
+    vertical-align: middle;
+    border-style: none;
+}   
+.fixed-top {
     position: fixed;
     top: 0;
     right: 0;
@@ -15,6 +29,7 @@
     align-items: center;
     padding-right: 1rem;
     padding-left: 1rem;
+    transition: 0.4s;
 }
 .navbar-expand-lg>.container, .navbar-expand-lg>.container-fluid{
     flex-wrap: nowrap;
@@ -32,6 +47,7 @@
     color: aliceblue;
     border: 0;
     background-color: #fed136;
+    transition: 0.4s;
 }
 
 .dropup,
@@ -137,7 +153,7 @@ body{
 }
 
     #mainNav .navbar-brand{
-        font-size:1.75em;
+        font-size:1.9em;
         transition-property:all;
         transition-duration:0.3s
     }
@@ -154,7 +170,8 @@ body{
     #mainNav .navbar-nav .nav-item .nav-link{
         padding-top: 1.1em !important;
         padding-right: 1em !important;
-        padding-bottom: 1.1em !important;
+        margin-bottom: 0.6em !important;
+        padding-bottom: 0.5em !important;
         padding-left: 1em !important;
     }
 
@@ -163,10 +180,12 @@ body{
     }
     #mainNav{
         background-color: lightsalmon;
+        padding-top: 1rem;
     }
 
 
 .container{
+    scroll-behavior: smooth;
     width:100%;
     padding-right: 15px;
     padding-left: 15px;
@@ -211,6 +230,14 @@ a{
     font-weight: 400;
     letter-spacing: 1px;
     color: black;
+}
+#mainNav .navbar-nav .nav-item .nav-link:hover{
+    font-size: 95%;
+    font-weight: 700;
+    padding-bottom: 0;
+    padding-top: 0;
+    border-bottom: 3px solid white;
+    transition: 1s;
 }
 .nav-link{
     display: block;

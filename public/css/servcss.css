@@ -5,7 +5,14 @@
 section{
     display: block;
 }
-
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+img {
+    vertical-align: middle;
+    border-style: none;
+}   
 .container{
     width: 100%;
     padding-right: 15px;
@@ -67,7 +74,7 @@ div{
 }
 
 .col-lg-12{
-    position: relative;
+    
     width:100%;
     padding-right:15px;
     padding-left:15px;

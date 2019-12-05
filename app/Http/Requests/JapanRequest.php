@@ -28,7 +28,10 @@ class JapanRequest extends FormRequest
     {
         return [
             //
-            'files'=>['array'],
+            'title'=>['required'],
+            'content'=>['required'],
+            'password'=>['required', 'min:4'],
+            'files'=>['required'],
             'files.*'=>['mimes:jpg', 'max:30000'],
         ];
     }

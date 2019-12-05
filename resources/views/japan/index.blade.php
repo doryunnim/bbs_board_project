@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="page-header">
@@ -30,7 +29,6 @@
     </div>
 </aside>
 @stop
-
 @section('script')
 <script src="{{ asset('js/japan.js') }}" defer></script>
 @stop

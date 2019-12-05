@@ -1,6 +1,12 @@
 @extends('layouts.app')
 @section('content')
-<div class="container">
+<!-- styles -->
+<link href="{{ asset('css/headercss.css') }}" rel="stylesheet">
+<link href="{{ asset('css/japan.css') }}" rel="stylesheet">
+<link href="{{ asset('css/japanform.css') }}" rel="stylesheet">
+
+
+<div class="contain">
     <div class="page-header">
         <h3>글 수정</h3>
     </div>

@@ -21,7 +21,7 @@ class NabeJapanController extends Controller
      */
     public function index()
     {   
-        $japans = \App\NabeJapan::oldest()->paginate(10);   //오래된 순으로 불러서 기본 10개씩 보기
+        $japans = \App\NabeJapan::oldest()->paginate(5);   //오래된 순으로 불러서 기본 10개씩 보기
         $jpIds = \App\NabeJapan::pluck('id');       //id 값 배열
         
         return view('japan.index', compact('japans', 'jpIds'));
@@ -32,7 +32,7 @@ class NabeJapanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(NabeJapan $japan)
+    public function create(NabeJapan $japans)
     {
         // return view("japan.create", compact('japan'));
     }
@@ -46,6 +46,26 @@ class NabeJapanController extends Controller
     public function store(Request $request)
     {
         $japan = \App\NabeJapan::create($request->all());
+
+        // $rules = [  
+        //     'title'=>['required'],
+        //     'content'=>['required'],
+        //     'password'=>['required', 'min:4'],
+        //     'files'=>['required'],
+        // ];
+        // $messages=[
+        //     'title.required'=>'제목을 적어주세요.',
+        //     'content.required'=>'본문을 적어주세요.',
+        //     'password.required'=>'비밀번호를 적어주세요',
+        //     'password.min'=>'비밀번호는 4자 이상 적어주세요',
+        //     'files.required'=>'사진을 추가해 주세요',
+        // ];
+        // $validator = \Validator::make($request->all(), $rules, $messages);
+        
+        // if($validator->fails()){
+        //     return back()->withErrors($validator)->withInput();
+        // }
+     
 
         if($request->hasFile('imgs')){
             $imgs = $request->file('imgs');

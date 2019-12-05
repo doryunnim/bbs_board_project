@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\NabeIntroduce;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('main');
+        $introduces = NabeIntroduce::all();
+        $japans = \App\NabeJapan::oldest()->paginate(5);
+        $qnaArticles = \App\Qna_article::latest()->paginate(5);
+        return view('main',compact('introduces','japans','qnaArticles'));
     }
 }
