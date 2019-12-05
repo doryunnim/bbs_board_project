@@ -12,18 +12,18 @@ class NabeIntroduceController extends Controller
     public function index()
     {
         $introduces = NabeIntroduce::all();
+        // compact로 보내줘야 index 블레이드 안에서 $introduce->id같이 쓸수있음
         return view('introduce.index', compact('introduces'));
     }
 
     public function create()
     {
-        $introduces = NabeIntroduce::all();
-        return view('introduce.create', compact('introduces'));
+        return view('introduce.create');
     }
 
     public function store(Request $request)
     {   
-        if(!$request->file('photo')) {
+        if(!$request->file('image')) {
             return redirect()->back()->withErrors([
                 'error' => "사진을 업로드 하세요"
             ]);
@@ -39,19 +39,19 @@ class NabeIntroduceController extends Controller
             ]);
         }
         #Store 사진 저장경로
-        $path = $request->file('photo')->store('public');
+        $path = $request->file('image')->store('public');
         $data = [
             'name' => $request->name,
             'comment' => $request->comment,
             'url' => Storage::url($path)
         ];
 
+        //$introduce = NabeIntroduce::updateOrCreate([$data]);
         $introduce = $request->user()->nabe_introduce()->create($data);
         if(!$introduce){
             return back()->with('flash_message', '인적사항이 저장되지 않았데스..')->withInput();
         }
         return redirect()->route('introduces.index');
-        // return view('introduce.index', compact('introduces'));   
     }
 
     public function show($id)
@@ -62,29 +62,20 @@ class NabeIntroduceController extends Controller
 
     public function edit($id)
     {
-        $introduce = NabeIntroduce::find($id);
-        return response()->json($introduce);
+       //
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, NabeIntroduce $introduce)
     {
-        $introduce = NabeIntroduce::find($id);
-        // #file에 사진이 있는지 확인하고 없으면 에러
-        // if(!$request->file('url')) {
-        //     return back()->with('flash_message', '사진 안넣으면 수정안해줌');
-        // }
-        // #edit에서 수정파일의 경로를 다시 지정
-        $path = $request->file('url')->store('public');
-        $data = [
+        $path = $request->file('image')->store('public');
+        $Newdata = [
             'name' => $request->name,
             'comment' => $request->comment,
             'url' => Storage::url($path),
         ];
         
-        $introduce->update($data);
-
+        $introduce->update($Newdata);
         return response()->json([], 204);
-        #return redirect()->route('introduces.index');
     }
      
     public function destroy(NabeIntroduce $introduce)
