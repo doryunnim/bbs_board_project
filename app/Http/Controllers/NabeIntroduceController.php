@@ -45,6 +45,8 @@ class NabeIntroduceController extends Controller
             'comment' => $request->comment,
             'url' => Storage::url($path)
         ];
+
+        //$introduce = NabeIntroduce::updateOrCreate([$data]);
         $introduce = $request->user()->nabe_introduce()->create($data);
         if(!$introduce){
             return back()->with('flash_message', '인적사항이 저장되지 않았데스..')->withInput();
@@ -65,15 +67,15 @@ class NabeIntroduceController extends Controller
 
     public function update(Request $request, NabeIntroduce $introduce)
     {
-        // $path = $request->file('image')->store('public');
-        // $Newdata = [
-        //     'name' => $request->name,
-        //     'comment' => $request->comment,
-        //     'url' => Storage::url($path),
-        // ];
+        $path = $request->file('image')->store('public');
+        $Newdata = [
+            'name' => $request->name,
+            'comment' => $request->comment,
+            'url' => Storage::url($path),
+        ];
         
-        // $introduce->update($Newdata);
-        // return response()->json([], 204);
+        $introduce->update($Newdata);
+        return response()->json([], 204);
     }
      
     public function destroy(NabeIntroduce $introduce)
