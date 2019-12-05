@@ -10,16 +10,12 @@
         <!-- <p>{{ $qnaArticle->content }}</p> -->
     </article>
         <div class="text-center action__article"></div>
-        @can('update', $qnaArticle)
             <a href="{{route('qnaArticles.edit', $qnaArticle->id)}}" class="btn btn-info">
                 <i class="fa fa-pencil"></i> 수정
             </a>
-        @endcan
-        @can('delete', $qnaArticle)
             <button class="btn btn-danger button__delete">
                 <i class="fa fa-trash-o"></i> 삭제
             </button>
-        @endcan
         <a href="{{route('qnaArticles.index')}}" class="btn btn-info">
             <i class="fa fa-list"></i> 목록
         </a>
@@ -51,9 +47,9 @@
             if(confirm('글을 삭제합니다.')){
                 $.ajax({
                     type: 'DELETE',
-                    url: '/qnaArticles/' + articleId
+                    url: '/qnaArticles/' + articleId,
                 }).then(function(){
-                    window.location.href = '/qnaArticles';
+                    window.location.href = "/qnaArticles";
                 });
             }
         }); 

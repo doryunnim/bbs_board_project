@@ -14,7 +14,7 @@ class Qna_articlesTableSeeder extends Seeder
         $users = App\User::all();
 
         $users->each(function ($user){
-            $user->qna_article()->save(
+            $user->qna_articles()->save(
                 factory(App\Qna_article::class)->make()
             );
         });

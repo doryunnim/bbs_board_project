@@ -37,7 +37,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function qna_article()
+    public function qna_articles()
     {
         return $this->hasMany(Qna_article::class);
     }
@@ -47,7 +47,7 @@ class User extends Authenticatable
     }
 
     public function isAdmin(){
-        return ($this->id ===1) ? true : false;
+        return ($this->id === 1) ? true : false;
     }
 
     public function qna_comments()

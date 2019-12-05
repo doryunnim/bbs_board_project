@@ -1,4 +1,4 @@
-<div class="media item__comment {{ $isReply ? 'sub' : 'top' }}"
+ <div class="media item__comment {{ $isReply ? 'sub' : 'top' }}"
     data-id="{{ $comment->id }}" id="comment_{{ $comment->id }}">
 
     <div class="media-body">
@@ -12,18 +12,13 @@
         </h5>
 
         <div class="content__comment">
-            {!! markdown($comment->content) !!}
+            <p data-id="add">{{ $comment->content }}</p>
         </div>
-
+    
         <div class="action_comment">
-            @can('update', $comment)
                 <button class="btn__delete__comment">삭제</button>
-                <button class="btn__edit__comment">수정</button>
-            @endcan
-            @if($currentUser)
-                <button class="btn__reply__comment">쓰기</button>
-            @endif
-
+                <button id="1" class="btn__edit__comment" data-id="edit">수정</button>
+                <button id="1" class="btn__replay__comment" data-id="edit">답글</button>
         </div>
         
         @if($currentUser)
@@ -39,4 +34,3 @@
         @endforelse
     </div>
 </div>
-

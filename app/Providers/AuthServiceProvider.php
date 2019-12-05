@@ -23,18 +23,18 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Gate::before(function ($user){
-            return $user->isAdmin();
-        });
+        // Gate::before(function ($user){
+        //     return $user->isAdmin();
+        // });
         
-        $this->registerPolicies();
-        
-        Gate::define('update', function($user, $model){
-            return $user->id === $model->user_id;
-        });
+        // // $this->registerPolicies();
+            
+        // Gate::define('update', function($user, $model){
+        //     return $user->id === $model->user_id;
+        // });
 
-        Gate::define('delete', function($user, $model){
-            return $user->id === $model->user_id;
-        });
+        // Gate::define('delete', function($user, $model){
+        //     return $user->id === $model->user_id;
+        // });
     }
 }

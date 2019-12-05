@@ -1,12 +1,11 @@
 header.masthead{
     text-align: center;
-    color: #000000;
+    color: honeydew;
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-position: center center;
     background-size: cover;
     background-image: url("../img/img.jpg");
-    /* background-color: gray; */
 }
 
 header{
@@ -37,7 +36,7 @@ header{
     box-sizing: border-box;
 }
 
-/* @media (min-width: 768px){
+@media (min-width: 768px){
     header.masthead .intro-text{
         padding-top: 300px;
         padding-bottom: 200px;     
@@ -54,7 +53,7 @@ header{
         line-height: 75px;
         margin-bottom: 50px;
     }
-} */
+}
 
 @media(min-width:1200px){
     .container{
