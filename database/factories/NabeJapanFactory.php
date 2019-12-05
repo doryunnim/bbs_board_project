@@ -5,7 +5,7 @@
 use App\NabeJapan;
 use Faker\Generator as Faker;
 
-$factory->define(nabe_Japan::class, function (Faker $faker) {
+$factory->define(nabeJapan::class, function (Faker $faker) {
     return [
         //
     ];

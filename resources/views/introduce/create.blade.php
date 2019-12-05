@@ -20,7 +20,7 @@
                 @csrf
                 <div class="form-group">
                 <br><br><br><br>
-                    <input type="file" name="photo" class="form-control-file"><br><br>
+                    <input type="file" name="image" class="form-control-file"><br><br>
                     <input type="text" name="name" placeholder="name"><br><br>
                     <input type="text" name="comment" placeholder="comment"><br><br>
                     <input type="submit" class="btn btn-primary btn-block">
