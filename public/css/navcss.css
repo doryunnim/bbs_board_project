@@ -1,5 +1,5 @@
 .py-4{
-    padding-top: 4.43rem;
+    padding-top: 5rem;
 }
 html{
     scroll-behavior: smooth;
@@ -148,8 +148,9 @@ body{
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: dimgray;
+    color: rgb(66, 66, 66);
     text-align: left;
+    
 }
 
     #mainNav .navbar-brand{
@@ -179,8 +180,9 @@ body{
     max-width: 1140px;
     }
     #mainNav{
-        background-color: lightsalmon;
+        background-color: rgb(27, 27, 27);
         padding-top: 1rem;
+        padding-bottom: 1rem;
     }
 
 
@@ -193,7 +195,7 @@ body{
     margin-left: auto;
 }
 #mainNav .navbar-brand{
-    color: dimgray;
+    color: white;
 }
 .navbar-brand{
     display: inline-block;
@@ -229,7 +231,7 @@ a{
     font-size: 90%;
     font-weight: 400;
     letter-spacing: 1px;
-    color: black;
+    color: rgb(230, 230, 230);
 }
 #mainNav .navbar-nav .nav-item .nav-link:hover{
     font-size: 95%;
@@ -237,7 +239,7 @@ a{
     padding-bottom: 0;
     padding-top: 0;
     border-bottom: 3px solid white;
-    transition: 1s;
+    transition: 0.5s;
 }
 .nav-link{
     display: block;

@@ -5,10 +5,10 @@
     <!--Header-->
     <header class="masthead">
         <div class="container">
-            <div class="intro-text">
-                <div class="intro-lead-in">나베 먹고 싶다....</div>
-                <div class="intro-heading text-uppercase">반갑습니다</div>
-                <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a>
+            <div class="intro-text " >
+                <div class="intro-lead-in" style="text-shadow:2px 2px 4px #fff ">나베 먹고 싶다....</div>
+                <div class="intro-heading text-uppercase"style="text-shadow:2px 2px 4px #fff">반갑습니다</div>
+                <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Scroll</a>
             </div>
         </div>
     </header>
@@ -17,18 +17,20 @@
     <section class="page-section" id="services">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
+                <div class="col-lg-12 text-center" data-aos="fade">
                     <h2 class="section-heading text-uppercase">Services</h2>
                     <h3 class="section-subheading text-muted">아래의 서비스를 제공합니다.</h3>
                 </div>
             </div>
             <div class="row text-center">
-                <div class="col-md-4">
+                <div class="col-md-4" data-aos="fade-down">
                     <hr>
                     <h4 class="service-heading"><a href="{{route('introduces.index')}}">조원소개</a></h4>
                     @if(!@empty($introduces))
                         @forelse($introduces as $introduce)
-                            <p>{{ $introduce -> name }}</p>
+                            <a href="introduces/{{ $introduce -> id }}" class="show-id">
+                                <p>{{ $introduce -> name }}</p>
+                            </a>
                         @empty
                             <p>글이 없습니다.</p>
                         @endforelse
@@ -38,7 +40,7 @@
                     
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-4" data-aos="fade-down">
                     <span class="fa-stack fa-4x">
                         <i class="fas fa-circle fa-stack-2x text-primary">
                         </i>
@@ -48,18 +50,20 @@
                     <hr>
                     <h4 class="service-heading"><a href="{{route('japan.index')}}">현지학기제</a></h4>
                     @if(!@empty($japans))
-                        @forelse($japans as $japan)
-                            <p>{{ $japan -> title }}</p>
+                        @forelse($japans as $japan)    
+                            <a href="japans/{{ $japan -> id }}" class="show-id">  
+                                <p>{{ $japan -> title }}</p>
+                            </a>
                         @empty
                             <p>글이 없습니다.</p>
                         @endforelse
                     @else
-                        <p>로그인이 필요합니다.</p>
+                        <p class="text-center text-danger">로그인이 필요합니다.</p>
                     @endif
                     
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-4" data-aos="fade-down">
                     <span class="fa-stack fa-4x">
                         <i class="fas fa-lock fa-stack-2x text-primary">
                         </i>
@@ -67,17 +71,17 @@
                         </i>
                     </span>
                     <hr>
-                    <h4 class="service-heading">
-                        Q&amp;A게시판
-                    </h4>
+                    <h4 class="service-heading"><a href="{{route('qnaArticles.index')}}">Q&amp;A게시판</a></h4>
                     @if(!empty($qnaArticles))
                         @forelse($qnaArticles as $qnaArticle)
-                            <p>{{ $qnaArticle -> title }}</p>
+                            <a href="qnaArticles/{{ $qnaArticle -> id }}" class="show-id">  
+                                <p>{{ $qnaArticle -> title }}</p>
+                            </a>
                         @empty
                             <p>글이 없습니다.</p>
                         @endforelse
                     @else
-                        <p>로그인이 필요합니다.</p>
+                        <p class="text-center text-danger">로그인이 필요합니다.</p>
                     @endif
                     
                 </div>
@@ -88,13 +92,16 @@
 @endsection
 @section('script')
     <script>
+        AOS.init();
         window.onscroll = function() {scrollFunction()};
             function scrollFunction() {
             if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
                 document.getElementById("mainNav").style.paddingTop = "0rem";
+                document.getElementById("mainNav").style.paddingBottom = "0rem";
                 document.getElementsByClassName("navbar-brand").style.fontSize = "1.75em";
             } else {
-                document.getElementById("mainNav").style.paddingTop = "1rem";          
+                document.getElementById("mainNav").style.paddingTop = "1rem";  
+                document.getElementById("mainNav").style.paddingBottom = "1rem";        
                 document.getElementsByClassName("navbar-brand").style.fontSize = "1.9em";
             }
         }
