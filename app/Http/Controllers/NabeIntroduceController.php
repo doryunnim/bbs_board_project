@@ -28,6 +28,16 @@ class NabeIntroduceController extends Controller
                 'error' => "사진을 업로드 하세요"
             ]);
         }
+        elseif(!$request->name) {
+            return redirect()->back()->withErrors([
+                'error' => "이름을 입력하세요"
+            ]);
+        }
+        elseif(!$request->comment) {
+            return redirect()->back()->withErrors([
+                'error' => "한마디를 꼭"
+            ]);
+        }
         #Store 사진 저장경로
         $path = $request->file('photo')->store('public');
         $data = [
