@@ -1,23 +1,15 @@
-
-@if($japan->attachments->count())
-    <ul class="attachment__article">
-        @foreach($japan->attachments as $attachment)
-            <img src="{{ $attachment->filename }}" class="img-fluid">
-        @endforeach
+<div id="show" style="display:none" data-id="{{$japan->id}}">
+    <ul class="attachment__article"> 
+        <img src="" id="attach" class="img-fluid">
     </ul>
-@endif
 
-<div class="page-header">
-    <h3 class="title">{{$japan->title}}</h3>
+    <div class="page-header">
+        <h3 class="title"></h3>
+        <small class="created"></small>
+    </div>
+
+    <p class="content"></p>
 </div>
 
-<small class="text-right">{{$japan->created_at}}</small>
-
-<article class="m-b" data-id="{{$japan->id}}" data-password="{{$japan->password}}">
-    <h5>{!! markdown($japan->content) !!}</h5>
-</article>
-
-<div class="action__article">
-    <button class="btn btn-info button__edit offset-9-5" >수정</button>
-    <button class="button__delete btn btn-danger del-btn">삭제</button>
-</div>
+<button id="button__edit{{$japan->id}}" class="btn btn-info offset-9-5 hide" style="display:none">수정</button>
+<button id="button__delete{{$japan->id}}" class="btn btn-danger hide" style="display:none">삭제</button>
