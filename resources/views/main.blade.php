@@ -25,12 +25,17 @@
             <div class="row text-center">
                 <div class="col-md-4">
                     <hr>
-                    <h4 class="service-heading">
-                        조원 소개
-                    </h4>
-                    <p class="text-muted">
-                        이름을 하나씩 제목으로 지금의 p태그에 받으면 됩니다
-                    </p>
+                    <h4 class="service-heading"><a href="{{route('introduces.index')}}">조원소개</a></h4>
+                    @if(!@empty($introduces))
+                        @forelse($introduces as $introduce)
+                            <p>{{ $introduce -> name }}</p>
+                        @empty
+                            <p>글이 없습니다.</p>
+                        @endforelse
+                    @else   
+                        <p class="text-center text-danger">로그인이 필요합니다. <p>
+                    @endif
+                    
                 </div>
 
                 <div class="col-md-4">
@@ -42,9 +47,16 @@
                     </span>
                     <hr>
                     <h4 class="service-heading"><a href="{{route('japan.index')}}">현지학기제</a></h4>
-                    <p class="text-muted">
-                        <p class="text-center text-danger">글이 없습니다.</p>
-                    </p>
+                    @if(!@empty($japans))
+                        @forelse($japans as $japan)
+                            <p>{{ $japan -> title }}</p>
+                        @empty
+                            <p>글이 없습니다.</p>
+                        @endforelse
+                    @else
+                        <p>로그인이 필요합니다.</p>
+                    @endif
+                    
                 </div>
 
                 <div class="col-md-4">
@@ -58,12 +70,33 @@
                     <h4 class="service-heading">
                         Q&amp;A게시판
                     </h4>
-                    <p class="text-muted">
-                        게시판 제목을 p태그로 받습니다.
-                    </p>
+                    @if(!empty($qnaArticles))
+                        @forelse($qnaArticles as $qnaArticle)
+                            <p>{{ $qnaArticle -> title }}</p>
+                        @empty
+                            <p>글이 없습니다.</p>
+                        @endforelse
+                    @else
+                        <p>로그인이 필요합니다.</p>
+                    @endif
+                    
                 </div>
             </div>
         </div>
     </section>
 </div>
 @endsection
+@section('script')
+    <script>
+        window.onscroll = function() {scrollFunction()};
+            function scrollFunction() {
+            if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
+                document.getElementById("mainNav").style.paddingTop = "0rem";
+                document.getElementsByClassName("navbar-brand").style.fontSize = "1.75em";
+            } else {
+                document.getElementById("mainNav").style.paddingTop = "1rem";          
+                document.getElementsByClassName("navbar-brand").style.fontSize = "1.9em";
+            }
+        }
+    </script>
+@stop

@@ -29,10 +29,9 @@ class NabeJapanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(NabeJapan $japan)
+    public function create(NabeJapan $japans)
     {
-        $japans = \App\NabeJapan::get();
-        return view("japan.create", compact('japan','japans'));
+        return view("japan.create", compact('japans'));
     }
 
     /**
@@ -43,14 +42,29 @@ class NabeJapanController extends Controller
      */
     public function store(Request $request)
     {
-        $japan = \App\NabeJapan::create($request->all());  
-
-        $rules = [
+        $rules = [  
             'title'=>['required'],
             'content'=>['required'],
-            'password'=>['required', 'min:4']
+            'password'=>['required', 'min:4'],
+            'files'=>['required'],
         ];
+        $messages=[
+            'title.required'=>'제목을 적어주세요.',
+            'content.required'=>'본문을 적어주세요.',
+            'password.required'=>'비밀번호를 적어주세요',
+            'password.min'=>'비밀번호는 4자 이상 적어주세요',
+            'files.required'=>'사진을 추가해 주세요',
+        ];
+        $validator = \Validator::make($request->all(), $rules, $messages);
+        
+        if($validator->fails()){
+            return back()->withErrors($validator)->withInput();
+        }
 
+        $japan = \App\NabeJapan::create($request->all());  
+        
+        
+        
         if($request->hasFile('imgs')){
             $imgs = $request->file('imgs');
 
@@ -63,12 +77,6 @@ class NabeJapanController extends Controller
                     'mime'=>$img->getClientMimeType()
                 ]);
             }
-        }
-
-        $validator = \Validator::make($request->all(), $rules);
-
-        if($validator->fails()){
-            return back()->withErrors($validator)->withInput();
         }
 
         if(!$japan){

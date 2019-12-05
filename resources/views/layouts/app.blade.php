@@ -28,12 +28,12 @@
     <link rel="stylesheet" href="{{ asset('css/headercss.css') }}">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-    <!-- <link href="{{ asset('css/servcss.css') }}" rel="stylesheet">
-        이 css쓰면 조원소개 사진크기가 이상해져서 일단 app.css로 대체했음 
-        나중에 css 하실 때 수정하시기 바랍니다.
-     -->
+    <link href="{{ asset('css/servcss.css') }}" rel="stylesheet">
+        <!-- 이 css쓰면 조원소개 사진크기가 이상해져서 일단 app.css로 대체했음 
+        나중에 css 하실 때 수정하시기 바랍니다. -->
     
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
+    <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
     
     
 
@@ -50,13 +50,13 @@
             <div class="navbar-collapse collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{{route('introduces.index')}}">조원소개</a>
+                        <a class="nav-link js-scroll-trigger nav-here" href="{{route('introduces.index')}}">조원소개</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{{route('japan.index')}}">현지학기제</a>
+                        <a class="nav-link js-scroll-trigger nav-here" href="{{route('japan.index')}}">현지학기제</a>
                     </li>                
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{{route('qnaArticles.index')}}">Q&amp;A</a>
+                        <a class="nav-link js-scroll-trigger nav-here" href="{{route('qnaArticles.index')}}">Q&amp;A</a>
                     </li>
                     @guest
                         <li class="nav-item">
