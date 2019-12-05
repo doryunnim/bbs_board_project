@@ -10,19 +10,19 @@
     <div class="page-header">
         <h3>글 수정</h3>
     </div>
-</div>
-<div class="contains">
-    <div class="main-chart">
-        <form action="{{route('japan.update', $japan->id)}}" method="POST" enctype="multipart/form-data">
-            {!! csrf_field() !!}
-            {!! method_field('PUT') !!}
-            @include('japan.partial.form')
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">수정</button>
-            </div>
-        </form>
-    </div>
-</div>
-</div>
 
+    <form action="{{route('japan.update', $japan->id)}}" id="updateJapan" method="POST" enctype="multipart/form-data">
+        {!! csrf_field() !!}
+        <!-- PUT 메서드를 위해 숨은 필드를 출력 이게 없으면 MethodNotAllowHttpException 에러 발생 -->
+        {!! method_field('PUT') !!}
+        <div class="form-group">
+            @include('japan.partial.form')
+            <button id="editJapan" class="btn btn-primary">수정</button>
+        </div>
+    </form>
+</div>
+@stop
+
+@section('script')
+<script src="{{ asset('js/japan.js') }}" defer></script>
 @stop

@@ -91,8 +91,9 @@
                     @endguest
                 </ul>
             </div>
-        </div>
+        </div> 
     </nav>
+
     @if(session()->has('flash_message'))
         <div id="message_id" class="alert alert-info" role="alert">
             {{ session('flash_message') }}

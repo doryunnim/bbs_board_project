@@ -1,9 +1,9 @@
 <div class="media">
     <div class="media-body">
         <h4 class="media-heading">
-            <a href="{{route('japan.show', $japan->id)}}" class="btn btn-primary title">
+            <button type="button" class="btn btn-primary japan__show{{$japan->id}}" data-all="{{$japan}}" data-img="{{$japan->attachments}}">
                 {{$japan->title}}
-            </a>    
+            </button>
         </h4>
     </div>
 </div>
