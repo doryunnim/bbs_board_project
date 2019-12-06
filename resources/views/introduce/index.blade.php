@@ -8,9 +8,9 @@
     <hr>
     <div class="row">
         @forelse($introduces as $introduce)
-            @include('introduce.partial.member', compact('introduce'))
+        @include('introduce.partial.member', compact('introduce'))
         @empty
-            <p class="text-center text-danger">글이 없습니다.</p>
+        <p class="text-center text-danger">글이 없습니다.</p>
         @endforelse
         <a href="{{ route('introduces.create') }}">ADD</a>
     </div>
@@ -23,9 +23,9 @@
     </div>
     <div class="row">
         @forelse($introduces as $introduce)
-            @include('introduce.partial.detail', compact('introduce'))
+        @include('introduce.partial.detail', compact('introduce'))
         @empty
-            <p class="text-center text-danger">글이 없습니다.</p>
+        <p class="text-center text-danger">글이 없습니다.</p>
         @endforelse
     </div>
 
@@ -33,7 +33,7 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>수정하는 창입니다 호호</h2><br>
-            <form class="member_update" data-id="{{ $introduce->id }}">
+            <form class="member_update">
                 @csrf
                 <!-- 사진 인풋 -->
                 <div class="form-group">
@@ -53,7 +53,8 @@
                     <input type="text" name="comment" id="comment" class="form-control" />
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn__saved" >
+                    <input type="hidden" name="_method" value="PUT" />
+                    <button type="submit" class="btn btn-primary btn__saved">
                         <i class="fa fa-trash-o"></i> 완료
                     </button>
                 </div>
@@ -65,13 +66,16 @@
 
 @section('script')
 <script>
+    $(document).ready(function() {
+        var target;
+    });
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
     $('.btn__update').on('click', function(e) {
-        var target = e.target.id;
+        target = e.target.id;
         console.log(target);
         $.ajax({
                 type: 'GET',
@@ -87,12 +91,22 @@
             });
     });
     $('.btn__saved').on('click', function(e) {
-        var target = $('.member_update').attr('data-id');
-        var Newdata = $('.member_update').serializeArray();
-        alert(target);
+        var Newdata = $('.member_update').serializeObject();
+        console.log(Newdata);
+
+        // var name = $('#name').val();
+        // var comment = $('#comment').val();
+        // var image = $('#image').val();
+        
+        alert(target)
         $.ajax({
-                type: 'PATCH',
+                type: 'PUT',
                 url: '/introduces/' + target,
+                enctype: 'multipart/form-data',
+                processData: false,
+                contentType: false,
+                cache: false,
+                dataType: 'json',
                 data: Newdata,
             })
             .then((Newdata) => {
@@ -113,7 +127,6 @@
             reader.readAsDataURL(input.files[0]);
         }
     }
-
     $("#image").change(function() {
         readURL(this);
     });
