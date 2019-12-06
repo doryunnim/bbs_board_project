@@ -16,10 +16,10 @@
 
     <div class="row mb-4">
         <div class="col-md-4 offset-md-4">
-            <form id=form_tt action="{{ route('introduces.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('introduces.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                    <input type="file" name="image" id=test class="form-control-file"><br><br>
+                    <input type="file" name="image" class="form-control-file"><br><br>
                     <input type="text" name="name" placeholder="name"><br><br>
                     <input type="text" name="comment" placeholder="comment"><br><br>
                     <input type="submit" class="btn btn-primary btn-block">
@@ -28,11 +28,4 @@
         </div>
     </div>
 </div>
-@endsection
-@section('script')
-<script>
-    $('.btn-block').on('click', function() {
-        
-    })
-</script>
 @endsection

@@ -18,7 +18,7 @@ class CreateNabeIntroducesTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->string('comment');
-            $table->string('url');
+            $table->string('image');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');

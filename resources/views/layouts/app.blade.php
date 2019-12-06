@@ -47,6 +47,11 @@
             </button>
             <div class="navbar-collapse collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ml-auto">
+                    <!-- @if (Route::get('introduces.index'))
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{{route('introduces.create')}}">조원추가</a>
+                    </li>
+                    @endif -->
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{route('introduces.index')}}">조원소개</a>
                     </li>

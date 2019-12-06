@@ -5,15 +5,17 @@ namespace App\Http\Controllers;
 use App\NabeIntroduce;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Http\UploadedFile;
+use Validator;
 
 class NabeIntroduceController extends Controller
 {
     public function index()
-    {
+    {   
         $introduces = NabeIntroduce::all();
         return view('introduce.index', compact('introduces'));
+        if(request()->ajax()){
+            return view('introdce.index');
+        }
     }
 
     public function create()
@@ -22,28 +24,42 @@ class NabeIntroduceController extends Controller
     }
 
     public function store(Request $request)
-    {
-        if (!$request->file('image')) {
-            return redirect()->back()->withErrors([
-                'error' => "사진을 업로드 하세요"
-            ]);
-        } elseif (!$request->name) {
-            return redirect()->back()->withErrors([
-                'error' => "이름을 입력하세요"
-            ]);
-        } elseif (!$request->comment) {
-            return redirect()->back()->withErrors([
-                'error' => "한마디를 꼭"
-            ]);
+    {   
+        $image = $request->file('image');
+        if($request->has("image"))
+        {
+            $rules = array(
+                'name'    =>  'required',
+                'comment'     =>  'required',
+                'image'         =>  'image|max:2048'
+            );
+            $error = Validator::make($request->all(), $rules);
+            if($error->fails())
+            {
+                return response()->json(['errors' => $error->errors()->all()]);
+            }
+            $image_name = rand() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('img'), $image_name);
+        }
+        else 
+        {
+            $rules = array(
+                'name'    =>  'required',
+                'comment'     =>  'required'
+            );
+            $error = Validator::make($request->all(), $rules);
+            if($error->fails())
+            {
+                return response()->json(['errors' => $error->errors()->all()]);
+            }
         }
         #Store 사진 저장경로
-        $path = $request->file('image')->store('public');
-
         $data = [
             'name' => $request->name,
             'comment' => $request->comment,
-            'url' => $path,
+            'image' => $image_name,
         ];
+        //NabeIntroduce::user()->nabe_introduce()->create($data);
         $introduce = $request->user()->nabe_introduce()->create($data);
         if (!$introduce) {
             return back()->with('flash_message', '인적사항이 저장되지 않았데스..')->withInput();
@@ -62,22 +78,64 @@ class NabeIntroduceController extends Controller
        //
     }
 
-    public function update(Request $request, NabeIntroduce $introduce)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request)
     {
-        //$path = $request->file('image')->store('public');
-        // $Newdata = [
-        //     'name' => $request->name,
-        //     'comment' => $request->comment,
-        //     'url' => $request->url,
-        // ];
-        $introduce->update($request->all());
+        $image_name = $request->hidden_image;
+        $image = $request->file('image');
+        if($request->has("image"))
+        {
+            $rules = array(
+                'name'    =>  'required',
+                'comment'     =>  'required',
+                'image'         =>  'image|max:2048'
+            );
+            $error = Validator::make($request->all(), $rules);
+            if($error->fails())
+            {
+                return response()->json(['errors' => $error->errors()->all()]);
+            }
+            $image_name = rand() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('img'), $image_name);
+        }
+        else 
+        {
+            $rules = array(
+                'name'    =>  'required',
+                'comment'     =>  'required'
+            );
+            $error = Validator::make($request->all(), $rules);
+            if($error->fails())
+            {
+                return response()->json(['errors' => $error->errors()->all()]);
+            }
+        }
+        $form_data = [
+            'name'=> $request->name,
+            'comment'=>$request->comment,
+            'image'=>$image_name,
+        ];
+        $member_id = $request->get('hidden_id');
+        $result = NabeIntroduce::whereId($member_id)->update($form_data);
+        //$data = NabeIntroduce::where('id', $member_id)->with('user')->update($form_data);
         return response()->json([], 204);
     }
-    
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function destroy(NabeIntroduce $introduce)
     {
         $introduce->delete();
         return response()->json([], 204);
-        #return redirect()->route('introduces.index')->with('flash_message', '삭제 성공');
     }
 }

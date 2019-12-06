@@ -8,10 +8,12 @@
     <hr>
     <div class="row">
         @forelse($introduces as $introduce)
-        @include('introduce.partial.member', compact('introduce'))
+        @include('introduce.partial.member')
         @empty
         <p class="text-center text-danger">글이 없습니다.</p>
         @endforelse
+    </div>
+    <div>
         <a href="{{ route('introduces.create') }}">ADD</a>
     </div>
     <div class="container" style="text-align:center">
@@ -23,7 +25,7 @@
     </div>
     <div class="row">
         @forelse($introduces as $introduce)
-        @include('introduce.partial.detail', compact('introduce'))
+        @include('introduce.partial.detail')
         @empty
         <p class="text-center text-danger">글이 없습니다.</p>
         @endforelse
@@ -33,7 +35,7 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>수정하는 창입니다 호호</h2><br>
-            <form class="member_update">
+            <form class="member_update" method="POST" enctype="multipart/form-data">
                 @csrf
                 <!-- 사진 인풋 -->
                 <div class="form-group">
@@ -53,10 +55,11 @@
                     <input type="text" name="comment" id="comment" class="form-control" />
                 </div>
                 <div class="form-group">
-                    <input type="hidden" name="_method" value="PUT" />
-                    <button type="submit" class="btn btn-primary btn__saved">
+                    <input type="hidden" name="hidden_id" id="hidden_id" />
+                    <button type="button" class="btn btn-primary btn__saved">
                         <i class="fa fa-trash-o"></i> 완료
                     </button>
+                    <span id="span_image"></span>
                 </div>
             </form>
         </div>
@@ -68,6 +71,7 @@
 <script>
     $(document).ready(function() {
         var target;
+        $('.navbar-bar').append('<li class=nav-item>조원추가</li>');
     });
     $.ajaxSetup({
         headers: {
@@ -76,7 +80,8 @@
     });
     $('.btn__update').on('click', function(e) {
         target = e.target.id;
-        console.log(target);
+        alert(target);
+        //  $('#hidden_id').attr("data-id", target);
         $.ajax({
                 type: 'GET',
                 url: '/introduces/' + target,
@@ -85,37 +90,50 @@
                 console.log(data);
                 console.log('첫번째 수정이벤트');
                 $('#Mymodal').css("display", "block");
-                $('#photo_preview').attr("src", data[0].url); // 예전 사진 로딩
+                $('#photo_preview').attr("src", "{{ URL::to('/') }}/img/" + data[0].image); // 예전 사진 로딩
                 $('#name').attr("value", data[0].name); // 예전 이름 로딩
                 $('#comment').attr("value", data[0].comment); // 예전 코멘트 로딩
+                $('#hidden_id').val(data[0].id);
+                $('#span_image').append("<input type='hidden' name='hidden_image' value='" + data[0].image + "' />");
             });
     });
     $('.btn__saved').on('click', function(e) {
-        var Newdata = $('.member_update').serializeObject();
-        console.log(Newdata);
-
-        // var name = $('#name').val();
-        // var comment = $('#comment').val();
-        // var image = $('#image').val();
-        
-        alert(target)
+        alert('되냐?');
+        var form = $('.member_update')[0];
+        console.log(form);
         $.ajax({
-                type: 'PUT',
-                url: '/introduces/' + target,
-                enctype: 'multipart/form-data',
+                url: "{{ route('introduces.update') }}",
+                method: "POST",
                 processData: false,
                 contentType: false,
                 cache: false,
-                dataType: 'json',
-                data: Newdata,
+                dataType: "json",
+                data: new FormData(form),
             })
             .then((Newdata) => {
+                $('#Mymodal').css("display", "none");
                 alert('저장완료');
-                $('#photo_preview').attr("src", Newdata[0].url); // 뉴 사진 로딩
-                $('#name').attr("value", Newdata[0].name); // 뉴 이름 로딩
-                $('#comment').attr("value", Newdata[0].comment); // 뉴 코멘트 로딩
+                // 에이작스 안의 에이작스
+                $.ajax({
+                        type: 'GET',
+                        url: '/introduces/' + target,
+                    })
+                    .then((data) => {
+                        console.log(data);
+                        console.log('업데이트 완료 했던 곳');
+                        $('#detail_image').attr("src", "{{ URL::to('/') }}/img/" + data[0].image);
+                        $('#detail_name').text(data[0].name);
+                        $('#detail_comment').text(data[0].comment);
+
+                        $('#index_image').attr("src", "{{ URL::to('/') }}/img/" + data[0].image);
+                        $('#index_name').text(data[0].name);
+                    });
             });
+
     });
+
+
+
 
     // URL 미리보기 함수
     function readURL(input) {
@@ -136,7 +154,7 @@
         if (confirm('진짜 삭제할꼬양?')) {
             $.ajax({
                 type: 'DELETE',
-                url: '/introduces/' + target
+                url: '/introduces/' + target,
             }).then(function() {
                 $(".col-md-2:first").remove();
                 $(".col-md-4:first").remove();
