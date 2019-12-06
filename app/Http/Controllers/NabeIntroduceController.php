@@ -42,7 +42,7 @@ class NabeIntroduceController extends Controller
         $data = [
             'name' => $request->name,
             'comment' => $request->comment,
-            'url' => Storage::url($path)
+            'url' => $path,
         ];
 
         //$introduce = NabeIntroduce::updateOrCreate([$data]);

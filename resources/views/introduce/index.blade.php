@@ -33,30 +33,27 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>수정하는 창입니다 호호</h2><br>
-            <form class="member_update" enctype="multipart/form-data">
+            <form class="member_update" data-id="{{ $introduce->id }}">
                 @csrf
                 <!-- 사진 인풋 -->
-                <div class="form-group {{ $errors->has('url') ? 'has-error' : '' }}">
+                <div class="form-group">
                     <img id="photo_preview" width="250px" height="200" src="#" /> <br><br>
-                    <input type="file" name="image" id="image_input" class="form-control" />
-                    {!! $errors->first('url', '<span class="form-error">:message</span>') !!}
+                    <input type="file" name="image" id="image" class="form-control" />
                 </div>
 
                 <!-- 이름 인풋 -->
-                <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
+                <div class="form-group">
                     <label for="name">이름 : </label>
-                    <input type="text" name="name" id="name" value="" class="form-control" />
-                    {!! $errors->first('name', '<span class="form-error">:message</span>') !!}
+                    <input type="text" name="name" id="name" class="form-control" />
                 </div>
 
                 <!-- 코멘트 인풋 -->
-                <div class="form-group {{ $errors->has('comment') ? 'has-error' : '' }}">
+                <div class="form-group =">
                     <label for="comment">코멘트 : </label>
-                    <input type="text" name="comment" id="comment" value="" class="form-control" />
-                    {!! $errors->first('name', '<span class="form-error">:message</span>') !!}
+                    <input type="text" name="comment" id="comment" class="form-control" />
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-primary btn__saved" id="{{ $introduce->id }}">
+                    <button type="submit" class="btn btn-primary btn__saved" >
                         <i class="fa fa-trash-o"></i> 완료
                     </button>
                 </div>
@@ -90,10 +87,13 @@
             });
     });
     $('.btn__saved').on('click', function(e) {
-        var target = e.target.id;
+        var target = $('.member_update').attr('data-id');
+        var Newdata = $('.member_update').serializeArray();
+        alert(target);
         $.ajax({
-                type: 'PUT',
+                type: 'PATCH',
                 url: '/introduces/' + target,
+                data: Newdata,
             })
             .then((Newdata) => {
                 alert('저장완료');
@@ -114,7 +114,7 @@
         }
     }
 
-    $("#image_input").change(function() {
+    $("#image").change(function() {
         readURL(this);
     });
 
