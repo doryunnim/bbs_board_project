@@ -51,3 +51,13 @@ $factory->define(App\Qna_comment::class, function (Faker $faker){
         },
     ];
 });
+
+$factory->define(App\NabeIntroduce::class, function (Faker $faker) {
+    $date = $faker->dateTimeThisMonth;
+    return [
+        'name' => $faker->sentence(),
+        'comment' => $faker->paragraph(),
+        'created_at' => $date,
+        'updated_at' => $date,
+    ];
+});
