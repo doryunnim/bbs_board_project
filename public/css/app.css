@@ -2108,6 +2108,7 @@ textarea.form-control {
 }
 
 .form-group {
+  margin-top: 10px;
   margin-bottom: 1rem;
 }
 
@@ -2562,14 +2563,14 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #3490dc;
-  border-color: #3490dc;
+  background-color: #474747;
+  border-color: #313131;
 }
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #227dc7;
-  border-color: #2176bd;
+  background-color: #303030;
+  border-color: #1a1a1a;
 }
 
 .btn-primary:focus,
@@ -5029,14 +5030,14 @@ input[type=button].btn-block {
   padding: 0.5rem 0.75rem;
   margin-left: -1px;
   line-height: 1.25;
-  color: #3490dc;
+  color: #1b1b1b;
   background-color: #fff;
   border: 1px solid #dee2e6;
 }
 
 .page-link:hover {
   z-index: 2;
-  color: #1d68a7;
+  color: #131313;
   text-decoration: none;
   background-color: #e9ecef;
   border-color: #dee2e6;
@@ -5062,8 +5063,8 @@ input[type=button].btn-block {
 .page-item.active .page-link {
   z-index: 1;
   color: #fff;
-  background-color: #3490dc;
-  border-color: #3490dc;
+  background-color: #292929;
+  border-color: #353535;
 }
 
 .page-item.disabled .page-link {

@@ -10,6 +10,7 @@
     <ul>
         @forelse($qnaArticles as $article)
             @include('qnaArticles.partial.qnaArticle')
+            <hr>
         <!-- <li>
             {{$article->title}}
             <small>

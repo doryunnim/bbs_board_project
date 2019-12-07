@@ -1,6 +1,6 @@
-<div class="media">
-    <div class="media-body">
-        <h4 class="media-heading"> </h4>
+<div class="articleMedia">
+    <div class="articleMedia-body">
+        <h4 class="articleMedia-heading"> </h4>
         <a href="{{route('qnaArticles.show', $article->id)}}">
             <h5>{{$article->title}}</h5>
         </a>

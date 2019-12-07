@@ -33,6 +33,7 @@
      -->
     
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/commentcss.css') }}" rel="stylesheet">
     
     
 </head>

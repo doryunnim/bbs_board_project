@@ -107,6 +107,7 @@
                     sendCheck = ""
                 }
         });
+
         
         $('.btn__replay__comment').on('click', function(e){
             var target = e.target
@@ -114,6 +115,7 @@
             var content = $(parent).children(".media__create__comment");
             var text = $(parent).children('.content__comment');
             var textarea = $(parent).find('textarea');
+
             if($(content).css("display") == "none"){
                 $(content).css("display", "block");
                 $(textarea).val("");
@@ -123,7 +125,8 @@
                 $(content).css("display", "none");
                 sendCheck = ""
             }
-        })
+        });
+        
 
     </script>
 @endsection
