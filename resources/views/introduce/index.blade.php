@@ -1,6 +1,6 @@
 @extends('layouts.app')
-
 @section('content')
+<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 <div class="container">
     <div class="page-header">
         <h3>Introduce My teams</h3>
