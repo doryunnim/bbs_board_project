@@ -14,6 +14,7 @@ use PHPUnit\Framework\InvalidDataProviderException;
 use PHPUnit\Framework\SkippedTestError;
 use PHPUnit\Framework\Warning;
 use PHPUnit\Util\Exception;
+use PHPUnit\Util\InvalidDataSetException;
 
 /**
  * This is an abstraction around a PHPUnit-specific docBlock,
@@ -312,7 +313,7 @@ final class DocBlock
 
         foreach ($data as $key => $value) {
             if (!\is_array($value)) {
-                throw new Exception(
+                throw new InvalidDataSetException(
                     \sprintf(
                         'Data set %s is invalid.',
                         \is_int($key) ? '#' . $key : '"' . $key . '"'
@@ -433,12 +434,14 @@ final class DocBlock
                 $dataProviderMethod = $dataProviderClass->getMethod(
                     $dataProviderMethodName
                 );
+                // @codeCoverageIgnoreStart
             } catch (\ReflectionException $e) {
                 throw new Exception(
                     $e->getMessage(),
                     (int) $e->getCode(),
                     $e
                 );
+                // @codeCoverageIgnoreEnd
             }
 
             if ($dataProviderMethod->isStatic()) {

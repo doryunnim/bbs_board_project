@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 <style>
     .nav-1{
         border-bottom: 3px solid white;

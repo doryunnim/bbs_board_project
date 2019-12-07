@@ -434,6 +434,7 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
     {
         try {
             $class = new \ReflectionClass($this);
+            // @codeCoverageIgnoreStart
         } catch (\ReflectionException $e) {
             throw new Exception(
                 $e->getMessage(),
@@ -441,6 +442,7 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
                 $e
             );
         }
+        // @codeCoverageIgnoreEnd
 
         $buffer = \sprintf(
             '%s::%s',
@@ -640,6 +642,7 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
 
             try {
                 $class = new \ReflectionClass($this);
+                // @codeCoverageIgnoreStart
             } catch (\ReflectionException $e) {
                 throw new Exception(
                     $e->getMessage(),
@@ -647,6 +650,7 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
                     $e
                 );
             }
+            // @codeCoverageIgnoreEnd
 
             if ($runEntireClass) {
                 $template = new \Text_Template(
@@ -768,6 +772,10 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
      */
     public function getMockBuilder($className): MockBuilder
     {
+        if (!\is_string($className)) {
+            $this->addWarning('Passing an array of interface names to getMockBuilder() for creating a test double that implements multiple interfaces is deprecated and will no longer be supported in PHPUnit 9.');
+        }
+
         $this->recordDoubledType($className);
 
         return new MockBuilder($this, $className);
@@ -1567,6 +1575,10 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
      */
     protected function createMock($originalClassName): MockObject
     {
+        if (!\is_string($originalClassName)) {
+            $this->addWarning('Passing an array of interface names to createMock() for creating a test double that implements multiple interfaces is deprecated and will no longer be supported in PHPUnit 9.');
+        }
+
         return $this->getMockBuilder($originalClassName)
                     ->disableOriginalConstructor()
                     ->disableOriginalClone()
@@ -1607,6 +1619,10 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
      */
     protected function createPartialMock($originalClassName, array $methods): MockObject
     {
+        if (!\is_string($originalClassName)) {
+            $this->addWarning('Passing an array of interface names to createPartialMock() for creating a test double that implements multiple interfaces is deprecated and will no longer be supported in PHPUnit 9.');
+        }
+
         $class_names = \is_array($originalClassName) ? $originalClassName : [$originalClassName];
 
         foreach ($class_names as $class_name) {
@@ -1836,9 +1852,7 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
      * @throws \Prophecy\Exception\Doubler\DoubleException
      * @throws \Prophecy\Exception\Doubler\InterfaceNotFoundException
      *
-     * @psalm-template RealInstanceType of object
-     * @psalm-param class-string<RealInstanceType>|null $classOrInterface
-     * @psalm-return ObjectProphecy<RealInstanceType>
+     * @psalm-param class-string|null $classOrInterface
      */
     protected function prophesize($classOrInterface = null): ObjectProphecy
     {
@@ -2424,6 +2438,7 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
         if (\is_string($this->expectedException)) {
             try {
                 $reflector = new \ReflectionClass($this->expectedException);
+                // @codeCoverageIgnoreStart
             } catch (\ReflectionException $e) {
                 throw new Exception(
                     $e->getMessage(),
@@ -2431,6 +2446,7 @@ abstract class TestCase extends Assert implements SelfDescribing, Test
                     $e
                 );
             }
+            // @codeCoverageIgnoreEnd
 
             if ($this->expectedException === 'PHPUnit\Framework\Exception' ||
                 $this->expectedException === '\PHPUnit\Framework\Exception' ||

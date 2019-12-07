@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
 <style>
     .nav-2{
