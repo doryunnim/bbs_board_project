@@ -1,143 +1,193 @@
-.contain {
+.contain{
     margin-top: 30px;
     background-color: lightgray;
     margin-left: auto;
     margin-right: auto;
 }
-
+.card{
+  display:block;
+}
 aside {
-    display: block;
-    padding: 10px;
-    background-color: #e7e7e7;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: auto;
-    height: 100%;
-    width: 200px;
+  display: block;
+  padding: 10px;
+  background-color: #e7e7e7;
+  margin-left: 10px;
+  margin-right: 10px;
+  /* margin-top: auto; */
+  width: 200px;
 }
-
-.contains {
-    display: flex;
-    width: 98%;
-    margin: 0 auto;
-    height: 100%;
+.btn-primary {
+  background-color: dimgray;
+  border-color: darkgray;
+  color: aliceblue;
 }
-
-.main-chart {
-    width: 98%;
-    width: 98%;
-    background-color: #284257;
+.text-right{
+  float: right;
+}
+.listbtn{
+  float: right;
+  margin-top: 10px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  width: 70px;
+  padding: 3px;
+  text-align: center;
+  text-align: center;
+}
+.btn-info{
+  height: 31px;
+  line-height: 27px;
+}
+.updatebtn{
+  float: right;
+  margin-top: 10px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  width: 70px;
+  padding: 3px;
+  text-align: center;
+  background-color: lavender;
+  text-align: center;
+}
+.btn-danger{
+  margin: 10px;
+}
+.changebtn{
+  position: flex;
+}
+.contains{
+  display:flex;   
+  width:98%;
+  margin: 0 auto;
+  height: 100%;
+}
+.main-chart{
+  width: 98%;
+  height: 100%; 
+  padding-bottom: 100%;
+  background-color: #284257;
     color: black;
 }
-
-html,
-body {
+html, body{
     height: 100%;
+    color: black;
 }
-
-.view {
-    width: 95%;
+.view{
+    margin-top: 52px;
+    display: list-item;
+    width:95%;
     margin-left: auto;
     margin-right: auto;
     height: auto;
     background-color: #709090;
     padding: 5px;
-    margin-top: 15px;
 }
-
-.japanImage {
-    background-image: url("japan.jpg");
-    width: 90%;
-    height: 300px;
+.Imagecontent{
+  width:100%;
+  height: 380px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+.japanImage{
+    width:90%;
+    height: 50%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
 }
-
-.page-header > h3 {
+.m-b{
+  padding: 10px;
+}
+.page-header>h3{
     padding: 10px;
 }
-
-.jp_title {
-    margin-top: 15px;
+.jp_title{
+    margin-top: 20px;
+    margin-bottom: 15px;
     width: 90%;
     margin-left: auto;
     margin-right: auto;
+    display: flex;
     background-color: #808080;
-}
 
-.jp_title > h3 {
+}
+.jp_title>h3{
     background-color: lightcyan;
-    padding: 5px;
+    padding: 10px;
     padding-left: 10px;
+    width: 70%;
+    margin: 0;
 }
-
-a {
+.jp_title>small{
+  margin-right: 10px;
+  margin-left: auto;
+  padding: 15px;
+}
+.attachment__article{
+  padding-left: 3%;
+  padding-right: 3%;
+}
+a{
     text-decoration: none;
-    color: aliceblue;
-    color: aliceblue;
+    color: black;
 }
-
+/* .left30{
+  padding-left: 10%;
+  padding-right: 3px;
+} */
 @media (min-width: 576px) {
-    .contain {
-        max-width: 540px;
-    }
-
-    .contains {
-        width: 87%;
-    }
+  .contain {
+    max-width: 540px;
+  }
+  .contains{
+    width:87%;
+  }
 }
-
-.btn {
-    width: 100px;
+.btn{
+    width:100px;
     height: 100px;
     line-height: 100px;
-    margin-left: 11%;
+    margin-left: 17%;
     margin-top: 20px;
 }
 
-img {
-    width: 100px;
-
-}
-
-
 @media (min-width: 768px) {
-    .contain {
-        max-width: 720px;
-    }
-
-    .contains {
-        width: 84%;
-    }
+  .contain {
+    max-width: 720px;
+  }
+  .contains{
+    width:84%;
+  }
 }
 
 @media (min-width: 992px) {
-    .contain {
-        max-width: 960px;
-    }
-
-    .contains {
-        width: 80%;
-    }
-
-    .btn {
-        margin-left: 16%
-    }
+  .contain {
+    max-width: 960px;
+  }
+  .contains{
+    width:80%;
+  }
 }
 
 @media (min-width: 1200px) {
-    .contain {
-        max-width: 1140px;
-    }
-
-    .contains {
-        max-width: 1200px;
-    }
-    .btn {
-        margin-left: 18%
-    }
+  .contain {
+    max-width: 1140px;
+  }
+  .contains{
+    max-width:1200px;
+  }
+  .left30{
+    padding-left: 10%;
+    padding-right: 3px;
+  }
+}
+@media (min-width: 1300px) {
+  .left30{
+    padding-left: 3%;
+  }
 }

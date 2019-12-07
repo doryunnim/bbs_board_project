@@ -1,30 +1,28 @@
 @extends('layouts.app')
 @section('content')
-<div class="container">
+<!-- styles -->
+<link href="{{ asset('css/headercss.css') }}" rel="stylesheet">
+<link href="{{ asset('css/japan.css') }}" rel="stylesheet">
+<link href="{{ asset('css/japanform.css') }}" rel="stylesheet">
+
+
+<div class="contain">
     <div class="page-header">
         <h3>글 수정</h3>
     </div>
 
-    <form action="{{route('japan.update', $japan->id)}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('japan.update', $japan->id)}}" id="updateJapan" method="POST" enctype="multipart/form-data">
         {!! csrf_field() !!}
+        <!-- PUT 메서드를 위해 숨은 필드를 출력 이게 없으면 MethodNotAllowHttpException 에러 발생 -->
         {!! method_field('PUT') !!}
-        @include('japan.partial.form')
         <div class="form-group">
-            <button type="submit" class="btn btn-primary">수정</button>
+            @include('japan.partial.form')
+            <button id="editJapan" class="btn btn-primary">수정</button>
         </div>
     </form>
 </div>
+@stop
 
-<aside class="side-bar">
-    <div class="row">
-        <div class="col">
-            <a href="{{route('japan.create')}}" class="btn btn-primary m-b">글 쓰기</a>
-            @forelse($japans as $japan)
-                @include('japan.partial.article', compact('japan'))
-            @empty
-                <p class="text-center text-danger">글이 없습니다.</p>
-            @endforelse
-        </div>
-    </div>
-</aside>
+@section('script')
+<script src="{{ asset('js/japan.js') }}" defer></script>
 @stop

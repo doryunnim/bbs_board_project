@@ -5,7 +5,14 @@
 section{
     display: block;
 }
-
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+img {
+    vertical-align: middle;
+    border-style: none;
+}   
 .container{
     width: 100%;
     padding-right: 15px;
@@ -28,7 +35,7 @@ section{
     color:dimgray;
 }
 .text-muted{
-    color: darkorange;
+    color: rgb(51, 51, 51);
 }
 .fas{
     font-weight:900;
@@ -60,14 +67,30 @@ section{
     margin-left:;
     width:50%;
     text-transform: none;
-    
 }
-div{
-    display:blcok;
+.service-heading:hover{
+    transition: 0.4s;
+    color: coral;
+    font-size: 1.7rem;
+}
+/* div{
+    display:block;
+} */
+.show-id{
+    font-size: 15px;
+    font-weight: bold;
+}
+.show-id:hover{
+    color: rgb(245, 117, 42);
+    transition: 0.3s;
+}
+.text-danger{
+    font-weight: bold;
+    color: red;
 }
 
 .col-lg-12{
-    position: relative;
+    
     width:100%;
     padding-right:15px;
     padding-left:15px;

@@ -7994,11 +7994,6 @@ button.bg-dark:focus {
 }
 
 .fixed-top {
-<<<<<<< HEAD
-  /* position: fixed; */
-=======
-  
->>>>>>> 9309dc365877903785890702e4a956f85f5add52
   top: 0;
   right: 0;
   left: 0;

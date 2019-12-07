@@ -24,7 +24,10 @@ class StoreBlogPost extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title'=>'required',
+            'content'=>'required',
+            'password'=>'required|min:4',
+            'imgs'=>'required',
         ];
     }
 }

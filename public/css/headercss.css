@@ -2,12 +2,13 @@ header.masthead{
     text-align: center;
     color: honeydew;
     background-repeat: no-repeat;
-    background-attachment: scroll;
-    background-position: center center;
+    background-attachment: fixed;
+    background-position:  center;
     background-size: cover;
-    background-image: url("../img/img.jpg");
+    background-image: url("../img/mainimg.jpg");
+    
+    /* background-color: gray; */
 }
-
 header{
     display: block;
 }
@@ -18,7 +19,7 @@ header{
 }
 .btn-x1{
     font-size: 18px;
-    padding:20px 40px;
+    padding:30px;
 }
 .btn{
     font-weight: 700;
@@ -35,11 +36,15 @@ header{
 ::before{
     box-sizing: border-box;
 }
+.intro-text{
+    font-family: 'Do Hyeon';
+    font-weight:'bold'
+}
 
 @media (min-width: 768px){
     header.masthead .intro-text{
         padding-top: 300px;
-        padding-bottom: 200px;     
+        padding-bottom: 250px;     
     }
     header.masthead .intro-text .intro-lead-in{
         font-size:40px;

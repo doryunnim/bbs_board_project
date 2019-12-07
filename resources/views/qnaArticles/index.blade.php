@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-
+<style>
+    .nav-3{
+        border-bottom: 3px solid white;
+    }
+</style>
 <div class="container">
     <div class="page-header">
         <h3>Q&A</h3>
