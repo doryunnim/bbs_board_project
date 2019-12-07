@@ -24,6 +24,6 @@
             <input type="file" name="imgs[]" id="imgs" multiple="multiple"/>
                 {!! $errors->first('imgs.0', '<span class="form-error">:message</span>') !!}
         </div>
-        <button id="saveBtn" class="btn btn-info">저장</button>
+        <button id="saveBtn" class="updateBtn">저장</button>
     </div>
 </form>

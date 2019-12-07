@@ -7,6 +7,7 @@
 </style>
 <link href="{{ asset('css/headercss.css') }}" rel="stylesheet">
 <link href="{{ asset('css/japan.css') }}" rel="stylesheet">
+<link href="{{ asset('css/japanform.css') }}" rel="stylesheet">
 <div class="container">
     <div class="page-header contain">
         <h3>현지학기제</h3>
@@ -51,7 +52,7 @@
     <aside class="side-bar" data-ids="{{$jpIds}}">
         <div class="row">
             <div class="col">
-                <button class="btn btn-info m-b button__create"onclick="cardnone()"><img src="img/add.png"></button>
+                <button class="btn btn-info button__create"onclick="cardnone()"><img src="img/add.png"></button>
                 @foreach($japans as $japan)
                     @include('japan.partial.article', compact('japan'))
                 @endforeach

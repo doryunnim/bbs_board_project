@@ -1,11 +1,59 @@
 .contain{
     margin-top: 30px;
-    background-color: lightgray;
     margin-left: auto;
     margin-right: auto;
 }
 .card{
   display:block;
+}
+.w3-card-4{
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 18px;
+  background-color: white;
+}
+.cardimg{
+  /* min-width: 400px; */
+  margin: 0 auto;
+  padding: 7px;
+  width: 100%;
+  height: auto;
+  max-height:520px; 
+  background-size:cover;
+}
+.content{
+  width: auto;
+  margin-left:15px;
+  margin-right: 15px;
+  background-color: rgb(238, 238, 238);
+  padding: 20px;
+  min-height: 200px;
+}
+.btn_update{
+  width: 120px;
+  height: 30px;
+  margin-left: 70%;
+}
+.btn_delete{
+  width: 120px;
+  height: 30px;
+}
+#createJapan{
+  padding: 25px;
+}
+.form-group{
+  margin: 10px; 
+}
+.form-group>label{
+  width: 20%;
+  margin-right: 5%;
+}
+.form-group>textarea{
+  width: 75%;
+}
+.form-group>input{
+  width: 75%;
+  
 }
 aside {
   display: block;
@@ -46,11 +94,7 @@ aside {
   width: 70px;
   padding: 3px;
   text-align: center;
-  background-color: lavender;
   text-align: center;
-}
-.btn-danger{
-  margin: 10px;
 }
 .changebtn{
   position: flex;
@@ -65,8 +109,8 @@ aside {
   width: 98%;
   height: 100%; 
   padding-bottom: 100%;
-  background-color: #284257;
-    color: black;
+  color: black;
+  
 }
 html, body{
     height: 100%;
@@ -105,19 +149,21 @@ html, body{
 }
 .page-header>h3{
     padding: 10px;
+    border-left: 4px solid black;
 }
 .jp_title{
     margin-top: 20px;
     margin-bottom: 15px;
-    width: 90%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     display: flex;
-    background-color: #808080;
+    background-color: #aaaaaa;
+    border: 1px solid black;
+
 
 }
 .jp_title>h3{
-    background-color: lightcyan;
     padding: 10px;
     padding-left: 10px;
     width: 70%;
@@ -172,6 +218,9 @@ a{
   .contains{
     width:80%;
   }
+  .btn_update{
+    margin-left: 47%;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -181,13 +230,12 @@ a{
   .contains{
     max-width:1200px;
   }
-  .left30{
-    padding-left: 10%;
-    padding-right: 3px;
+  .btn_update{
+    margin-left: 60%;
   }
 }
 @media (min-width: 1300px) {
-  .left30{
-    padding-left: 3%;
+  .btn_update{
+    margin-left: 70%;
   }
 }
