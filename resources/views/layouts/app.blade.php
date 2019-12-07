@@ -34,8 +34,7 @@
         <!-- 이 css쓰면 조원소개 사진크기가 이상해져서 일단 app.css로 대체했음 
         나중에 css 하실 때 수정하시기 바랍니다. -->
     
-    
-    <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
+    <!-- <link href="{{ asset('css/app2.css') }}" rel="stylesheet"> -->
     
     
 

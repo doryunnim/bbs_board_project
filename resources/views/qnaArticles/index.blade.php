@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+<link href="{{ asset('css/app2.css') }}" rel="stylesheet">
+<link href="{{ asset('css/commentcss.css') }}" rel="stylesheet">
 <style>
     .nav-3{
         border-bottom: 3px solid white;
@@ -14,6 +16,7 @@
     <ul>
         @forelse($qnaArticles as $article)
             @include('qnaArticles.partial.qnaArticle')
+            <hr>
         <!-- <li>
             {{$article->title}}
             <small>

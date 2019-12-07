@@ -1,0 +1,126 @@
+.list__comment{
+    position: relative;
+    margin-top: 20px;
+}
+
+.media{
+    padding: 10px;
+    margin-top: 10px;
+}
+
+
+.articleMedia-body>a {
+    color: black;
+
+}
+
+.articleMedia-body:hover{
+    background-color: #f0f0f0;
+}
+.articleMedia-body>a:hover{
+    color: #eb6715;
+}
+
+
+/* .media-body>a:hover {
+    color: #7050ff;
+    font-weight: bold;
+} */
+
+
+
+.card{
+    margin-top: 100px;
+}
+
+.btn__delete__comment {
+	box-shadow:inset 0px 1px 0px 0px #ff5d5d;
+	background:linear-gradient(to bottom, #ff6161 5%, #ff5757 100%);
+	background-color:#ff4646;
+	border-radius:3px;
+	border:1px solid #f52b2b;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:13px;
+	padding:3px 10px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ff4e47;
+}
+.btn__delete__comment:hover {
+	background:linear-gradient(to bottom, #ff3c3c 5%, #ff2525 100%);
+	background-color:#ff2626;
+}
+.btn__delete__comment:active {
+	position:relative;
+	top:1px;
+}
+
+.btn__edit__comment {
+	box-shadow:inset 0px 1px 0px 0px #49a7ff;
+	background:linear-gradient(to bottom, #54b2ff 5%, #57a5ff 100%);
+	background-color:#46acff;
+	border-radius:3px;
+	border:1px solid #2b93f5;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:13px;
+	padding:3px 10px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #4781ff;
+}
+.btn__edit__comment:hover {
+	background:linear-gradient(to bottom, #3c7aff 5%, #256aff 100%);
+	background-color:#2659ff;
+}
+.btn__edit__comment:active {
+	position:relative;
+	top:1px;
+}
+
+.btn__replay__comment {
+	box-shadow:inset 0px 1px 0px 0px #707070;
+	background:linear-gradient(to bottom, #3f3f3f 5%, #363636 100%);
+	background-color:#3a3a3a;
+	border-radius:3px;
+	border:1px solid #333333;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:13px;
+	padding:3px 10px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #3a3a3a;
+}
+.btn__replay__comment:hover {
+	background:linear-gradient(to bottom, #3b3b3b 5%, #2e2e2e 100%);
+	background-color:#2b2b2b;
+}
+.btn__replay__comment:active {
+	position:relative;
+	top:1px;
+}
+
+.sub>.media-body {
+    margin-left: 20px;    
+}
+
+.media-heading>a{
+    color:#3d3d3d;
+}
+.media-heading>a:hover{
+    text-decoration: none;
+}
+
+.pagination{
+    position: absolute;
+    left: 50%;
+}
+
+.text-muted{
+    text-align: right;
+}

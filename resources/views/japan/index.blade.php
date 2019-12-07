@@ -15,11 +15,13 @@
     <hr>
     
 </div>
-@if($japans->count())
+<div class="page">
+    @if($japans->count())
         <div class="text-center">
             {!! $japans->appends((Request::except('page')))->render() !!}
         </div>
     @endif
+</div>
 <div class="contains">
     
     <div class="main-chart">
