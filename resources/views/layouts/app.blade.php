@@ -23,7 +23,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}" defer></script>
  -->
-
+    <script src="{{ asset('js/nav.js') }}" defer></script>
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/navcss.css') }}">
     <link rel="stylesheet" href="{{ asset('css/headercss.css') }}">
@@ -52,13 +52,13 @@
             <div class="navbar-collapse collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger nav-here" href="{{route('introduces.index')}}">조원소개</a>
+                    <a class="nav-link js-scroll-trigger nav-here nav-1" href="{{route('introduces.index')}}">조원소개</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger nav-here" href="{{route('japan.index')}}">현지학기제</a>
+                        <a class="nav-link js-scroll-trigger nav-here nav-2" href="{{route('japan.index')}}">현지학기제</a>
                     </li>                
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger nav-here" href="{{route('qnaArticles.index')}}">Q&amp;A</a>
+                        <a class="nav-link js-scroll-trigger nav-here nav-3" href="{{route('qnaArticles.index')}}">Q&amp;A</a>
                     </li>
                     @guest
                         <li class="nav-item">

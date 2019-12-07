@@ -14,7 +14,7 @@
     </header>
 
     <!--services-->
-    <section class="page-section" id="services">
+    <section class="page-section" id="services" data-aos="fade">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center" data-aos="fade">
@@ -48,10 +48,10 @@
                         </i>
                     </span>
                     <hr>
-                    <h4 class="service-heading"><a href="{{route('japan.index')}}">현지학기제</a></h4>
+                    <h4 class="service-heading"><a class="service-chart"href="{{route('japan.index')}}">현지학기제</a></h4>
                     @if(!@empty($japans))
                         @forelse($japans as $japan)    
-                            <a href="japans/{{ $japan -> id }}" class="show-id">  
+                            <a href="{{route('japan.index')}}" onclick="japan();"class="show-id japan__show{{$japan->id}}" data-all="{{$japan}}" data-img="{{$japan->attachments}}">  
                                 <p>{{ $japan -> title }}</p>
                             </a>
                         @empty
@@ -91,19 +91,19 @@
 </div>
 @endsection
 @section('script')
-    <script>
-        AOS.init();
-        window.onscroll = function() {scrollFunction()};
-            function scrollFunction() {
-            if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
-                document.getElementById("mainNav").style.paddingTop = "0rem";
-                document.getElementById("mainNav").style.paddingBottom = "0rem";
-                document.getElementsByClassName("navbar-brand").style.fontSize = "1.75em";
-            } else {
-                document.getElementById("mainNav").style.paddingTop = "1rem";  
-                document.getElementById("mainNav").style.paddingBottom = "1rem";        
-                document.getElementsByClassName("navbar-brand").style.fontSize = "1.9em";
-            }
+<script>
+    AOS.init();
+    window.onscroll = function() {scrollFunction()};
+        function scrollFunction() {
+        if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
+            document.getElementById("mainNav").style.paddingTop = "0rem";
+            document.getElementById("mainNav").style.paddingBottom = "0rem";
+            document.getElementsByClassName("navbar-brand").style.fontSize = "28px";
+        } else {
+            document.getElementById("mainNav").style.paddingTop = "1rem";  
+            document.getElementById("mainNav").style.paddingBottom = "1rem";        
+            document.getElementsByClassName("navbar-brand").style.fontSize = "30px";
         }
-    </script>
+    }
+</script>
 @stop

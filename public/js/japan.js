@@ -97,12 +97,13 @@ $(document).ready(function () {
                 $('#create').show();
                 $('#show').hide();
                 $('.hide').hide();
+                $('#card').hide();
             }
         });
     });
 
     //작성 글 저장 method: POST
-    $('#createJapan').on('clcik', function() {
+    $('#createJapan').on('click', function() {
         var form = $(this);
         $.ajax({
             data: form.serialize(),
@@ -141,3 +142,6 @@ $(document).ready(function () {
         }
     });
 });
+function cardnone(){
+    document.getElementById("card").style.display="none";
+}

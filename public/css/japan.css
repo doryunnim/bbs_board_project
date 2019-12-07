@@ -4,6 +4,9 @@
     margin-left: auto;
     margin-right: auto;
 }
+.card{
+  display:block;
+}
 aside {
   display: block;
   padding: 10px;
@@ -60,7 +63,8 @@ aside {
 }
 .main-chart{
   width: 98%;
-  width: 98%;
+  height: 100%; 
+  padding-bottom: 100%;
   background-color: #284257;
     color: black;
 }
@@ -103,16 +107,30 @@ html, body{
     padding: 10px;
 }
 .jp_title{
-    margin-top: auto;
+    margin-top: 20px;
+    margin-bottom: 15px;
     width: 90%;
     margin-left: auto;
     margin-right: auto;
+    display: flex;
     background-color: #808080;
+
 }
 .jp_title>h3{
     background-color: lightcyan;
-    padding: 5px;
+    padding: 10px;
     padding-left: 10px;
+    width: 70%;
+    margin: 0;
+}
+.jp_title>small{
+  margin-right: 10px;
+  margin-left: auto;
+  padding: 15px;
+}
+.attachment__article{
+  padding-left: 3%;
+  padding-right: 3%;
 }
 a{
     text-decoration: none;

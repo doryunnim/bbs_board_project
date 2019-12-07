@@ -6,6 +6,7 @@ header.masthead{
     background-position:  center;
     background-size: cover;
     background-image: url("../img/mainimg.jpg");
+    
     /* background-color: gray; */
 }
 header{

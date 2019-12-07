@@ -1,13 +1,11 @@
 <div id="show" style="display:none" data-id="{{$japan->id}}">
-    <ul class="attachment__article"> 
-        <img src="" id="attach" class="img-fluid">
-    </ul>
-
     <div class="page-header jp_title">
         <h3 class="title"></h3>
         <small class="created"></small>
     </div>
-
+    <ul class="attachment__article"> 
+        <img src="" id="attach" class="img-fluid">
+    </ul>
     <p class="content"></p>
 </div>
 

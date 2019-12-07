@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    .nav-1{
+        border-bottom: 3px solid white;
+    }
+</style>
 <div class="container">
     <div class="page-header">
         <h3>Introduce My teams</h3>
