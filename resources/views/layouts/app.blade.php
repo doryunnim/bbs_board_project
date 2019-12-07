@@ -27,7 +27,6 @@
     <link rel="stylesheet" href="{{ asset('css/navcss.css') }}">
     <link rel="stylesheet" href="{{ asset('css/headercss.css') }}">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<<<<<<< HEAD
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="{{ asset('css/servcss.css') }}" rel="stylesheet">
     <link href="https://    fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
@@ -35,14 +34,6 @@
         나중에 css 하실 때 수정하시기 바랍니다. -->
     
     <!-- <link href="{{ asset('css/app2.css') }}" rel="stylesheet"> -->
-=======
-
-    <!-- <link href="{{ asset('css/servcss.css') }}" rel="stylesheet">
-        이 css쓰면 조원소개 사진크기가 이상해져서 일단 app.css로 대체했음 
-        나중에 css 하실 때 수정하시기 바랍니다.
-     -->
-    <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
->>>>>>> ec7381ca1f26980716f145eb10ed1e0ca21fd691
     
     
 
