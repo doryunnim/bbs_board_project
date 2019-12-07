@@ -10,48 +10,30 @@ label{
 }
 input{
     padding: 10px;
+    width:80%;
 }
-.title{
+/* .title{
     width:100%;
-}
-.content{
+} */
+/* .content{
     width: 100px;
-}
-.btn{
+} */
+/* .btn{
     width: 60px;
     height: 30px;
     line-height: 30px;
     margin-left: auto;
     margin-top: 10px;
     margin-bottom: 10px;
-}
-.savebtn{
+} */
+#saveBtn{
     padding: 5px;
     margin-top: 10px;
     margin-bottom: 10px;
-}
-.form-group1{
-    float:right;
-    width: 49%;
-    margin-top: 10px;
-}
-form{
-    width: 100%;
-    margin-left: 5%;
-    margin-right: 5%;
-}
-.formimg{
-    width: 300px;
+    margin-left: auto;
+    margin-right: 15px;
 }
 
-@media (min-width: 1180px){
-    .form-group1{
-        margin-left: 48%;
-        width: 55%;
-        margin-top: 10px;
-        
-    }
-    .left30{
-        margin-left: 10%;
-    }
+.formimg{
+    width: 300px;
 }

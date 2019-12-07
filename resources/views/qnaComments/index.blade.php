@@ -29,6 +29,7 @@
             var create_box = $('.top').get(0);
             $(create_box).css('display', 'block');
         });
+<<<<<<< HEAD
 
         $.ajaxSetup({
           headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
@@ -37,6 +38,13 @@
         $('.btn__delete__comment').on('click', function(e){
             var commentId = $(this).closest('.item__comment').data('id');
 
+=======
+        $.ajaxSetup({
+          headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
+        });
+        $('.btn__delete__comment').on('click', function(e){
+            var commentId = $(this).closest('.item__comment').data('id');
+>>>>>>> Japan
             if(confirm('댓글을 삭제합니다.')){
                 $.ajax({
                     type: 'DELETE',
@@ -46,7 +54,10 @@
                 });
             }
         });
+<<<<<<< HEAD
 
+=======
+>>>>>>> Japan
         $('.btn-primary').on('click', function(e){
             var commentId = $(this).closest('.item__comment').data('id'),
                 articleId = $('article').data('id');
@@ -57,7 +68,10 @@
                 var parent = create_box.parentElement;
                 var comment_box = $(parent).children('.content__comment');
                 var textarea = $(media_body).find('textarea')[0];
+<<<<<<< HEAD
 
+=======
+>>>>>>> Japan
                 if(sendCheck == "edit" ){
                     if(confirm('댓글을 수정합니다.')){
                     $.ajax({
@@ -88,7 +102,10 @@
                     }
                 }
         });
+<<<<<<< HEAD
 
+=======
+>>>>>>> Japan
         $('.btn__edit__comment').on('click', function(e){
             var commentId = $(this).closest('.item__comment').data('id'),
                 articleId = $('article').data('id');                     
@@ -123,7 +140,12 @@
                 $(content).css("display", "none");
                 sendCheck = ""
             }
+<<<<<<< HEAD
         })
 
+=======
+        });
+        
+>>>>>>> Japan
     </script>
 @endsection

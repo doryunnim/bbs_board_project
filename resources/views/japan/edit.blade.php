@@ -17,7 +17,7 @@
         {!! method_field('PUT') !!}
         <div class="form-group">
             @include('japan.partial.form')
-            <button id="editJapan" class="btn btn-primary">수정</button>
+            <button id="editJapan" class="updateBtn">수정</button>
         </div>
     </form>
 </div>

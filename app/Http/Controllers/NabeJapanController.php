@@ -22,9 +22,9 @@ class NabeJapanController extends Controller
      */
     public function index()
     {   
-        $japans = \App\NabeJapan::oldest()->paginate(5);   //오래된 순으로 불러서 기본 10개씩 보기
+        $japans = \App\NabeJapan::oldest()->paginate(10);   //오래된 순으로 불러서 기본 10개씩 보기
         $jpIds = \App\NabeJapan::pluck('id');       //id 값 배열
-        $jpImages = \App\JapanAttachments::oldest()->paginate(5);
+        $jpImages = \App\JapanAttachments::with('japan')->get();
         
         return view('japan.index', compact('japans', 'jpIds','jpImages'));
     }
