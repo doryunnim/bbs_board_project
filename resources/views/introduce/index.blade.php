@@ -1,9 +1,18 @@
 @extends('layouts.app')
 @section('content')
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<style>
+        .page-header{
+            display: flex;
+        }
+        .apsolute{
+            margin-left: 75%;
+        }
+</style>
 <div class="container">
     <div class="page-header">
         <h3>Introduce My teams</h3>
+        <a href="{{ route('introduces.create') }}" class="apsolute">ADD</a>
     </div>
     <hr>
     <div class="row">
@@ -13,25 +22,21 @@
         <p class="text-center text-danger">글이 없습니다.</p>
         @endforelse
     </div>
-    <div>
-        <a href="{{ route('introduces.create') }}">ADD</a>
-    </div>
     <div class="container" style="text-align:center">
-        <h2>우리 조는 말이죠</h2>
-        <h2>우리 조는 말이죠</h2>
-        <h2>우리 조는 말이죠</h2>
-        <h2>우리 조는 말이죠</h2>
+        <img src="{{ URL::to('/') }}/img/nabe.jpg" alt="간판">
         <hr>
-    </div>
+        <h1>introducing we are members detail</h1>
+        <hr>
+    </div>  
     <div class="row">
         @forelse($introduces as $introduce)
-        @include('introduce.partial.detail')
+            @include('introduce.partial.detail')
         @empty
         <p class="text-center text-danger">글이 없습니다.</p>
         @endforelse
     </div>
 
-    <div class="modal" id="Mymodal" style="width:500; height:300">
+    <div class="modal" id="Mymodal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>수정하는 창입니다 호호</h2><br>
