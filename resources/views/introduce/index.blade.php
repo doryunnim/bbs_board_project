@@ -79,61 +79,58 @@
         }
     });
     $('.btn__update').on('click', function(e) {
-        target = e.target.id;
-        alert(target);
-        //  $('#hidden_id').attr("data-id", target);
-        $.ajax({
-                type: 'GET',
-                url: '/introduces/' + target,
-            })
-            .then((data) => {
-                console.log(data);
-                console.log('첫번째 수정이벤트');
-                $('#Mymodal').css("display", "block");
-                $('#photo_preview').attr("src", "{{ URL::to('/') }}/img/" + data[0].image); // 예전 사진 로딩
-                $('#name').attr("value", data[0].name); // 예전 이름 로딩
-                $('#comment').attr("value", data[0].comment); // 예전 코멘트 로딩
-                $('#hidden_id').val(data[0].id);
-                $('#span_image').append("<input type='hidden' name='hidden_image' value='" + data[0].image + "' />");
-            });
+        if (confirm('수정할거야? ')) {
+            target = e.target.id;
+            console.log('첫번째 수정이벤트 : target : ' + target);
+            $.ajax({
+                    type: 'GET',
+                    url: '/introduces/' + target,
+                })
+                .then((data) => {
+                    console.log('show에 들렸다가 데이터 가져왔음');
+                    console.log(data);
+                    $('#Mymodal').css("display", "block");
+                    $('#photo_preview').attr("src", "{{ URL::to('/') }}/img/" + data[0].image); // 예전 사진 로딩
+                    $('#name').attr("value", data[0].name); // 예전 이름 로딩
+                    $('#comment').attr("value", data[0].comment); // 예전 코멘트 로딩
+                    $('#hidden_id').val(data[0].id);
+                    $('#span_image').append("<input type='hidden' name='hidden_image' value='" + data[0].image + "' />");
+                });
+        }
     });
     $('.btn__saved').on('click', function(e) {
-        alert('되냐?');
-        var form = $('.member_update')[0];
-        console.log(form);
-        $.ajax({
-                url: "{{ route('introduces.update') }}",
-                method: "POST",
-                processData: false,
-                contentType: false,
-                cache: false,
-                dataType: "json",
-                data: new FormData(form),
-            })
-            .then((Newdata) => {
-                $('#Mymodal').css("display", "none");
-                alert('저장완료');
-                // 에이작스 안의 에이작스
-                $.ajax({
-                        type: 'GET',
-                        url: '/introduces/' + target,
-                    })
-                    .then((data) => {
-                        console.log(data);
-                        console.log('업데이트 완료 했던 곳');
-                        $('#detail_image').attr("src", "{{ URL::to('/') }}/img/" + data[0].image);
-                        $('#detail_name').text(data[0].name);
-                        $('#detail_comment').text(data[0].comment);
+        if (confirm('저장할꺼야 ?')) {
+            var form = $('.member_update')[0];
+            console.log("뽐 데이터", form);
+            $.ajax({
+                    url: "{{ route('introduces.update') }}",
+                    method: "POST",
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    dataType: "json",
+                    data: new FormData(form),
+                })
+                .then((Newdata) => {
+                    // 에이작스 안의 에이작스
+                    $.ajax({
+                            type: 'GET',
+                            url: '/introduces/' + target,
+                        })
+                        .then((data) => {
+                            console.log('업데이트 된 정보를 div에 출력');
+                            console.log(data);
+                            $('#detail_image' + target).attr("src", "{{ URL::to('/') }}/img/" + data[0].image);
+                            $('#detail_name' + target).text(data[0].name);
+                            $('#detail_comment' + target).text(data[0].comment);
 
-                        $('#index_image').attr("src", "{{ URL::to('/') }}/img/" + data[0].image);
-                        $('#index_name').text(data[0].name);
-                    });
-            });
-
+                            $('#index_image' + target).attr("src", "{{ URL::to('/') }}/img/" + data[0].image);
+                            $('#index_name' + target).text(data[0].name);
+                        });
+                    $('#Mymodal').css("display", "none");
+                });
+        }
     });
-
-
-
 
     // URL 미리보기 함수
     function readURL(input) {
@@ -156,8 +153,8 @@
                 type: 'DELETE',
                 url: '/introduces/' + target,
             }).then(function() {
-                $(".col-md-2:first").remove();
-                $(".col-md-4:first").remove();
+                $('#index_member' + target).remove();
+                $('#detail_member' + target).remove();
             });
         }
     });

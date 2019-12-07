@@ -13,9 +13,7 @@ class NabeIntroduceController extends Controller
     {   
         $introduces = NabeIntroduce::all();
         return view('introduce.index', compact('introduces'));
-        if(request()->ajax()){
-            return view('introdce.index');
-        }
+
     }
 
     public function create()
@@ -31,7 +29,7 @@ class NabeIntroduceController extends Controller
             $rules = array(
                 'name'    =>  'required',
                 'comment'     =>  'required',
-                'image'         =>  'image|max:2048'
+                'image'         =>  'image',
             );
             $error = Validator::make($request->all(), $rules);
             if($error->fails())
@@ -94,7 +92,7 @@ class NabeIntroduceController extends Controller
             $rules = array(
                 'name'    =>  'required',
                 'comment'     =>  'required',
-                'image'         =>  'image|max:2048'
+                'image'         =>  'image',
             );
             $error = Validator::make($request->all(), $rules);
             if($error->fails())
