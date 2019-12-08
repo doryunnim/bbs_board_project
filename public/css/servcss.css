@@ -70,7 +70,6 @@ img {
 }
 .service-heading:hover{
     transition: 0.4s;
-    color: coral;
     font-size: 1.7rem;
 }
 /* div{
@@ -81,7 +80,6 @@ img {
     font-weight: bold;
 }
 .show-id:hover{
-    color: rgb(245, 117, 42);
     transition: 0.3s;
 }
 .text-danger{

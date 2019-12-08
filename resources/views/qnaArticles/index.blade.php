@@ -17,12 +17,6 @@
         @forelse($qnaArticles as $article)
             @include('qnaArticles.partial.qnaArticle')
             <hr>
-        <!-- <li>
-            {{$article->title}}
-            <small>
-                by {{$article->user->name}}
-            </small>
-        </li> -->
     @empty
         <p>글이 없습니다.</p>
         @endforelse

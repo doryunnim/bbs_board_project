@@ -13,7 +13,6 @@ class NabeIntroduceController extends Controller
     {   
         $introduces = NabeIntroduce::all();
         return view('introduce.index', compact('introduces'));
-
     }
 
     public function create()
@@ -84,7 +83,7 @@ class NabeIntroduceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
-    {
+    {   
         $image_name = $request->hidden_image;
         $image = $request->file('image');
         if($request->has("image"))

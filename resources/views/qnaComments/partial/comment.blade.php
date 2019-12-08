@@ -19,9 +19,13 @@
         </div>
     
         <div class="action_comment">
-                <button class="btn__delete__comment">삭제</button>
-                <button id="1" class="btn__edit__comment" data-id="edit">수정</button>
-                <button id="1" class="btn__replay__comment" data-id="edit">답글</button>
+            @can('delete', $comment)
+            <button class="btn__delete__comment">삭제</button>
+            @endcan
+            @can('update', $comment)
+            <button id="1" class="btn__edit__comment" data-id="edit">수정</button>
+            @endcan
+            <button id="1" class="btn__replay__comment" data-id="edit">답글</button>
         </div>
         
         @if($currentUser)

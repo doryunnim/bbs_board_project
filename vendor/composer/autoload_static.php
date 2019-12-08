@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInite056591a69db90d06bea9e353580e051
+class ComposerStaticInitaa68210901cedbc0c59d996499a84cda
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -76,11 +76,7 @@ class ComposerStaticInite056591a69db90d06bea9e353580e051
         '75c79eb1b25749b05a47976f32b0d8a2' => __DIR__ . '/..' . '/markbaker/matrix/classes/src/operations/divideby.php',
         '6ab8ad87a734f276a6bcd5a0fe1289be' => __DIR__ . '/..' . '/markbaker/matrix/classes/src/operations/divideinto.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
-<<<<<<< HEAD
-        '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
-=======
->>>>>>> Japan
         '9cdd7b9056abc3081735233ba9dd9c7f' => __DIR__ . '/..' . '/facade/flare-client-php/src/helpers.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
@@ -88,7 +84,6 @@ class ComposerStaticInite056591a69db90d06bea9e353580e051
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         'b6ec61354e97f32c0ae683041c78392a' => __DIR__ . '/..' . '/scrivo/highlight.php/HighlightUtilities/functions.php',
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
-        '0b47d6d4a00ca9112ba3953b49e7c9a4' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/helper.php',
         'b4e3f29b106af37a2bb239f73cdf68c7' => __DIR__ . '/../..' . '/app/helpers.php',
     );
 
@@ -152,11 +147,8 @@ class ComposerStaticInite056591a69db90d06bea9e353580e051
             'Psr\\Container\\' => 14,
             'Prophecy\\' => 9,
             'PhpParser\\' => 10,
-<<<<<<< HEAD
             'PhpOption\\' => 10,
-=======
             'PhpOffice\\PhpSpreadsheet\\' => 25,
->>>>>>> Japan
         ),
         'O' => 
         array (
@@ -230,15 +222,11 @@ class ComposerStaticInite056591a69db90d06bea9e353580e051
         ),
         'Yajra\\DataTables\\' => 
         array (
-<<<<<<< HEAD
-            0 => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src',
-=======
             0 => __DIR__ . '/..' . '/yajra/laravel-datatables-buttons/src',
             1 => __DIR__ . '/..' . '/yajra/laravel-datatables-editor/src',
             2 => __DIR__ . '/..' . '/yajra/laravel-datatables-fractal/src',
             3 => __DIR__ . '/..' . '/yajra/laravel-datatables-html/src',
             4 => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src',
->>>>>>> Japan
         ),
         'XdgBaseDir\\' => 
         array (
@@ -376,15 +364,13 @@ class ComposerStaticInite056591a69db90d06bea9e353580e051
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
         ),
-<<<<<<< HEAD
         'PhpOption\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption',
-=======
+        ),
         'PhpOffice\\PhpSpreadsheet\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet',
->>>>>>> Japan
         ),
         'Opis\\Closure\\' => 
         array (
@@ -555,10 +541,7 @@ class ComposerStaticInite056591a69db90d06bea9e353580e051
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
-<<<<<<< HEAD
         'App\\Http\\Requests\\JapanRequest' => __DIR__ . '/../..' . '/app/Http/Requests/IntroduceRequest.php',
-=======
->>>>>>> Japan
         'App\\Http\\Requests\\NabeJapansRequest' => __DIR__ . '/../..' . '/app/Http/Requests/NabeJapansRequest.php',
         'App\\Http\\Requests\\QnaArticlesRequest' => __DIR__ . '/../..' . '/app/Http/Requests/QnaArticlesRequest.php',
         'App\\Http\\Requests\\QnaCommentsRequest' => __DIR__ . '/../..' . '/app/Http/Requests/QnaCommentsRequest.php',
@@ -2231,7 +2214,6 @@ class ComposerStaticInite056591a69db90d06bea9e353580e051
         'Illuminate\\View\\ViewFinderInterface' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewFinderInterface.php',
         'Illuminate\\View\\ViewName' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewName.php',
         'Illuminate\\View\\ViewServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewServiceProvider.php',
-        'IntroducesSeeder' => __DIR__ . '/../..' . '/database/seeds/IntroducesSeeder.php',
         'JakubOnderka\\PhpConsoleColor\\ConsoleColor' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/ConsoleColor.php',
         'JakubOnderka\\PhpConsoleColor\\InvalidStyleException' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/InvalidStyleException.php',
         'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src/Highlighter.php',
@@ -4738,19 +4720,6 @@ class ComposerStaticInite056591a69db90d06bea9e353580e051
         'Whoops\\Util\\TemplateHelper' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
         'XdgBaseDir\\Xdg' => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
         'Yajra\\DataTables\\ApiResourceDataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/ApiResourceDataTable.php',
-<<<<<<< HEAD
-        'Yajra\\DataTables\\CollectionDataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/CollectionDataTable.php',
-        'Yajra\\DataTables\\Contracts\\DataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Contracts/DataTable.php',
-        'Yajra\\DataTables\\DataTableAbstract' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/DataTableAbstract.php',
-        'Yajra\\DataTables\\DataTables' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/DataTables.php',
-        'Yajra\\DataTables\\DataTablesServiceProvider' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/DataTablesServiceProvider.php',
-        'Yajra\\DataTables\\EloquentDataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/EloquentDataTable.php',
-        'Yajra\\DataTables\\Exceptions\\Exception' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Exceptions/Exception.php',
-        'Yajra\\DataTables\\Facades\\DataTables' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Facades/DataTables.php',
-        'Yajra\\DataTables\\Processors\\DataProcessor' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Processors/DataProcessor.php',
-        'Yajra\\DataTables\\Processors\\RowProcessor' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Processors/RowProcessor.php',
-        'Yajra\\DataTables\\QueryDataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/QueryDataTable.php',
-=======
         'Yajra\\DataTables\\ButtonsServiceProvider' => __DIR__ . '/..' . '/yajra/laravel-datatables-buttons/src/ButtonsServiceProvider.php',
         'Yajra\\DataTables\\CollectionDataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/CollectionDataTable.php',
         'Yajra\\DataTables\\Commands\\TransformerMakeCommand' => __DIR__ . '/..' . '/yajra/laravel-datatables-fractal/src/Commands/TransformerMakeCommand.php',
@@ -4834,7 +4803,6 @@ class ComposerStaticInite056591a69db90d06bea9e353580e051
         'Yajra\\DataTables\\Services\\DataTablesExportHandler' => __DIR__ . '/..' . '/yajra/laravel-datatables-buttons/src/Services/DataTablesExportHandler.php',
         'Yajra\\DataTables\\Transformers\\DataArrayTransformer' => __DIR__ . '/..' . '/yajra/laravel-datatables-buttons/src/Transformers/DataArrayTransformer.php',
         'Yajra\\DataTables\\Transformers\\FractalTransformer' => __DIR__ . '/..' . '/yajra/laravel-datatables-fractal/src/Transformers/FractalTransformer.php',
->>>>>>> Japan
         'Yajra\\DataTables\\Utilities\\Config' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Utilities/Config.php',
         'Yajra\\DataTables\\Utilities\\Helper' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Utilities/Helper.php',
         'Yajra\\DataTables\\Utilities\\Request' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Utilities/Request.php',
@@ -4913,10 +4881,10 @@ class ComposerStaticInite056591a69db90d06bea9e353580e051
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInite056591a69db90d06bea9e353580e051::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInite056591a69db90d06bea9e353580e051::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInite056591a69db90d06bea9e353580e051::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInite056591a69db90d06bea9e353580e051::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitaa68210901cedbc0c59d996499a84cda::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitaa68210901cedbc0c59d996499a84cda::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitaa68210901cedbc0c59d996499a84cda::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitaa68210901cedbc0c59d996499a84cda::$classMap;
 
         }, null, ClassLoader::class);
     }

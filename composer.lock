@@ -4,11 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "content-hash": "92721d219d45e0c1ab02de39733d7291",
-=======
     "content-hash": "07bd22a302216bc29ccfdcf4e1407c01",
->>>>>>> Japan
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -3626,8 +3622,6 @@
             "time": "2019-09-10T21:37:39+00:00"
         },
         {
-<<<<<<< HEAD
-=======
             "name": "yajra/laravel-datatables",
             "version": "v1.5.0",
             "source": {
@@ -3918,7 +3912,6 @@
             "time": "2019-11-11T15:03:06+00:00"
         },
         {
->>>>>>> Japan
             "name": "yajra/laravel-datatables-oracle",
             "version": "v9.7.2",
             "source": {
