@@ -16,7 +16,7 @@
         <p>{!! markdown($qnaArticle->content) !!}</p>
         <!-- <p>{{ $qnaArticle->content }}</p> -->
     </article>
-    <div class="text-center action__article">
+    <div class="text-right action__article">
         @can('update', $qnaArticle)
             <a href="{{route('qnaArticles.edit', $qnaArticle->id)}}" class="btn btn-info">
                 <i class="fa fa-pencil"></i> 수정
@@ -58,4 +58,5 @@
             }
         }); 
     </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 @stop

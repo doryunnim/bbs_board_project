@@ -1,5 +1,5 @@
  <div class="media item__comment {{ $isReply ? 'sub' : 'top' }}"
-    data-id="{{ $comment->id }}" id="comment_{{ $comment->id }}">
+    data-id="{{ $comment->id }}" id="comment_{{ $comment->id }}" data-aos="fade-down">
 
     <div class="media-body">
         <h5 class="media-heading">

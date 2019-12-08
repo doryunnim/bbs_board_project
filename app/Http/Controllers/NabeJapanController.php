@@ -1,18 +1,14 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Http\Requests\NabeJapansRequest;
 use App\Http\Requests\StoreBlogPost;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Storage;
-
 use App\NabeJapan;
 use App\JapanAttachments;
 use File;
-
 class NabeJapanController extends Controller
 {
     /**
@@ -28,7 +24,6 @@ class NabeJapanController extends Controller
         
         return view('japan.index', compact('japans', 'jpIds','jpImages'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -38,7 +33,6 @@ class NabeJapanController extends Controller
     {
         // return view("japan.create", compact('japan'));
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -51,10 +45,8 @@ class NabeJapanController extends Controller
      
         if($request->hasFile('imgs')){
             $imgs = $request->file('imgs');
-
             foreach($imgs as $img){
                 $imgName = $img->store('img');
-
                 $japan->attachments()->create([
                     'filename'=>$imgName,
                     'bytes'=>$img->getSize(),
@@ -66,15 +58,12 @@ class NabeJapanController extends Controller
                 'error' => "이미지를 업로드 하세요"
             ]);
         }
-
         if(!$japan){
             return back()->with('flash_message','글이 저장되지 않았습니다')->withInput();
         }
-
         return redirect('/japan')->with('flash_message', '글이 저장되었습니다.');
         // return response()->json($japan, 200);
     }
-
     /**
      * Display the specified resource.
      *
@@ -87,7 +76,6 @@ class NabeJapanController extends Controller
         // $japans = \App\NabeJapan::get();
         // return view('japan.show', compact('japan', 'japans'));
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -99,7 +87,6 @@ class NabeJapanController extends Controller
         $files = $japan->attachments;
         return view('japan.edit', compact('japan', 'files'));
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -112,10 +99,8 @@ class NabeJapanController extends Controller
         //
         if($request->hasFile('imgs')){
             $imgs = $request->file('imgs');
-
             foreach($imgs as $img){
                 $imgName = $img->store('public');
-
                 $japan->attachments()->update([
                     'filename'=>Storage::url($imgName),
                     'bytes'=>$img->getSize(),
@@ -129,7 +114,6 @@ class NabeJapanController extends Controller
         // $request: {"_token":"i5YjriXCc1LydGOIswmq7mceAHHut0XkgknAIQtC","_method":"PUT","title":"","content":"","password":""}
         // $japan: {"id":,"title":"","content":"","":"","created_at":"","updated_at":""}
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -142,17 +126,14 @@ class NabeJapanController extends Controller
         $japan->delete();
         return response()->json([], 200);   //첫번째 인자로 받은 배열을 json 형식으로 배열화
     }
-
     //글에 연결된 이미지 삭제
     public function deleteAttachments(Collection $attachmetns)
     {
         $attachmetns->each(function ($attachment) {
             $filePath = $attachment->filename;
-
             if (File::exists($filePath)) {      //$filename 경로에 파일이 있으면 지운다
                 File::delete($filePath);
             }
-
             return $attachment->delete();
         });
     }
