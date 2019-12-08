@@ -50,7 +50,7 @@ class NabeJapansRequest extends FormRequest
             'title' => '제목',
             'content' => '내용',
             'password' => '비밀번호',
-            'img' => '이미지'
+            'imgs' => '이미지'
         ];
     }
 

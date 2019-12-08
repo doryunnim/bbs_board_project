@@ -38,6 +38,11 @@
   width: 120px;
   height: 30px;
 }
+.sidebtn{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 #createJapan{
   padding: 25px;
 }
