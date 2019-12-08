@@ -114,10 +114,10 @@ class NabeJapanController extends Controller
             $imgs = $request->file('imgs');
 
             foreach($imgs as $img){
-                $imgName = $img->store('public');
+                $imgName = $img->store('img');
 
                 $japan->attachments()->update([
-                    'filename'=>Storage::url($imgName),
+                    'filename'=>$imgName,
                     'bytes'=>$img->getSize(),
                     'mime'=>$img->getClientMimeType()
                 ]);
