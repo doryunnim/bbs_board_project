@@ -1,25 +1,5 @@
 @extends('layouts.app')
 @section('content')
-<<<<<<< HEAD
-<<<<<<< HEAD
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
-=======
-<link href="{{ asset('css/app2.css') }}" rel="stylesheet">
-<!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
->>>>>>> Japan
-<style>
-    .nav-1{
-        border-bottom: 3px solid white;
-    }
-    .page-header{
-        display: flex;
-    }
-    .apsolute{
-        margin-left: 75%;
-    }
-</style>
-
-=======
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 <style>
         .page-header{
@@ -29,31 +9,24 @@
             margin-left: 75%;
         }
 </style>
->>>>>>> ec7381ca1f26980716f145eb10ed1e0ca21fd691
 <div class="container">
     <div class="page-header">
         <h3>Introduce My teams</h3>
-        <a href="{{ route('introduces.create') }}" class="apsolute">ADD</a>
+        <a href="{{ route('introduces.create') }}" class="apsolute">
+            <i class="fa fa-list"></i> ADD
+        </a>
     </div>
     <hr>
     <div class="row">
         @forelse($introduces as $introduce)
-        @include('introduce.partial.member')
+            @include('introduce.partial.member')
         @empty
         <p class="text-center text-danger">글이 없습니다.</p>
         @endforelse
-<<<<<<< HEAD
-    </div>
-<<<<<<< HEAD
-    <div>
-        <a href="{{ route('introduces.create') }}">ADD</a>
-=======
->>>>>>> Japan
     </div>
     <div class="container" style="text-align:center">
-        <img src="{{ URL::to('/') }}/img/nabe.jpg" alt="간판">
         <hr>
-        <h1>introducing we are members detail</h1>
+        <h2>introducing we are members detail</h2>
         <hr>
     </div>  
     <div class="row">
@@ -63,32 +36,8 @@
         <p class="text-center text-danger">글이 없습니다.</p>
         @endforelse
     </div>
-<<<<<<< HEAD
-=======
-    <div class="container" style="text-align:center">
-        <img src="{{ URL::to('/') }}/img/nabe.jpg" alt="간판">
-        <hr>
-        <h1>introducing we are members detail</h1>
-        <hr>
-    </div>  
->>>>>>> ec7381ca1f26980716f145eb10ed1e0ca21fd691
-    <div class="row">
-        @forelse($introduces as $introduce)
-            @include('introduce.partial.detail')
-        @empty
-        <p class="text-center text-danger">글이 없습니다.</p>
-        @endforelse
-    </div>
-
-<<<<<<< HEAD
-    <div class="modal" id="Mymodal" style="width:500; height:300">
-=======
 
     <div class="modal" id="Mymodal">
->>>>>>> Japan
-=======
-    <div class="modal" id="Mymodal">
->>>>>>> ec7381ca1f26980716f145eb10ed1e0ca21fd691
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>수정하는 창입니다 호호</h2><br>
@@ -180,10 +129,7 @@
                             $('#detail_image' + target).attr("src", "{{ URL::to('/') }}/img/" + data[0].image);
                             $('#detail_name' + target).text(data[0].name);
                             $('#detail_comment' + target).text(data[0].comment);
-<<<<<<< HEAD
 
-=======
->>>>>>> Japan
                             $('#index_image' + target).attr("src", "{{ URL::to('/') }}/img/" + data[0].image);
                             $('#index_name' + target).text(data[0].name);
                         });
@@ -191,10 +137,7 @@
                 });
         }
     });
-<<<<<<< HEAD
 
-=======
->>>>>>> Japan
     // URL 미리보기 함수
     function readURL(input) {
         if (input.files && input.files[0]) {
@@ -208,10 +151,7 @@
     $("#image").change(function() {
         readURL(this);
     });
-<<<<<<< HEAD
 
-=======
->>>>>>> Japan
     $('.btn__delete').on('click', function(e) {
         var target = e.target.id;
         if (confirm('진짜 삭제할꼬양?')) {

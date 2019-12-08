@@ -11,7 +11,8 @@ class QnaCommentsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['index', 'show',]]);
+
     }
     public function store(Request $request, Qna_article $qnaArticle)
     {
@@ -26,9 +27,7 @@ class QnaCommentsController extends Controller
             ['user_id'=> $request->user()->id]
         ));
 
-        return response()->json(array(
-            'status'=>'success',
-        ), 204);
+        // return response()->json(($comment), 204);
 
         // return redirect(
         //     route('qnaArticles.show', $qnaArticle->id).'#comment_'.$comment->id

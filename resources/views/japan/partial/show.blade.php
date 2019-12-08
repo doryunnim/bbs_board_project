@@ -8,6 +8,5 @@
     </ul>
     <p class="content"></p>
 </div>
-
 <button id="button__edit{{$japan->id}}" class=" btn_update hide" style="display:none">수정</button>
 <button id="button__delete{{$japan->id}}" class=" btn_delete hide" style="display:none">삭제</button>

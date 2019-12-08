@@ -1,11 +1,11 @@
 header.masthead{
     text-align: center;
-    color: honeydew;
+    color: #000000;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position:  center;
     background-size: cover;
-    background-image: url("../img/mainimg.jpg");
+    background-image: url("../img/mainpicture2.jpg");
     
     /* background-color: gray; */
 }
@@ -37,8 +37,10 @@ header{
     box-sizing: border-box;
 }
 .intro-text{
-    font-family: 'Do Hyeon';
-    font-weight:'bold'
+    font-family: 'Life Savers';
+    font-weight:'bold';
+    color: #ffffff;
+    text-shadow: 3px 1px 1px black;
 }
 
 @media (min-width: 768px){
@@ -48,7 +50,7 @@ header{
     }
     header.masthead .intro-text .intro-lead-in{
         font-size:40px;
-        font-style: italic;
+        
         line-height: 40px;
         margin-bottom: 25px;
     }

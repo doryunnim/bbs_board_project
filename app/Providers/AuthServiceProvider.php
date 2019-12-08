@@ -27,14 +27,14 @@ class AuthServiceProvider extends ServiceProvider
         //     return $user->isAdmin();
         // });
         
-        // // $this->registerPolicies();
+        // $this->registerPolicies();
             
-        // Gate::define('update', function($user, $model){
-        //     return $user->id === $model->user_id;
-        // });
+        Gate::define('update', function($user, $model){
+            return $user->id === $model->user_id;
+        });
 
-        // Gate::define('delete', function($user, $model){
-        //     return $user->id === $model->user_id;
-        // });
+        Gate::define('delete', function($user, $model){
+            return $user->id === $model->user_id;
+        });
     }
 }

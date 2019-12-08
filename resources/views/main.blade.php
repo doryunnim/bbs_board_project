@@ -6,9 +6,9 @@
     <header class="masthead">
         <div class="container">
             <div class="intro-text " >
-                <div class="intro-lead-in" style="text-shadow:2px 2px 4px #fff ">나베 먹고 싶다....</div>
-                <div class="intro-heading text-uppercase"style="text-shadow:2px 2px 4px #fff">반갑습니다</div>
-                <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Scroll</a>
+                <div class="intro-lead-in">Welcome to Team 1 Homepage</div>
+                <div class="intro-heading text-uppercase">Why don't you</div>
+                <div class="intro-heading text-uppercase">do your best?</div>
             </div>
         </div>
     </header>
@@ -91,19 +91,19 @@
 </div>
 @endsection
 @section('script')
-<script>
-    AOS.init();
-    window.onscroll = function() {scrollFunction()};
-        function scrollFunction() {
-        if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
-            document.getElementById("mainNav").style.paddingTop = "0rem";
-            document.getElementById("mainNav").style.paddingBottom = "0rem";
-            document.getElementsByClassName("navbar-brand").style.fontSize = "28px";
-        } else {
-            document.getElementById("mainNav").style.paddingTop = "1rem";  
-            document.getElementById("mainNav").style.paddingBottom = "1rem";        
-            document.getElementsByClassName("navbar-brand").style.fontSize = "30px";
+    <script>
+        AOS.init();
+        window.onscroll = function() {scrollFunction()};
+            function scrollFunction() {
+            if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
+                document.getElementById("mainNav").style.paddingTop = "0rem";
+                document.getElementById("mainNav").style.paddingBottom = "0rem";
+                document.getElementsByClassName("navbar-brand").style.fontSize = "28px";
+            } else {
+                document.getElementById("mainNav").style.paddingTop = "1rem";  
+                document.getElementById("mainNav").style.paddingBottom = "1rem";        
+                document.getElementsByClassName("navbar-brand").style.fontSize = "30px";
+            }
         }
-    }
-</script>
+    </script>
 @stop

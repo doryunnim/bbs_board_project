@@ -5683,8 +5683,6 @@
         ]
     },
     {
-<<<<<<< HEAD
-=======
         "name": "yajra/laravel-datatables",
         "version": "v1.5.0",
         "version_normalized": "1.5.0.0",
@@ -5985,7 +5983,6 @@
         ]
     },
     {
->>>>>>> Japan
         "name": "yajra/laravel-datatables-oracle",
         "version": "v9.7.2",
         "version_normalized": "9.7.2.0",

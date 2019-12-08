@@ -28,10 +28,7 @@ return array(
     'App\\Http\\Middleware\\TrimStrings' => $baseDir . '/app/Http/Middleware/TrimStrings.php',
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
-<<<<<<< HEAD
     'App\\Http\\Requests\\JapanRequest' => $baseDir . '/app/Http/Requests/IntroduceRequest.php',
-=======
->>>>>>> Japan
     'App\\Http\\Requests\\NabeJapansRequest' => $baseDir . '/app/Http/Requests/NabeJapansRequest.php',
     'App\\Http\\Requests\\QnaArticlesRequest' => $baseDir . '/app/Http/Requests/QnaArticlesRequest.php',
     'App\\Http\\Requests\\QnaCommentsRequest' => $baseDir . '/app/Http/Requests/QnaCommentsRequest.php',
@@ -1704,7 +1701,6 @@ return array(
     'Illuminate\\View\\ViewFinderInterface' => $vendorDir . '/laravel/framework/src/Illuminate/View/ViewFinderInterface.php',
     'Illuminate\\View\\ViewName' => $vendorDir . '/laravel/framework/src/Illuminate/View/ViewName.php',
     'Illuminate\\View\\ViewServiceProvider' => $vendorDir . '/laravel/framework/src/Illuminate/View/ViewServiceProvider.php',
-    'IntroducesSeeder' => $baseDir . '/database/seeds/IntroducesSeeder.php',
     'JakubOnderka\\PhpConsoleColor\\ConsoleColor' => $vendorDir . '/jakub-onderka/php-console-color/src/ConsoleColor.php',
     'JakubOnderka\\PhpConsoleColor\\InvalidStyleException' => $vendorDir . '/jakub-onderka/php-console-color/src/InvalidStyleException.php',
     'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => $vendorDir . '/jakub-onderka/php-console-highlighter/src/Highlighter.php',
@@ -4211,19 +4207,6 @@ return array(
     'Whoops\\Util\\TemplateHelper' => $vendorDir . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
     'XdgBaseDir\\Xdg' => $vendorDir . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
     'Yajra\\DataTables\\ApiResourceDataTable' => $vendorDir . '/yajra/laravel-datatables-oracle/src/ApiResourceDataTable.php',
-<<<<<<< HEAD
-    'Yajra\\DataTables\\CollectionDataTable' => $vendorDir . '/yajra/laravel-datatables-oracle/src/CollectionDataTable.php',
-    'Yajra\\DataTables\\Contracts\\DataTable' => $vendorDir . '/yajra/laravel-datatables-oracle/src/Contracts/DataTable.php',
-    'Yajra\\DataTables\\DataTableAbstract' => $vendorDir . '/yajra/laravel-datatables-oracle/src/DataTableAbstract.php',
-    'Yajra\\DataTables\\DataTables' => $vendorDir . '/yajra/laravel-datatables-oracle/src/DataTables.php',
-    'Yajra\\DataTables\\DataTablesServiceProvider' => $vendorDir . '/yajra/laravel-datatables-oracle/src/DataTablesServiceProvider.php',
-    'Yajra\\DataTables\\EloquentDataTable' => $vendorDir . '/yajra/laravel-datatables-oracle/src/EloquentDataTable.php',
-    'Yajra\\DataTables\\Exceptions\\Exception' => $vendorDir . '/yajra/laravel-datatables-oracle/src/Exceptions/Exception.php',
-    'Yajra\\DataTables\\Facades\\DataTables' => $vendorDir . '/yajra/laravel-datatables-oracle/src/Facades/DataTables.php',
-    'Yajra\\DataTables\\Processors\\DataProcessor' => $vendorDir . '/yajra/laravel-datatables-oracle/src/Processors/DataProcessor.php',
-    'Yajra\\DataTables\\Processors\\RowProcessor' => $vendorDir . '/yajra/laravel-datatables-oracle/src/Processors/RowProcessor.php',
-    'Yajra\\DataTables\\QueryDataTable' => $vendorDir . '/yajra/laravel-datatables-oracle/src/QueryDataTable.php',
-=======
     'Yajra\\DataTables\\ButtonsServiceProvider' => $vendorDir . '/yajra/laravel-datatables-buttons/src/ButtonsServiceProvider.php',
     'Yajra\\DataTables\\CollectionDataTable' => $vendorDir . '/yajra/laravel-datatables-oracle/src/CollectionDataTable.php',
     'Yajra\\DataTables\\Commands\\TransformerMakeCommand' => $vendorDir . '/yajra/laravel-datatables-fractal/src/Commands/TransformerMakeCommand.php',
@@ -4307,7 +4290,6 @@ return array(
     'Yajra\\DataTables\\Services\\DataTablesExportHandler' => $vendorDir . '/yajra/laravel-datatables-buttons/src/Services/DataTablesExportHandler.php',
     'Yajra\\DataTables\\Transformers\\DataArrayTransformer' => $vendorDir . '/yajra/laravel-datatables-buttons/src/Transformers/DataArrayTransformer.php',
     'Yajra\\DataTables\\Transformers\\FractalTransformer' => $vendorDir . '/yajra/laravel-datatables-fractal/src/Transformers/FractalTransformer.php',
->>>>>>> Japan
     'Yajra\\DataTables\\Utilities\\Config' => $vendorDir . '/yajra/laravel-datatables-oracle/src/Utilities/Config.php',
     'Yajra\\DataTables\\Utilities\\Helper' => $vendorDir . '/yajra/laravel-datatables-oracle/src/Utilities/Helper.php',
     'Yajra\\DataTables\\Utilities\\Request' => $vendorDir . '/yajra/laravel-datatables-oracle/src/Utilities/Request.php',
