@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<style>
+.gray {
+    color: #fff;
+    background-color: #474747;
+    border-color: #313131;
+}
+</style>
 <div class="container">
     <h1>새 글 쓰기</h1>
     <hr>
@@ -18,7 +26,7 @@
             <textarea name="content" id="content" cols="30" rows="10" class="form-control">{{old('content')}}</textarea>
             {!! $errors->first('content', '<span class="form-error">:message</span>') !!}
         <div class="form-group">
-            <button type="submit" class="btn btn-primary">저장</button>
+            <button type="submit" class="btn btn-primary gray">저장</button>
         </div>
     </form>
 </div>

@@ -19,7 +19,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        //
+        // CSRF 보호로 부터 특정 url제외 시키기
         'introduces',
         'introduces/*',
         'japan',

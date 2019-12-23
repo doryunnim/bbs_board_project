@@ -14,13 +14,6 @@ class Qna_comment extends Model
     protected $fillable = ['commentable_type', 'commentable_id', 
                             'user_id', 'parent_id', 'content',];
 
-    protected $hidden = [
-        'user_id',
-        'commentable_type',
-        'commentable_id',
-        'parent_id',
-    ];
-
     protected $with = ['user',];
 
     public function user()

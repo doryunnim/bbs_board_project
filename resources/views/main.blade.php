@@ -28,7 +28,7 @@
                     <h4 class="service-heading"><a href="{{route('introduces.index')}}">조원소개</a></h4>
                     @if(!@empty($introduces))
                         @forelse($introduces as $introduce)
-                            <a href="introduces/{{ $introduce -> id }}" class="show-id">
+                            <a href="{{route('introduces.index')}}" class="show-id">
                                 <p>{{ $introduce -> name }}</p>
                             </a>
                         @empty

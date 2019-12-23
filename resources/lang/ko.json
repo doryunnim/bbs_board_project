@@ -1,3 +1,5 @@
 {
-    "Login" : "로그인"
+    "Login" : "로그인",
+    "Register":"회원가입",
+    "Logout":"로그아웃"
 }

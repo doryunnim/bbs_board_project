@@ -41,7 +41,9 @@ body, html {
 	height: 100%;
 	font-family: Poppins-Regular, sans-serif;
 }
-
+.py-4{
+  background-color: #f2f2f2;
+}
 /*---------------------------------------------*/
 a {
 	font-family: Poppins-Regular;

@@ -18,21 +18,14 @@ $(document).ready(function () {
         $('.japan__show'+e).on('click', function() {     //btn-show 클래스를 가진 버튼을 누르면 실행됨
             console.log(e);
             console.log(japanData.password);
-            $.ajax({
-                type: "GET",        //http 요청방식
-                url: '/japan/'+e,   //요청이 전송되는 url이 포함된 문자열
-                data: japanData,    //요청후 return하는 값
-            }).then(function() {
-                $('#create').hide();
-                $('#show').show();
-                $('.hide').hide();
-                $('#button__edit'+e).show();
-                $('#button__delete'+e).show();
-                $('#attach').attr('src',path);
-                $(".title").replaceWith('<h3 class="title">'+japanData.title+'</h3>');
-                $(".created").replaceWith('<small class="created">'+japanData.created_at+'<small>');
-                $(".content").replaceWith('<h5 class="content">'+japanData.content+'</h5>');
-            });
+            $('#create').hide();
+            $('#show').show();
+            $('.hide').hide();
+            $('#button__edit'+e).show();
+            $('#button__delete'+e).show();
+            $('#attach').attr('src',path);
+            $(".title").replaceWith('<h3 class="title">'+japanData.title+'</h3>');
+            $(".content").replaceWith('<h5 class="content">'+japanData.content+'</h5>');
         });
 
         //edit페이지로 이동
@@ -81,7 +74,11 @@ $(document).ready(function () {
                         type: 'DELETE',
                         url: '/japan/'+japanData.id
                     }).then(function() {
-                        window.location.href = '/japan';    //ajax가 성공하면 127.0.0.1:8000/japan으로 이동
+                        $('.japan__show'+e).remove();
+                        $('#show').hide();
+                        $('.hide').hide();
+                        $('#card').show();
+                        $('.card'+e).remove();
                     });
                 }
             }
@@ -90,17 +87,12 @@ $(document).ready(function () {
     
     //create form 보여주는 것
     $('.button__create').on('click', function() {
-        $.ajax({
-            type: "GET",
-            url: '/japan/create',
-            success: function() {
-                $('#create').show();
-                $('#show').hide();
-                $('.hide').hide();
-                $('#card').hide();
-            }
-        });
+        $('#create').show();
+        $('#show').hide();
+        $('.hide').hide();
+        $('#card').hide();
     });
+
 
     //작성 글 저장 method: POST
     $('#createJapan').on('click', function() {
@@ -120,27 +112,7 @@ $(document).ready(function () {
         });
     });
 
-    //글 수정: PUT이랑 PATCH 안되서 POST로 함
-    $('#updateJapan').on('click', function() {
-        var form = $(this);
-        alert('clicked');
-        if(form.serialize()) {
-            $.ajax({
-                type: 'POST',
-                url: '/japan/'+japanData.id,
-                data: form.serialize(),
-                cache: false,
-                contentType: false,
-                processData: false,
-                success: function() {   //http 요청 성공 시 실행
-                    window.history.back();
-                },
-                error: function(error) {    //http 요청 실패 시 실행
-                    console.log('msg:'+error);
-                }
-            });
-        }
-    });
+    
 });
 function cardnone(){
     document.getElementById("card").style.display="none";

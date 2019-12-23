@@ -1,10 +1,9 @@
 <div id="show" style="display:none" data-id="{{$japan->id}}">
     <div class="page-header jp_title">
         <h3 class="title"></h3>
-        <small class="crejp_titleated"></small>
     </div>
     <ul class="attachment__article"> 
-        <img src="" id="attach" class="img-fluid w3-border w3-padding">
+        <img id="attach" class="img-fluid w3-border w3-padding">
     </ul>
     <p class="content"></p>
 </div>

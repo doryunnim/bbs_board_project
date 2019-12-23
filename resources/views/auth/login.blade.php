@@ -11,7 +11,8 @@
         <div class="container-login100">
             <div class="wrap-login100">
                 <form class="login100-form validate-form" method="POST" data-aos="fade-down" action="{{ route('login') }}">
-                    @csrf
+                <!-- 검증된 사용자의 요청만 승인 -->   
+                @csrf
                     <span class="login100-form-title p-b-26" data-aos="zoom-out"> <!--제목-->
                         Welcome
                     </span>
@@ -61,7 +62,7 @@
                         </span>
                         @if (Route::has('password.request'))
                             <a class="txt2" href="{{ route('register') }}">
-                                {{ __('가입') }}
+                                {{ __('Register') }}
                             </a>
                         @endif
                     </div>

@@ -29,7 +29,7 @@
         
         <div id="card">
             @if(!@empty($jpImages))
-                @forelse($jpImages as $jpIameg)
+                @forelse($jpImages as $jpImage)
                     @include('japan.partial.card')
                 @empty
                     
@@ -57,7 +57,9 @@
             <div class="col">
                 <button class="btn btn-info button__create"onclick="cardnone()"><img src="img/add.png"></button>
                 @foreach($japans as $japan)
-                    @include('japan.partial.article', compact('japan'))
+                    <button type="button" class="btn btn-primary sidebtn   japan__show{{$japan->id}}" onclick="cardnone()" data-all="{{$japan}}" data-img="{{$japan->attachments}}">
+                        {{$japan->title}}
+                    </button>
                 @endforeach
             </div>
         </div>

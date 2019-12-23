@@ -11,7 +11,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('japan','NabeJapanController');
 Route::resource('introduces', 'NabeIntroduceController');
 Route::post('introduces/update', 'NabeIntroduceController@update')->name('introduces.update');
-Route::resource('articles','NabeJapanController');
 Route::resource('qnaArticles','QnaArticlesController');
 Route::resource('qnaComments', 'QnaCommentsController', ['only' => ['update', 'destroy']]);
 Route::resource('qnaArticles.qnaComments', 'QnaCommentsController', ['only' => 'store']);

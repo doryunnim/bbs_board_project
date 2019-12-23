@@ -15,12 +15,12 @@
 }
 
 .articleMedia-body:hover{
-	background-color: #f0f0f0;
-	
+   background-color: #f0f0f0;
+   
 }
 .articleMedia-body>a:hover{
-	
-	text-decoration: none;
+   
+   text-decoration: none;
 }
 
 
@@ -36,75 +36,75 @@
 }
 
 .btn__delete__comment {
-	box-shadow:inset 0px 1px 0px 0px #ff5d5d;
-	background:linear-gradient(to bottom, #ff6161 5%, #ff5757 100%);
-	background-color:#ff4646;
-	border-radius:3px;
-	border:1px solid #f52b2b;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:13px;
-	padding:3px 10px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ff4e47;
+   box-shadow:inset 0px 1px 0px 0px #ff5d5d;
+   background:linear-gradient(to bottom, #ff6161 5%, #ff5757 100%);
+   background-color:#ff4646;
+   border-radius:3px;
+   border:1px solid #f52b2b;
+   display:inline-block;
+   cursor:pointer;
+   color:#ffffff;
+   font-family:Arial;
+   font-size:13px;
+   padding:3px 10px;
+   text-decoration:none;
+   text-shadow:0px 1px 0px #ff4e47;
 }
 .btn__delete__comment:hover {
-	background:linear-gradient(to bottom, #ff3c3c 5%, #ff2525 100%);
-	background-color:#ff2626;
+   background:linear-gradient(to bottom, #ff3c3c 5%, #ff2525 100%);
+   background-color:#ff2626;
 }
 .btn__delete__comment:active {
-	position:relative;
-	top:1px;
+   position:relative;
+   top:1px;
 }
 
 .btn__edit__comment {
-	box-shadow:inset 0px 1px 0px 0px #49a7ff;
-	background:linear-gradient(to bottom, #54b2ff 5%, #57a5ff 100%);
-	background-color:#46acff;
-	border-radius:3px;
-	border:1px solid #2b93f5;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:13px;
-	padding:3px 10px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #4781ff;
+   box-shadow:inset 0px 1px 0px 0px #49a7ff;
+   background:linear-gradient(to bottom, #54b2ff 5%, #57a5ff 100%);
+   background-color:#46acff;
+   border-radius:3px;
+   border:1px solid #2b93f5;
+   display:inline-block;
+   cursor:pointer;
+   color:#ffffff;
+   font-family:Arial;
+   font-size:13px;
+   padding:3px 10px;
+   text-decoration:none;
+   text-shadow:0px 1px 0px #4781ff;
 }
 .btn__edit__comment:hover {
-	background:linear-gradient(to bottom, #3c7aff 5%, #256aff 100%);
-	background-color:#2659ff;
+   background:linear-gradient(to bottom, #3c7aff 5%, #256aff 100%);
+   background-color:#2659ff;
 }
 .btn__edit__comment:active {
-	position:relative;
-	top:1px;
+   position:relative;
+   top:1px;
 }
 
-.btn__replay__comment {
-	box-shadow:inset 0px 1px 0px 0px #707070;
-	background:linear-gradient(to bottom, #3f3f3f 5%, #363636 100%);
-	background-color:#3a3a3a;
-	border-radius:3px;
-	border:1px solid #333333;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:13px;
-	padding:3px 10px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #3a3a3a;
+.btn__reply__comment {
+   box-shadow:inset 0px 1px 0px 0px #707070;
+   background:linear-gradient(to bottom, #3f3f3f 5%, #363636 100%);
+   background-color:#3a3a3a;
+   border-radius:3px;
+   border:1px solid #333333;
+   display:inline-block;
+   cursor:pointer;
+   color:#ffffff;
+   font-family:Arial;
+   font-size:13px;
+   padding:3px 10px;
+   text-decoration:none;
+   text-shadow:0px 1px 0px #3a3a3a;
 }
-.btn__replay__comment:hover {
-	background:linear-gradient(to bottom, #3b3b3b 5%, #2e2e2e 100%);
-	background-color:#2b2b2b;
+.btn__reply__comment:hover {
+   background:linear-gradient(to bottom, #3b3b3b 5%, #2e2e2e 100%);
+   background-color:#2b2b2b;
 }
-.btn__replay__comment:active {
-	position:relative;
-	top:1px;
+.btn__reply__comment:active {
+   position:relative;
+   top:1px;
 }
 
 .sub>.media-body {
@@ -128,60 +128,60 @@
 }
 
 .article_showbutton{
-	float: right;
-	
+   float: right;
+   
 }
 
 .container__comment{
-	margin-top: 70px;
+   margin-top: 70px;
 }
 
 .btn-info{
-	box-shadow:inset 0px 1px 0px 0px #ffffff;
-	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
-	background-color:#ffffff;
-	border-radius:6px;
-	border:1px solid #dcdcdc;
-	display:inline-block;
-	cursor:pointer;
-	color:#666666;
+   box-shadow:inset 0px 1px 0px 0px #ffffff;
+   background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+   background-color:#ffffff;
+   border-radius:6px;
+   border:1px solid #dcdcdc;
+   display:inline-block;
+   cursor:pointer;
+   color:#666666;
 
-	font-weight:bold;
-	padding:3px 10px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
+   font-weight:bold;
+   padding:3px 10px;
+   text-decoration:none;
+   text-shadow:0px 1px 0px #ffffff;
 }
 
 .btn-info:hover {
-	background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
-	background-color:#f6f6f6;
+   background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+   background-color:#f6f6f6;
 }
 .btn-info:active {
-	position:relative;
-	top:1px;
+   position:relative;
+   top:1px;
 }
 
 .button__delete{
-	box-shadow:inset 0px 1px 0px 0px #ffffff;
-	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
-	background-color:#ffffff;
-	border-radius:6px;
-	border:1px solid #dcdcdc;
-	display:inline-block;
-	cursor:pointer;
-	color:#666666;
+   box-shadow:inset 0px 1px 0px 0px #ffffff;
+   background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+   background-color:#ffffff;
+   border-radius:6px;
+   border:1px solid #dcdcdc;
+   display:inline-block;
+   cursor:pointer;
+   color:#666666;
 
-	font-weight:bold;
-	padding:3px 10px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
+   font-weight:bold;
+   padding:3px 10px;
+   text-decoration:none;
+   text-shadow:0px 1px 0px #ffffff;
 }
 
 .button__delete:hover {
-	background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
-	background-color:#f6f6f6;
+   background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+   background-color:#f6f6f6;
 }
 .button__delete:active {
-	position:relative;
-	top:1px;
+   position:relative;
+   top:1px;
 }

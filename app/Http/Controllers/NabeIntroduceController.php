@@ -22,13 +22,13 @@ class NabeIntroduceController extends Controller
 
     public function store(Request $request)
     {   
-        $image = $request->file('image');
-        if($request->has("image"))
+        if($request->hasfile("image"))
         {
+            $image_name = "";
+            $image = $request->file('image');
             $rules = array(
                 'name'    =>  'required',
                 'comment'     =>  'required',
-                'image'         =>  'image',
             );
             $error = Validator::make($request->all(), $rules);
             if($error->fails())
@@ -66,7 +66,7 @@ class NabeIntroduceController extends Controller
 
     public function show($id)
     {
-        $data = NabeIntroduce::where('id', $id)->with('user')->get();
+        $data = NabeIntroduce::where('id', $id)->first();
         return response()->json($data);
     }
 
@@ -84,10 +84,10 @@ class NabeIntroduceController extends Controller
      */
     public function update(Request $request)
     {   
-        $image_name = $request->hidden_image;
-        $image = $request->file('image');
         if($request->has("image"))
         {
+            $image_name="";
+            $image = $request->file('image');
             $rules = array(
                 'name'    =>  'required',
                 'comment'     =>  'required',
